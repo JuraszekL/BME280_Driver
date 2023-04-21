@@ -48,8 +48,35 @@
 typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data);
 typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
 
+typedef struct BME280_device BME280_t;
 
-typedef struct {
+
+struct BME280_calibration_data {
+
+	uint16_t dig_T1;
+	int16_t dig_T2;
+	int16_t dig_T3;
+
+	uint16_t dig_P1;
+	int16_t dig_P2;
+	int16_t dig_P3;
+	int16_t dig_P4;
+	int16_t dig_P5;
+	int16_t dig_P6;
+	int16_t dig_P7;
+	int16_t dig_P8;
+	int16_t dig_P9;
+
+	uint8_t dig_H1;
+	int16_t dig_H2;
+	uint8_t dig_H3;
+	int16_t dig_H4;
+	int16_t dig_H5;
+	int8_t dig_H6;
+};
+
+
+struct BME280_device {
 
 //	BME280_InterfaceType_t interface;
 	uint8_t i2c_address;
@@ -58,7 +85,8 @@ typedef struct {
 	bme280_readbytes read;
 	bme280_writebyte write;
 
-}BME280_Dev_t;
+	struct BME280_calibration_data trimm;
+};
 
 
 #endif /* BME280_DEFINITIONS_H */
