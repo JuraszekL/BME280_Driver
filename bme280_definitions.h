@@ -13,7 +13,6 @@
 //***************************************
 
 #include <stdint.h>
-#include <stddef.h>
 
 //***************************************
 /* returned values */
@@ -35,28 +34,25 @@
 /* registers values */
 //***************************************
 
-#define BME280_ID	(0x60)
+#define BME280_REGADDR_ID	(0x60)
 
 //***************************************
-/* registers values */
+/* typedefs */
 //***************************************
 
-typedef enum {
+//typedef enum {bme280_i2c = 1U, bme280_spi} BME280_InterfaceType_t;
 
-	i2c = 1U,
-	spi
-
-}BME280_InterfaceType_t;
-
-//***************************************
-/* device structure */
-//***************************************
+typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data);
+typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
 
 typedef struct {
 
-	BME280_InterfaceType_t interface;
+//	BME280_InterfaceType_t interface;
 	uint8_t i2c_address;
 
-}BME280_Device_t;
+	bme280_readbytes read;
+	bme280_writebyte write;
+
+}BME280_Dev_t;
 
 #endif /* BME280_DEFINITIONS_H */

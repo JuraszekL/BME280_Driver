@@ -24,7 +24,13 @@ extern "C" {
 
 
 
+//***************************************
+/* public functions */
+//***************************************
 
+int8_t BME280_Init(BME280_Dev_t *dev, uint8_t i2c_addr);
+
+//int8_t BME280_SetAll(BME280_Dev_t *dev, BME280_Config_t *config);
 
 //***************************************
 
