@@ -36,8 +36,15 @@
 /* registers values */
 //***************************************
 
+	/* ID related */
 #define BME280_ID			(0x60)
 #define BME280_REGADDR_ID	(0xD0)
+
+	/* calibration data related */
+#define BME280_CALIB_DATA1_ADDR	(0x88)
+#define BME280_CALIB_DATA1_LEN	(25)
+#define BME280_CALIB_DATA2_ADDR	(0xE1)
+#define BME280_CALIB_DATA2_LEN	(7)
 
 //***************************************
 /* typedefs */

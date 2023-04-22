@@ -56,5 +56,16 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 
 static int8_t bme280_read_compensation_parameters(BME280_t *Dev){
 
+	uint8_t tmp_buff[32];
+	int8_t res;
+
+	/* read two calibration data's areas from sensor */
+	res = Dev->read(BME280_CALIB_DATA1_ADDR, &tmp_buff[0], BME280_CALIB_DATA1_LEN, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return res;
+	res = Dev->read(BME280_CALIB_DATA2_ADDR, &tmp_buff[24], BME280_CALIB_DATA2_LEN, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return res;
+
+	// parse data to the structure inside Dev
+
 	return 0;
 }
