@@ -35,7 +35,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	uint8_t id = 0;
 
 	/* check parameters */
-	if((NULL == ReadFun) || (NULL == WriteFun)) return BME280_ERR;
+	if((NULL == ReadFun) || (NULL == WriteFun)) return BME280_PARAM_ERR;
 
 	Dev->i2c_address = I2cAddr;
 	Dev->env_spec_data = EnvSpecData;
@@ -61,7 +61,7 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	uint8_t ctrl_hum = 0, ctrl_meas = 0, config = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == Config)) return BME280_ERR;
+	if((NULL == Dev) || (NULL == Config)) return BME280_PARAM_ERR;
 
 	/* set the data from Config structure to the right positions in
 	 * sensor registers */
