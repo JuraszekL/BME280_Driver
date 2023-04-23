@@ -101,6 +101,9 @@ typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_
 	/* main structure where single sensor is cofigured */
 typedef struct BME280_device BME280_t;
 
+	/* structure used to configure every parameters in sensor at once */
+typedef struct BME280_conf BME280_Config_t;
+
 struct BME280_calibration_data {
 
 	uint16_t dig_T1;
@@ -134,6 +137,17 @@ struct BME280_device {
 	bme280_writebyte write;
 
 	struct BME280_calibration_data trimm;
+};
+
+struct BME280_conf {
+
+	uint8_t oversampling_h;
+	uint8_t oversampling_p;
+	uint8_t oversampling_t;
+	uint8_t mode;
+	uint8_t t_stby;
+	uint8_t filter;
+	uint8_t spi3w_enable;
 };
 
 #endif /* BME280_DEFINITIONS_H */
