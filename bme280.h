@@ -33,6 +33,8 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 
 int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config);
 
+int8_t BME280_Reset(BME280_t *Dev);
+
 int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode);
 int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode);
 

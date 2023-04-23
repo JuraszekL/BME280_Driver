@@ -90,6 +90,20 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	return res;
 }
 
+	/* function performs power-on reset procedure for sensor */
+int8_t BME280_Reset(BME280_t *Dev){
+
+	int8_t res = BME280_OK;
+
+	/* check parameter */
+	if((NULL == Dev) || (NULL == Dev->write)) return BME280_PARAM_ERR;
+
+	/* write reset commad to reset register */
+	res = Dev->write(BME280_RESET_ADDR, BME280_RESET_VALUE, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
 	/* Function reads current operation mode from sensor */
 int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 

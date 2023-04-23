@@ -50,6 +50,10 @@
 #define BME280_ID			(0x60)
 #define BME280_ID_ADDR		(0xD0)
 
+	/* Reset related */
+#define BME280_RESET_ADDR	(0xE0)
+#define BME280_RESET_VALUE	(0xB6)
+
 	/* calibration data related */
 #define BME280_CALIB_DATA1_ADDR	(0x88)
 #define BME280_CALIB_DATA1_LEN	(25U)
