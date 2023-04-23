@@ -48,6 +48,9 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs);
 int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby);
 int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby);
 
+int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter);
+int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter);
+
 //***************************************
 
 #ifdef __cplusplus
