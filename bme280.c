@@ -161,7 +161,7 @@ int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
-	/* parse pressure oversampling values from ctrl_meas */
+	/* parse pressure oversampling value from ctrl_meas */
 	ctrl_meas = (ctrl_meas >> 2) & 0x07;
 
 	/* set output pointer */
@@ -219,7 +219,7 @@ int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
-	/* parse temperature oversampling values from ctrl_meas */
+	/* parse temperature oversampling value from ctrl_meas */
 	ctrl_meas = (ctrl_meas >> 5) & 0x07;
 
 	/* set output pointer */
@@ -277,7 +277,7 @@ int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
 	res = Dev->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->i2c_address, Dev->env_spec_data);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
-	/* parse temperature oversampling values from ctrl_meas */
+	/* parse humidity oversampling value from ctrl_hum */
 	ctrl_hum = ctrl_hum & 0x07;
 
 	/* set output pointer */
