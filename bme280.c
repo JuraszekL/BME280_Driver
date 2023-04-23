@@ -50,7 +50,6 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 
 	/* read, parse and store compensation data */
 	res = bme280_read_compensation_parameters(Dev);
-	if(BME280_OK != res) return res;
 
 	return res;
 }
