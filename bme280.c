@@ -35,7 +35,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	uint8_t id = 0;
 
 	/* check parameters */
-	if((NULL == ReadFun) || (NULL == WriteFun)) return BME280_PARAM_ERR;
+	if((NULL == ReadFun) || (NULL == WriteFun) || (NULL == Dev)) return BME280_PARAM_ERR;
 
 	Dev->i2c_address = I2cAddr;
 	Dev->env_spec_data = EnvSpecData;
