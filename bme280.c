@@ -145,6 +145,59 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	return res;
 }
 
+	/* function gets current pressure oversampling value from sensor */
+int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == POvs)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse pressure oversampling values from ctrl_meas */
+	ctrl_meas = (ctrl_meas >> 2) & 0x07;
+
+	/* set output pointer */
+	*POvs = ctrl_meas;
+
+	return res;
+}
+
+	/* function sets pressure oversampling value  */
+int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0, tmp = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (POvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if current value differs from requested */
+	tmp = (ctrl_meas >> 2) & 0x07;
+	if(POvs == tmp) return BME280_OK;
+
+	/* send new ctrl_meas value to sensor if required */
+	ctrl_meas &= 0xE3;	//0xE3 - 0b11100011
+	ctrl_meas |= (POvs << 2);
+	res = Dev->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************
