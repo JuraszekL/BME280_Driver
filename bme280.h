@@ -28,11 +28,10 @@ extern "C" {
 /* public functions */
 //***************************************
 
-
 int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 		bme280_readbytes ReadFun, bme280_writebyte WriteFun);
 
-//int8_t BME280_SetAll(BME280_Dev_t *dev, BME280_Config_t *config);
+int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config);
 
 //***************************************
 

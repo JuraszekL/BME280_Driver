@@ -54,6 +54,38 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	return res;
 }
 
+	/* Function  configures all sensor parameters at once */
+int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_hum = 0, ctrl_meas = 0, config = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == Config)) return BME280_ERR;
+
+	/* set the data from Config structure to the right positions in
+	 * sensor registers */
+	ctrl_hum = Config->oversampling_h & 0x07;	//0x07 - 0b00000111
+
+	ctrl_meas |= (Config->oversampling_t << 5) & 0xE0; 	//0xE0 - 0b11100000
+	ctrl_meas |= (Config->oversampling_p << 2) & 0x1C;	//0x1C - 0b00011100
+	ctrl_meas |= Config->mode & 0x03;					//0x03 - 0b00000011
+
+	config |= (Config->t_stby << 5) & 0xE0;	//0xE0 - 0b11100000
+	config |= (Config->filter << 2) & 0x1C;	//0x1C - 0b00011100
+	config |= Config->spi3w_enable & 0x01;	//0x01 - 0b00000001
+
+	/* send three config bytes to the device */
+	res = Dev->write(BME280_CTRL_HUM_ADDR, ctrl_hum, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+	res = Dev->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+	res = Dev->write(BME280_CONFIG_ADDR, config, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************

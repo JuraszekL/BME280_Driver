@@ -46,6 +46,11 @@
 #define BME280_CALIB_DATA2_ADDR	(0xE1)
 #define BME280_CALIB_DATA2_LEN	(7)
 
+	/* control and config related */
+#define BME280_CTRL_HUM_ADDR	(0xF2)
+#define BME280_CTRL_MEAS_ADDR	(0xF4)
+#define BME280_CONFIG_ADDR		(0xF5)
+
 //***************************************
 /* settings */
 //***************************************
