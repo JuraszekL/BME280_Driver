@@ -15,7 +15,7 @@
 
 
 //***************************************
-/* static declarations */
+/* static functions declarations */
 //***************************************
 
 	/* private function to read compensation parameters from sensor and
@@ -54,7 +54,9 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	return res;
 }
 
-
+//***************************************
+/* static functions */
+//***************************************
 
 	/* private function to read compensation parameters from sensor and
 	 * parse them inside  BME280_t structure */
