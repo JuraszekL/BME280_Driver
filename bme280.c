@@ -90,6 +90,61 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	return res;
 }
 
+	/* Function reads current operation mode from sensor */
+int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == Mode)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse mode values from ctrl_meas */
+	ctrl_meas &= 0x03;
+	if(0x02 == ctrl_meas) ctrl_meas = BME280_FORCEDMODE;
+
+	/* set output pointer */
+	*Mode = ctrl_meas;
+
+	return res;
+}
+
+	/* Function sets sensor operation mode */
+int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0, tmp = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (Mode > BME280_NORMALMODE)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if current mode differs from requested */
+	tmp = ctrl_meas & 0x03;
+	if(0x02 == tmp) tmp = BME280_FORCEDMODE;
+	if(Mode == tmp) return BME280_OK;
+
+	/* send new ctrl_meas value to sensor if required */
+	ctrl_meas &= 0xFC;	//0xFC - 0b11111100
+	ctrl_meas |= Mode;
+	res = Dev->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************
