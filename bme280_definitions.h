@@ -29,7 +29,7 @@
 #define BME280_OK				(0)
 #define BME280_PARAM_ERR		(-1)
 #define BME280_INTERFACE_ERR	(-2)
-#define BME280_ID_ERROR			(-3)
+#define BME280_ID_ERR			(-3)
 #define BME280_NO_INIT_ERR		(-4)
 
 //***************************************
