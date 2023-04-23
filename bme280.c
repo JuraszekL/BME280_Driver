@@ -251,6 +251,56 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	return res;
 }
 
+/* function gets current humidity oversampling value from sensor */
+int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_hum = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == HOvs)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_hum register from sensor */
+	res = Dev->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse temperature oversampling values from ctrl_meas */
+	ctrl_hum = ctrl_hum & 0x07;
+
+	/* set output pointer */
+	*HOvs = ctrl_hum;
+
+	return res;
+}
+
+/* function sets humidity oversampling value  */
+int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
+
+	int8_t res = BME280_OK;
+	uint8_t tmp = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (HOvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* send requested value to sensor */
+	res = Dev->write(BME280_CTRL_HUM_ADDR, HOvs, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* to make the change effective we need to write ctrl_meas register,
+	 * check documentation */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &tmp, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+	res = Dev->write(BME280_CTRL_MEAS_ADDR, tmp, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************
