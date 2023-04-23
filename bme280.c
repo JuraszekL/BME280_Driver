@@ -51,6 +51,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	/* read, parse and store compensation data */
 	res = bme280_read_compensation_parameters(Dev);
 
+	if(BME280_OK == res) Dev->initialized = BME280_INITIALIZED;
 	return res;
 }
 
@@ -62,6 +63,9 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 
 	/* check parameters */
 	if((NULL == Dev) || (NULL == Config)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* set the data from Config structure to the right positions in
 	 * sensor registers */

@@ -15,6 +15,14 @@
 #include <stdint.h>
 
 //***************************************
+/* general */
+//***************************************
+
+	/* possible states of sensor in BME280_device.initialized */
+#define BME280_NOT_INITIALIZED	(0x00)
+#define BME280_INITIALIZED		(0x01)
+
+//***************************************
 /* returned values */
 //***************************************
 
@@ -22,6 +30,7 @@
 #define BME280_PARAM_ERR		(-1)
 #define BME280_INTERFACE_ERR	(-2)
 #define BME280_ID_ERROR			(-3)
+#define BME280_NO_INIT_ERR		(-4)
 
 //***************************************
 /* I2C address */
@@ -42,9 +51,9 @@
 
 	/* calibration data related */
 #define BME280_CALIB_DATA1_ADDR	(0x88)
-#define BME280_CALIB_DATA1_LEN	(25)
+#define BME280_CALIB_DATA1_LEN	(25U)
 #define BME280_CALIB_DATA2_ADDR	(0xE1)
-#define BME280_CALIB_DATA2_LEN	(7)
+#define BME280_CALIB_DATA2_LEN	(7U)
 
 	/* control and config related */
 #define BME280_CTRL_HUM_ADDR	(0xF2)
@@ -142,6 +151,8 @@ struct BME280_device {
 	bme280_writebyte write;
 
 	struct BME280_calibration_data trimm;
+
+	uint8_t initialized;
 };
 
 struct BME280_conf {
