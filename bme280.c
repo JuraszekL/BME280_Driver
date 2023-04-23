@@ -432,6 +432,96 @@ int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter){
 	return res;
 }
 
+	/* function enables 3-wire SPI interface */
+int8_t BME280_Enable3WireSPI(BME280_t *Dev){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0, tmp = 0, mode = 0;
+
+	/* check parameter */
+	if(NULL == Dev) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in sleep mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
+
+	/* read value of config register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if current value differs from requested */
+	tmp = config & 0x01;
+	if(0x01 == tmp) return BME280_OK;
+
+	/* send new config value to sensor if required */
+	config &= 0xFE;	//0xFE - 0b11111110
+	config |= 0x01;
+	res = Dev->write(BME280_CONFIG_ADDR, config, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
+/* function disables 3-wire SPI interface */
+int8_t BME280_Disable3WireSPI(BME280_t *Dev){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0, tmp = 0, mode = 0;
+
+	/* check parameter */
+	if(NULL == Dev) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in sleep mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
+
+	/* read value of config register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if current value differs from requested */
+	tmp = config & 0x01;
+	if(0x00 == tmp) return BME280_OK;
+
+	/* send new config value to sensor if required */
+	config &= 0xFE;	//0xFE - 0b11111110
+	res = Dev->write(BME280_CONFIG_ADDR, config, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
+	/* function reads current 3-wire SPI setup (0 = 3w SPI disabled, 1 - 3w SPI enabled) */
+int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == Result)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse mode values from ctrl_meas */
+	config &= 0x01;
+
+	/* set output pointer */
+	*Result = config;
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************

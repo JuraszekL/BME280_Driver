@@ -51,6 +51,10 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby);
 int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter);
 int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter);
 
+int8_t BME280_Enable3WireSPI(BME280_t *Dev);
+int8_t BME280_Disable3WireSPI(BME280_t *Dev);
+int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result);
+
 //***************************************
 
 #ifdef __cplusplus
