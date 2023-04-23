@@ -45,6 +45,9 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs);
 int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs);
 int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs);
 
+int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby);
+int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby);
+
 //***************************************
 
 #ifdef __cplusplus

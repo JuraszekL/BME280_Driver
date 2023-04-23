@@ -316,6 +316,64 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 	return res;
 }
 
+	/* function gets current standby time for normal mode */
+int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == TStby)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of config register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse standby time value from config */
+	config = (config >> 5) & 0x07;
+
+	/* set output pointer */
+	*TStby = config;
+
+	return res;
+}
+
+	/* function sets standby time */
+int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0, tmp = 0, mode = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (TStby > BME280_STBY_20MS)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in sleep mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
+
+	/* read value of config register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if current value differs from requested */
+	tmp = (config >> 5) & 0x07;
+	if(TStby == tmp) return BME280_OK;
+
+	/* send new config value to sensor if required */
+	config &= 0x1F;	//0x1F - 0b00011111
+	config |= (TStby << 5);
+	res = Dev->write(BME280_CONFIG_ADDR, config, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************
