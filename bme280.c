@@ -174,13 +174,18 @@ int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
 int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 
 	int8_t res = BME280_OK;
-	uint8_t ctrl_meas = 0, tmp = 0;
+	uint8_t ctrl_meas = 0, tmp = 0, mode = 0;
 
 	/* check parameters */
 	if((NULL == Dev) || (POvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in sleep mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -227,13 +232,18 @@ int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
 int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 
 	int8_t res = BME280_OK;
-	uint8_t ctrl_meas = 0, tmp = 0;
+	uint8_t ctrl_meas = 0, tmp = 0, mode = 0;
 
 	/* check parameters */
 	if((NULL == Dev) || (TOvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in sleep mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -280,13 +290,18 @@ int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
 int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 
 	int8_t res = BME280_OK;
-	uint8_t tmp = 0;
+	uint8_t tmp = 0, mode = 0;
 
 	/* check parameters */
 	if((NULL == Dev) || (HOvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in sleep mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
 
 	/* send requested value to sensor */
 	res = Dev->write(BME280_CTRL_HUM_ADDR, HOvs, Dev->i2c_address, Dev->env_spec_data);

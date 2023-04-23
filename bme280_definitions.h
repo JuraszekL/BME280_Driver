@@ -31,6 +31,7 @@
 #define BME280_INTERFACE_ERR	(-2)
 #define BME280_ID_ERR			(-3)
 #define BME280_NO_INIT_ERR		(-4)
+#define BME280_CONDITION_ERR	(-5)
 
 //***************************************
 /* I2C address */
