@@ -39,6 +39,9 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode);
 int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs);
 int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs);
 
+int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs);
+int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs);
+
 //***************************************
 
 #ifdef __cplusplus

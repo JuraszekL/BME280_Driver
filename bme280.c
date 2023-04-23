@@ -198,6 +198,59 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	return res;
 }
 
+/* function gets current temperature oversampling value from sensor */
+int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == TOvs)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse temperature oversampling values from ctrl_meas */
+	ctrl_meas = (ctrl_meas >> 5) & 0x07;
+
+	/* set output pointer */
+	*TOvs = ctrl_meas;
+
+	return res;
+}
+
+/* function sets temperature oversampling value  */
+int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0, tmp = 0;
+
+	/* check parameters */
+	if((NULL == Dev) || (TOvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if current value differs from requested */
+	tmp = (ctrl_meas >> 5) & 0x07;
+	if(TOvs == tmp) return BME280_OK;
+
+	/* send new ctrl_meas value to sensor if required */
+	ctrl_meas &= 0x1F;	//0x1F - 0b00011111
+	ctrl_meas |= (TOvs << 5);
+	res = Dev->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->i2c_address, Dev->env_spec_data);
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************
