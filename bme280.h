@@ -21,8 +21,12 @@ extern "C" {
 #include "bme280_definitions.h"
 
 //***************************************
+/* driver config */
+//***************************************
 
-
+	/* comment this line if you don't want to use
+	 * 64bit variables in calculations */
+#define USE_64BIT
 
 //***************************************
 /* public functions */
