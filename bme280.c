@@ -22,6 +22,36 @@
 	 * parse them inside  BME280_t structure */
 static int8_t bme280_read_compensation_parameters(BME280_t *Dev);
 
+	/* private function that parses raw adc pressure or temp values
+	 * from sensor into a single BME280_S32_t variable */
+static BME280_S32_t bme280_parse_press_temp_s32t(uint8_t *raw);
+
+	/* private function that parses raw adc humidity values
+	 * from sensor into a single BME280_S32_t variable */
+static BME280_S32_t bme280_parse_hum_s32t(uint8_t *raw);
+
+	/* Returns temperature in DegC, resolution is 0.01 DegC. Output value of “5123”
+	 * equals 51.23 DegC. t_fine carries fine temperature as global value */
+static BME280_S32_t bme280_compensate_t_s32t(BME280_t *Dev, BME280_S32_t adc_T);
+
+	/* Returns pressure in Pa as unsigned 32 bit integer in Q24.8 format
+	 * (24 integer bits and 8 fractional bits). Output value of “24674867”
+	 * represents 24674867/256 = 96386.2 Pa = 963.862 hPa */
+static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P);
+
+	/* Returns humidity in %RH as unsigned 32bit integer in Q22.10 format (22 integer
+	 * and 10 fractional bits). Output value of "47445" represents 47445/1024 = 46.333 %RH */
+static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H);
+
+	/* function converts BME280_S32_t temperature to BME280_Data_t structure */
+static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
+
+	/* function converts BME280_S32_t pressure to BME280_Data_t structure */
+static void bme280_convert_p_S32_struct(BME280_U32_t press, BME280_Data_t *data);
+
+	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
+static void bme280_convert_h_S32_struct(BME280_U32_t hum, BME280_Data_t *data);
+
 //***************************************
 /* public functions */
 //***************************************
@@ -539,6 +569,49 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 	return res;
 }
 
+	/* function reads last measured values from sensor in normal mode */
+int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
+
+	int8_t res = BME280_OK;
+	uint8_t mode = 0;
+	uint8_t buff_len = (BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN);
+	uint8_t tmp_buff[buff_len];
+	BME280_S32_t adc_T, adc_P, adc_H;
+	BME280_S32_t temp, press, hum;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == Data)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in normal mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+
+	/* read all adc registers to buffer */
+	res = Dev->read(BME280_PRESS_ADC_ADDR, tmp_buff, buff_len, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse data from buffer to variables */
+	adc_P = bme280_parse_press_temp_s32t(tmp_buff);
+	adc_T = bme280_parse_press_temp_s32t(tmp_buff + BME280_PRESS_ADC_LEN);
+	adc_H = bme280_parse_hum_s32t(tmp_buff + BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN);
+
+	/* compensate adc values with compensation data from sensor */
+	temp = bme280_compensate_t_s32t(Dev, adc_T);
+	press = bme280_compensate_p_u32t(Dev, adc_P);
+	hum = bme280_compensate_h_u32t(Dev, adc_H);
+
+	/* convert 32bit values to Data structure */
+	bme280_convert_t_S32_struct(temp, Data);
+	bme280_convert_p_S32_struct(press, Data);
+	bme280_convert_h_S32_struct(hum, Data);
+
+	return res;
+}
+
 //***************************************
 /* static functions */
 //***************************************
@@ -582,4 +655,136 @@ static int8_t bme280_read_compensation_parameters(BME280_t *Dev){
 	Dev->trimm.dig_H6 = (int8_t)tmp_buff[31];
 
 	return BME280_OK;
+}
+
+
+	/* private function that parses raw adc pressure or temp values
+	 * from sensor into a single BME280_S32_t variable */
+static BME280_S32_t bme280_parse_press_temp_s32t(uint8_t *raw){
+
+	BME280_S32_t res;
+
+	res = ((BME280_S32_t)raw[0] << 12U) | ((BME280_S32_t)raw[1] << 4U) | ((BME280_S32_t)raw[2] >> 4U);
+	res &= 0xFFFFF;
+
+	return res;
+}
+
+	/* private function that parses raw adc humidity values
+	 * from sensor into a single BME280_S32_t variable */
+static BME280_S32_t bme280_parse_hum_s32t(uint8_t *raw){
+
+	BME280_S32_t res;
+
+	res = ((BME280_S32_t)raw[0] << 8U) | ((BME280_S32_t)raw[1]);
+	res &= 0xFFFF;
+
+	return res;
+}
+
+	/* Returns temperature in DegC, resolution is 0.01 DegC. Output value of “5123”
+	 * equals 51.23 DegC. t_fine carries fine temperature as global value */
+static BME280_S32_t bme280_compensate_t_s32t(BME280_t *Dev, BME280_S32_t adc_T){
+
+	BME280_S32_t var1;
+	BME280_S32_t var2;
+	BME280_S32_t temperature;
+
+    var1 = (BME280_S32_t)((adc_T / 8) - ((BME280_S32_t)Dev->trimm.dig_T1 * 2));
+    var1 = (var1 * ((BME280_S32_t)Dev->trimm.dig_T2)) / 2048;
+    var2 = (BME280_S32_t)((adc_T / 16) - ((BME280_S32_t)Dev->trimm.dig_T1));
+    var2 = (((var2 * var2) / 4096) * ((BME280_S32_t)Dev->trimm.dig_T3)) / 16384;
+    Dev->t_fine = var1 + var2;
+    temperature = (Dev->t_fine * 5 + 128) / 256;
+
+    return temperature;
+}
+
+	/* Returns pressure in Pa as unsigned 32 bit integer in Q24.8 format
+	 * (24 integer bits and 8 fractional bits). Output value of “24674867”
+	 * represents 24674867/256 = 96386.2 Pa = 963.862 hPa */
+static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P){
+
+	BME280_S64_t var1;
+	BME280_S64_t var2;
+	BME280_S64_t var3;
+	BME280_S64_t var4;
+	BME280_U32_t pressure;
+
+    var1 = ((BME280_S64_t)Dev->t_fine) - 128000;
+    var2 = var1 * var1 * (BME280_S64_t)Dev->trimm.dig_P6;
+    var2 = var2 + ((var1 * (BME280_S64_t)Dev->trimm.dig_P5) * 131072);
+    var2 = var2 + (((BME280_S64_t)Dev->trimm.dig_P4) * 34359738368);
+    var1 = ((var1 * var1 * (BME280_S64_t)Dev->trimm.dig_P3) / 256) + ((var1 * ((BME280_S64_t)Dev->trimm.dig_P2) * 4096));
+    var3 = ((BME280_S64_t)1) * 140737488355328;
+    var1 = (var3 + var1) * ((BME280_S64_t)Dev->trimm.dig_P1) / 8589934592;
+
+    /* To avoid divide by zero exception */
+    if (var1 != 0)
+    {
+        var4 = 1048576 - adc_P;
+        var4 = (((var4 * INT64_C(2147483648)) - var2) * 3125) / var1;
+        var1 = (((BME280_S64_t)Dev->trimm.dig_P9) * (var4 / 8192) * (var4 / 8192)) / 33554432;
+        var2 = (((BME280_S64_t)Dev->trimm.dig_P8) * var4) / 524288;
+        var4 = ((var4 + var1 + var2) / 256) + (((BME280_S64_t)Dev->trimm.dig_P7) * 16);
+        pressure = (BME280_U32_t)(((var4 / 2) * 100) / 128);
+
+    }
+    else
+    {
+        pressure = 0;
+    }
+
+    return pressure;
+}
+
+	/* Returns humidity in %RH as unsigned 32bit integer in Q22.10 format (22 integer
+	 * and 10 fractional bits). Output value of "47445" represents 47445/1024 = 46.333 %RH */
+static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H){
+
+	BME280_S32_t var1;
+	BME280_S32_t var2;
+	BME280_S32_t var3;
+	BME280_S32_t var4;
+	BME280_S32_t var5;
+	BME280_U32_t humidity;
+
+    var1 = Dev->t_fine - ((BME280_S32_t)76800);
+    var2 = (BME280_S32_t)(adc_H * 16384);
+    var3 = (BME280_S32_t)(((BME280_S32_t)Dev->trimm.dig_H4) * 1048576);
+    var4 = ((BME280_S32_t)Dev->trimm.dig_H5) * var1;
+    var5 = (((var2 - var3) - var4) + (BME280_S32_t)16384) / 32768;
+    var2 = (var1 * ((BME280_S32_t)Dev->trimm.dig_H6)) / 1024;
+    var3 = (var1 * ((BME280_S32_t)Dev->trimm.dig_H3)) / 2048;
+    var4 = ((var2 * (var3 + (BME280_S32_t)32768)) / 1024) + (BME280_S32_t)2097152;
+    var2 = ((var4 * ((BME280_S32_t)Dev->trimm.dig_H2)) + 8192) / 16384;
+    var3 = var5 * var2;
+    var4 = ((var3 / 32768) * (var3 / 32768)) / 128;
+    var5 = var3 - ((var4 * ((BME280_S32_t)Dev->trimm.dig_H1)) / 16);
+    var5 = (var5 < 0 ? 0 : var5);
+    var5 = (var5 > 419430400 ? 419430400 : var5);
+    humidity = (BME280_U32_t)(var5 / 4096);
+
+    return humidity;
+}
+
+	/* function converts BME280_S32_t temperature to BME280_Data_t structure */
+static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data){
+
+	data->temp_int = (BME280_S32_t)temp / 100;
+	data->temp_fract = (BME280_S32_t)temp % 100;
+}
+
+	/* function converts BME280_U32_t pressure to BME280_Data_t structure */
+static void bme280_convert_p_S32_struct(BME280_U32_t press, BME280_Data_t *data){
+
+	data->pressure_int = press / (BME280_U32_t)10000;
+	data->pressure_fract = (press % (BME280_U32_t)10000) / (BME280_U32_t)10;
+}
+
+	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
+static void bme280_convert_h_S32_struct(BME280_U32_t hum, BME280_Data_t *data){
+
+	data->humidity_int = hum / (BME280_U32_t)1000;
+	data->humidity_fract = hum % (BME280_U32_t)1000;
 }

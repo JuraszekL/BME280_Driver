@@ -65,6 +65,14 @@
 #define BME280_CTRL_MEAS_ADDR	(0xF4)
 #define BME280_CONFIG_ADDR		(0xF5)
 
+	/* raw adc data related */
+#define BME280_PRESS_ADC_ADDR	(0xF7)
+#define BME280_PRESS_ADC_LEN	(3U)
+#define BME280_TEMP_ADC_ADDR	(0xFA)
+#define BME280_TEMP_ADC_LEN		(3U)
+#define BME280_HUM_ADC_ADDR		(0xFD)
+#define BME280_HUM_ADC_LEN		(2U)
+
 //***************************************
 /* settings */
 //***************************************
@@ -117,11 +125,19 @@
 typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data);
 typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
 
+	/* types used for compensation formules */
+typedef int32_t BME280_S32_t;
+typedef uint32_t BME280_U32_t;
+typedef int64_t BME280_S64_t;
+
 	/* main structure where single sensor is cofigured */
 typedef struct BME280_device BME280_t;
 
 	/* structure used to configure every parameters in sensor at once */
 typedef struct BME280_conf BME280_Config_t;
+
+	/* structure used to present data from sensor (without floating point types) */
+typedef struct BME280_data BME280_Data_t;
 
 struct BME280_calibration_data {
 
@@ -156,6 +172,7 @@ struct BME280_device {
 	bme280_writebyte write;
 
 	struct BME280_calibration_data trimm;
+	BME280_S32_t t_fine;
 
 	uint8_t initialized;
 };
@@ -169,6 +186,21 @@ struct BME280_conf {
 	uint8_t t_stby;
 	uint8_t filter;
 	uint8_t spi3w_enable;
+};
+
+struct BME280_data {
+
+	/* 21.37 deg */
+	int8_t temp_int;
+	uint8_t temp_fract;
+
+	/* 1001.891 hPa */
+	uint16_t pressure_int;
+	uint16_t pressure_fract;
+
+	/* 49.274 % */
+	uint8_t humidity_int;
+	uint16_t humidity_fract;
 };
 
 #endif /* BME280_DEFINITIONS_H */
