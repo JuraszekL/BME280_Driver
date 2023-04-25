@@ -22,6 +22,11 @@
 	 * parse them inside  BME280_t structure */
 static int8_t bme280_read_compensation_parameters(BME280_t *Dev);
 
+/* private function to read and compensate all adc
+ * data from sensor  */
+static int8_t bme280_readall(BME280_t *Dev, BME280_S32_t *temp, BME280_U32_t *press,
+		BME280_U32_t *hum);
+
 	/* private function that parses raw adc pressure or temp values
 	 * from sensor into a single BME280_S32_t variable */
 static BME280_S32_t bme280_parse_press_temp_s32t(uint8_t *raw);
@@ -47,10 +52,10 @@ static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H);
 static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
 
 	/* function converts BME280_S32_t pressure to BME280_Data_t structure */
-static void bme280_convert_p_S32_struct(BME280_U32_t press, BME280_Data_t *data);
+static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data);
 
 	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
-static void bme280_convert_h_S32_struct(BME280_U32_t hum, BME280_Data_t *data);
+static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 
 //***************************************
 /* public functions */
@@ -68,6 +73,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	if((NULL == ReadFun) || (NULL == WriteFun) ||
 		(NULL == Dev || (NULL == Delay))) return BME280_PARAM_ERR;
 
+	/* fill the structure */
 	Dev->i2c_address = I2cAddr;
 	Dev->env_spec_data = EnvSpecData;
 	Dev->read = ReadFun;
@@ -575,48 +581,24 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 	return res;
 }
 
-	/* function reads last measured values from sensor in normal mode */
+	/* function reads last measured values from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 
 	int8_t res = BME280_OK;
-	uint8_t mode = 0;
-	uint8_t buff_len = (BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN);
-	uint8_t tmp_buff[buff_len];
-	BME280_S32_t adc_T, adc_P, adc_H;
-	BME280_S32_t temp, press, hum;
+	BME280_S32_t temp;
+	BME280_U32_t press, hum;
 
-	/* check parameters */
-	if((NULL == Dev) || (NULL == Data)) return BME280_PARAM_ERR;
-
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	res = BME280_GetMode(Dev, &mode);
-	if(BME280_OK != res) return res;
-	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
-
-	/* read all adc registers to buffer */
-	res = Dev->read(BME280_PRESS_ADC_ADDR, tmp_buff, buff_len, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse data from buffer to variables */
-	adc_P = bme280_parse_press_temp_s32t(tmp_buff);
-	adc_T = bme280_parse_press_temp_s32t(tmp_buff + BME280_PRESS_ADC_LEN);
-	adc_H = bme280_parse_hum_s32t(tmp_buff + BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN);
-
-	/* compensate adc values with compensation data from sensor */
-	temp = bme280_compensate_t_s32t(Dev, adc_T);
-	press = bme280_compensate_p_u32t(Dev, adc_P);
-	hum = bme280_compensate_h_u32t(Dev, adc_H);
+	/* read the data from sensor */
+	res = bme280_readall(Dev, &temp, &press, &hum);
 
 	/* convert 32bit values to Data structure */
 	bme280_convert_t_S32_struct(temp, Data);
-	bme280_convert_p_S32_struct(press, Data);
-	bme280_convert_h_S32_struct(hum, Data);
+	bme280_convert_p_U32_struct(press, Data);
+	bme280_convert_h_U32_struct(hum, Data);
 
 	return res;
 }
+
 
 //***************************************
 /* static functions */
@@ -661,6 +643,46 @@ static int8_t bme280_read_compensation_parameters(BME280_t *Dev){
 	Dev->trimm.dig_H6 = (int8_t)tmp_buff[31];
 
 	return BME280_OK;
+}
+
+	/* private function to read and compensate all adc
+	 * data from sensor  */
+static int8_t bme280_readall(BME280_t *Dev, BME280_S32_t *temp, BME280_U32_t *press,
+		BME280_U32_t *hum){
+
+	int8_t res = BME280_OK;
+	uint8_t mode = 0;
+	uint8_t buff_len = (BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN);
+	uint8_t tmp_buff[buff_len];
+	BME280_S32_t adc_T, adc_P, adc_H;
+
+	/* check parameters */
+	if((NULL == Dev) || (NULL == temp) || (NULL == press)
+			|| (NULL == hum)) return BME280_PARAM_ERR;
+
+	/* check if sensor has been initialized before */
+	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+
+	/* check if sensor is in normal mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+
+	/* read all adc registers to buffer */
+	res = Dev->read(BME280_PRESS_ADC_ADDR, tmp_buff, buff_len, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse data from buffer to variables */
+	adc_P = bme280_parse_press_temp_s32t(tmp_buff);
+	adc_T = bme280_parse_press_temp_s32t(tmp_buff + BME280_PRESS_ADC_LEN);
+	adc_H = bme280_parse_hum_s32t(tmp_buff + BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN);
+
+	/* compensate adc values with compensation data from sensor */
+	*temp = bme280_compensate_t_s32t(Dev, adc_T);
+	*press = bme280_compensate_p_u32t(Dev, adc_P);
+	*hum = bme280_compensate_h_u32t(Dev, adc_H);
+
+	return res;
 }
 
 
@@ -782,14 +804,14 @@ static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data){
 }
 
 	/* function converts BME280_U32_t pressure to BME280_Data_t structure */
-static void bme280_convert_p_S32_struct(BME280_U32_t press, BME280_Data_t *data){
+static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data){
 
 	data->pressure_int = press / (BME280_U32_t)10000;
 	data->pressure_fract = (press % (BME280_U32_t)10000) / (BME280_U32_t)10;
 }
 
 	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
-static void bme280_convert_h_S32_struct(BME280_U32_t hum, BME280_Data_t *data){
+static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
 
 	data->humidity_int = hum / (BME280_U32_t)1000;
 	data->humidity_fract = hum % (BME280_U32_t)1000;
