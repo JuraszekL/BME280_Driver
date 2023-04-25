@@ -124,6 +124,7 @@
 	 * comminucate with sensor */
 typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data);
 typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
+typedef void (*bme280_delayms)(uint8_t delay_time);
 
 	/* types used for compensation formules */
 typedef int32_t BME280_S32_t;
@@ -170,6 +171,7 @@ struct BME280_device {
 
 	bme280_readbytes read;
 	bme280_writebyte write;
+	bme280_delayms delay;
 
 	struct BME280_calibration_data trimm;
 	BME280_S32_t t_fine;

@@ -29,7 +29,7 @@ extern "C" {
 //***************************************
 
 int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
-		bme280_readbytes ReadFun, bme280_writebyte WriteFun);
+		bme280_readbytes ReadFun, bme280_writebyte WriteFun, bme280_delayms Delay);
 
 int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config);
 

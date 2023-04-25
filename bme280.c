@@ -59,27 +59,33 @@ static void bme280_convert_h_S32_struct(BME280_U32_t hum, BME280_Data_t *data);
 	/* function that initiates minimum required parameters to operate
 	 * a sensor */
 int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
-		bme280_readbytes ReadFun, bme280_writebyte WriteFun){
+		bme280_readbytes ReadFun, bme280_writebyte WriteFun, bme280_delayms Delay){
 
 	int8_t res = BME280_OK;
 	uint8_t id = 0;
 
 	/* check parameters */
-	if((NULL == ReadFun) || (NULL == WriteFun) || (NULL == Dev)) return BME280_PARAM_ERR;
+	if((NULL == ReadFun) || (NULL == WriteFun) ||
+		(NULL == Dev || (NULL == Delay))) return BME280_PARAM_ERR;
 
 	Dev->i2c_address = I2cAddr;
 	Dev->env_spec_data = EnvSpecData;
 	Dev->read = ReadFun;
 	Dev->write = WriteFun;
+	Dev->delay = Delay;
+
+	/* perform sensor reset */
+	res = BME280_Reset(Dev);
+	if(BME280_OK != res) return res;
+
+	/* Start-up time = 2ms */
+	Dev->delay(2);
 
 	/* read and check chip ID */
 	res = Dev->read(BME280_ID_ADDR, &id, 1, Dev->i2c_address, Dev->env_spec_data);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	if(BME280_ID != id) return BME280_ID_ERR;
-
-	res = BME280_Reset(Dev);
-	if(BME280_OK != res) return res;
 
 	/* read, parse and store compensation data */
 	res = bme280_read_compensation_parameters(Dev);
