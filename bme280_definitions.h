@@ -140,6 +140,9 @@ typedef struct BME280_conf BME280_Config_t;
 	/* structure used to present data from sensor (without floating point types) */
 typedef struct BME280_data BME280_Data_t;
 
+/* structure used to present data from sensor (with floating point types) */
+typedef struct BME280_data_float BME280_DataF_t;
+
 struct BME280_calibration_data {
 
 	uint16_t dig_T1;
@@ -203,6 +206,13 @@ struct BME280_data {
 	/* 49.274 % */
 	uint8_t humidity_int;
 	uint16_t humidity_fract;
+};
+
+struct BME280_data_float {
+
+	float temp;
+	float press;
+	float hum;
 };
 
 #endif /* BME280_DEFINITIONS_H */

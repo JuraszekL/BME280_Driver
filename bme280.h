@@ -28,6 +28,10 @@ extern "C" {
 	 * 64bit variables in calculations */
 #define USE_64BIT
 
+	/* comment this line if u don't need to use
+	 * floating point results */
+#define USE_FLOAT
+
 //***************************************
 /* public functions */
 //***************************************
@@ -62,6 +66,8 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev);
 int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result);
 
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data);
+
+int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data);
 
 //***************************************
 
