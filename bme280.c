@@ -6,13 +6,18 @@
 #include "bme280.h"
 
 //***************************************
+/* private types and structures */
+//***************************************
 
+enum { read_all = 0, read_temp, read_press, read_hum};
 
+__attribute__((aligned(1))) struct adc_regs {
 
+	uint8_t press_raw[BME280_PRESS_ADC_LEN];
+	uint8_t temp_raw[BME280_TEMP_ADC_LEN];
+	uint8_t hum_raw[BME280_HUM_ADC_LEN];
 
-
-
-
+};
 
 //***************************************
 /* static functions declarations */
@@ -22,14 +27,10 @@
 	 * parse them inside  BME280_t structure */
 static int8_t bme280_read_compensation_parameters(BME280_t *Dev);
 
-/* private function to read and compensate all adc
- * data from sensor  */
-static int8_t bme280_readall(BME280_t *Dev, BME280_S32_t *temp, BME280_U32_t *press,
-		BME280_U32_t *hum);
-
-	/* private function to read and compensate temperature adc
+	/* private function to read and compensate selected adc
 	 * data from sensor  */
-static int8_t bme280_readtemp(BME280_t *Dev, BME280_S32_t *temp);
+static int8_t bme280_read_compensate(uint8_t read_type, BME280_t *Dev, BME280_S32_t *temp,
+	BME280_U32_t *press, BME280_U32_t *hum);
 
 	/* private function that parses raw adc pressure or temp values
 	 * from sensor into a single BME280_S32_t variable */
@@ -598,11 +599,17 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 
 	int8_t res = BME280_OK;
+	uint8_t mode;
 	BME280_S32_t temp;
 	BME280_U32_t press, hum;
 
+	/* check if sensor is in normal mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+
 	/* read the data from sensor */
-	res = bme280_readall(Dev, &temp, &press, &hum);
+	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
 
 	/* convert 32bit values to Data structure */
 	bme280_convert_t_S32_struct(temp, Data);
@@ -616,11 +623,17 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
 	int8_t res = BME280_OK;
+	uint8_t mode;
 	BME280_S32_t temp;
 	BME280_Data_t data;
 
+	/* check if sensor is in normal mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+
 	/* read the data from sensor */
-	res = bme280_readtemp(Dev, &temp);
+	res = bme280_read_compensate(read_temp, Dev, &temp, 0, 0);
 	if(BME280_OK != res) return res;
 
 	/* convert 32bit values to local data structure */
@@ -637,11 +650,17 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
 
 	int8_t res = BME280_OK;
+	uint8_t mode;
 	BME280_S32_t temp;
 	BME280_U32_t press, hum;
 
+	/* check if sensor is in normal mode */
+	res = BME280_GetMode(Dev, &mode);
+	if(BME280_OK != res) return res;
+	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+
 	/* read the data from sensor */
-	res = bme280_readall(Dev, &temp, &press, &hum);
+	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
 
 	/* convert 32bit values to Data structure */
 	bme280_convert_t_S32_struct_float(temp, Data);
@@ -697,80 +716,68 @@ static int8_t bme280_read_compensation_parameters(BME280_t *Dev){
 	return BME280_OK;
 }
 
-	/* private function to read and compensate all adc
+	/* private function to read and compensate selected adc
 	 * data from sensor  */
-static int8_t bme280_readall(BME280_t *Dev, BME280_S32_t *temp, BME280_U32_t *press,
-		BME280_U32_t *hum){
+static int8_t bme280_read_compensate(uint8_t read_type, BME280_t *Dev, BME280_S32_t *temp,
+		BME280_U32_t *press, BME280_U32_t *hum){
 
 	int8_t res = BME280_OK;
-	uint8_t mode = 0;
-	uint8_t buff_len = (BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN);
-	uint8_t tmp_buff[buff_len];
 	BME280_S32_t adc_T, adc_P, adc_H;
-
-	/* check parameters */
-	if((NULL == Dev) || (NULL == temp) || (NULL == press)
-			|| (NULL == hum)) return BME280_PARAM_ERR;
-
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	res = BME280_GetMode(Dev, &mode);
-	if(BME280_OK != res) return res;
-	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
-
-	/* read all adc registers to buffer */
-	res = Dev->read(BME280_PRESS_ADC_ADDR, tmp_buff, buff_len, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse data from buffer to variables */
-	adc_P = bme280_parse_press_temp_s32t(tmp_buff);
-	adc_T = bme280_parse_press_temp_s32t(tmp_buff + BME280_PRESS_ADC_LEN);
-	adc_H = bme280_parse_hum_s32t(tmp_buff + BME280_PRESS_ADC_LEN + BME280_TEMP_ADC_LEN);
-
-	/* compensate adc values with compensation data from sensor */
-	*temp = bme280_compensate_t_s32t(Dev, adc_T);
-	*press = bme280_compensate_p_u32t(Dev, adc_P);
-	*hum = bme280_compensate_h_u32t(Dev, adc_H);
-
-	return res;
-}
-
-	/* private function to read and compensate temperature adc
-	 * data from sensor  */
-static int8_t bme280_readtemp(BME280_t *Dev, BME280_S32_t *temp){
-
-	int8_t res = BME280_OK;
-	uint8_t mode = 0;
-	uint8_t buff_len = BME280_TEMP_ADC_LEN;
-	uint8_t tmp_buff[buff_len];
-	BME280_S32_t adc_T;
+	struct adc_regs adc_raw;
 
 	/* check parameters */
 	if((NULL == Dev) || (NULL == temp)) return BME280_PARAM_ERR;
+	if(((read_press == read_type) || (read_all == read_type)) && (NULL == press))
+		return BME280_PARAM_ERR;
+	if(((read_hum == read_type) || (read_all == read_type)) && (NULL == hum))
+		return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* read selected adc data from sensor */
+	switch(read_type){
 
-	/* check if sensor is in normal mode */
-	res = BME280_GetMode(Dev, &mode);
-	if(BME280_OK != res) return res;
-	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+	case read_temp:
+		res = Dev->read(BME280_TEMP_ADC_ADDR, (uint8_t *)&adc_raw.temp_raw, BME280_TEMP_ADC_LEN,
+				Dev->i2c_address, Dev->env_spec_data);
+		break;
 
-	/* read temperature adc registers to buffer */
-	res = Dev->read(BME280_TEMP_ADC_ADDR, tmp_buff, buff_len, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+	case read_press:
+		res = Dev->read(BME280_PRESS_ADC_ADDR, (uint8_t *)&adc_raw.press_raw, (BME280_PRESS_ADC_LEN +
+				BME280_TEMP_ADC_LEN), Dev->i2c_address, Dev->env_spec_data);
+		break;
 
-	/* parse data from buffer to variable */
-	adc_T = bme280_parse_press_temp_s32t(tmp_buff);
+	case read_hum:
+		res = Dev->read(BME280_TEMP_ADC_ADDR, (uint8_t *)&adc_raw.temp_raw, (BME280_TEMP_ADC_LEN +
+				BME280_HUM_ADC_LEN), Dev->i2c_address, Dev->env_spec_data);
+		break;
 
-	/* compensate adc value with compensation data from sensor */
+	case read_all:
+		res = Dev->read(BME280_PRESS_ADC_ADDR, (uint8_t *)&adc_raw.press_raw, (BME280_PRESS_ADC_LEN +
+				BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN), Dev->i2c_address, Dev->env_spec_data);
+		break;
+
+	default:
+		return BME280_PARAM_ERR;
+		break;
+	}
+
+	/* parse  and compensate data from adc_raw structure to variables */
+	adc_T = bme280_parse_press_temp_s32t((uint8_t *)&adc_raw.temp_raw);
 	*temp = bme280_compensate_t_s32t(Dev, adc_T);
+
+	if((read_press == read_type) || (read_all == read_type)){
+
+		adc_P = bme280_parse_press_temp_s32t((uint8_t *)&adc_raw.press_raw);
+		*press = bme280_compensate_p_u32t(Dev, adc_P);
+	}
+
+	if((read_hum == read_type) || (read_all == read_type)){
+
+		adc_H = bme280_parse_hum_s32t((uint8_t *)&adc_raw.hum_raw);
+		*hum = bme280_compensate_h_u32t(Dev, adc_H);
+	}
 
 	return res;
 }
-
 
 	/* private function that parses raw adc pressure or temp values
 	 * from sensor into a single BME280_S32_t variable */
