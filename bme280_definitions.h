@@ -126,6 +126,8 @@ typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rx
 typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
 typedef void (*bme280_delayms)(uint8_t delay_time);
 
+typedef enum {sleep_mode = 0x00, forced_mode = 0x01, normal_mode = 0x03} BME280_Mode_t;
+
 	/* types used for compensation formules */
 typedef int32_t BME280_S32_t;
 typedef uint32_t BME280_U32_t;
@@ -180,6 +182,7 @@ struct BME280_device {
 	BME280_S32_t t_fine;
 
 	uint8_t initialized;
+	BME280_Mode_t mode;
 };
 
 struct BME280_conf {

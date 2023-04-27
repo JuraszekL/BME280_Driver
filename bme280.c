@@ -160,6 +160,9 @@ int8_t BME280_Reset(BME280_t *Dev){
 	/* write reset commad to reset register */
 	res = Dev->write(BME280_RESET_ADDR, BME280_RESET_VALUE, Dev->i2c_address, Dev->env_spec_data);
 
+	/* set mode to default */
+	Dev->mode = sleep_mode;
+
 	return res;
 }
 
@@ -182,6 +185,9 @@ int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 	/* parse mode values from ctrl_meas */
 	ctrl_meas &= 0x03;
 	if(0x02 == ctrl_meas) ctrl_meas = BME280_FORCEDMODE;
+
+	/* update value inside Dev structure */
+	Dev->mode = ctrl_meas;
 
 	/* set output pointer */
 	*Mode = ctrl_meas;
@@ -214,6 +220,10 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	ctrl_meas &= 0xFC;	//0xFC - 0b11111100
 	ctrl_meas |= Mode;
 	res = Dev->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* update value inside Dev structure */
+	Dev->mode = Mode;
 
 	return res;
 }
@@ -599,14 +609,11 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 
 	int8_t res = BME280_OK;
-	uint8_t mode;
 	BME280_S32_t temp;
 	BME280_U32_t press, hum;
 
 	/* check if sensor is in normal mode */
-	res = BME280_GetMode(Dev, &mode);
-	if(BME280_OK != res) return res;
-	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
@@ -623,14 +630,11 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
 	int8_t res = BME280_OK;
-	uint8_t mode;
 	BME280_S32_t temp;
 	BME280_Data_t data;
 
 	/* check if sensor is in normal mode */
-	res = BME280_GetMode(Dev, &mode);
-	if(BME280_OK != res) return res;
-	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_temp, Dev, &temp, 0, 0);
@@ -650,14 +654,11 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
 
 	int8_t res = BME280_OK;
-	uint8_t mode;
 	BME280_S32_t temp;
 	BME280_U32_t press, hum;
 
 	/* check if sensor is in normal mode */
-	res = BME280_GetMode(Dev, &mode);
-	if(BME280_OK != res) return res;
-	if(BME280_NORMALMODE != mode) return BME280_CONDITION_ERR;
+	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
