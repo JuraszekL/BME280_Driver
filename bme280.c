@@ -268,7 +268,7 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -324,7 +324,7 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -380,7 +380,7 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* send requested value to sensor */
 	res = Dev->write(BME280_CTRL_HUM_ADDR, HOvs, Dev->i2c_address, Dev->env_spec_data);
@@ -433,7 +433,7 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -489,7 +489,7 @@ int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -520,7 +520,7 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -551,7 +551,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
 
 	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
