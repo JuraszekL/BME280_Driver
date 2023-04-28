@@ -621,7 +621,7 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 }
 
 	/* function reads last measured values from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
+int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -675,7 +675,7 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 }
 
 	/* function reads last measured temperature from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastTempF(BME280_t *Dev, float *Temp){
+int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
