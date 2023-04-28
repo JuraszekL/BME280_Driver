@@ -73,6 +73,12 @@ static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 	/* function converts BME280_U32_t humidity to BME280_DataF_t structure */
 static void bme280_convert_h_U32_struct_float(BME280_U32_t hum, BME280_DataF_t *data);
 
+	/* function checks if device was initialized and is in normal mode nowe */
+static int8_t bme280_is_normal_mode(BME280_t *Dev);
+
+	/* function checks if device was initialized and is in sleep mode nowe */
+static int8_t bme280_is_sleep_mode(BME280_t *Dev);
+
 //***************************************
 /* public functions */
 //***************************************
@@ -125,8 +131,9 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(Config) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* set the data from Config structure to the right positions in
 	 * sensor registers */
@@ -177,8 +184,9 @@ int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(Mode) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -206,8 +214,9 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	/* check parameters */
 	if( IS_NULL(Dev) || (Mode > BME280_NORMALMODE) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -239,8 +248,9 @@ int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(POvs) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -264,11 +274,9 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	/* check parameters */
 	if( IS_NULL(Dev) || (POvs > BME280_OVERSAMPLING_X16) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -295,8 +303,9 @@ int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(TOvs) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -320,11 +329,9 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	/* check parameters */
 	if( IS_NULL(Dev) || (TOvs > BME280_OVERSAMPLING_X16) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -351,8 +358,9 @@ int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(HOvs) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_hum register from sensor */
 	res = Dev->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -376,11 +384,9 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 	/* check parameters */
 	if( IS_NULL(Dev) || (HOvs > BME280_OVERSAMPLING_X16) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* send requested value to sensor */
 	res = Dev->write(BME280_CTRL_HUM_ADDR, HOvs, Dev->i2c_address, Dev->env_spec_data);
@@ -404,8 +410,9 @@ int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(TStby) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -429,11 +436,9 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
 	/* check parameters */
 	if( IS_NULL(Dev) || (TStby > BME280_STBY_20MS) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -460,8 +465,9 @@ int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(Filter) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -485,11 +491,9 @@ int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter){
 	/* check parameters */
 	if( IS_NULL(Dev) || (Filter > BME280_FILTER_16) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -516,11 +520,9 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev){
 	/* check parameter */
 	if( IS_NULL(Dev) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -547,11 +549,9 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 	/* check parameter */
 	if( IS_NULL(Dev) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
-
-	/* check if sensor is in normal mode */
-	if(normal_mode == Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -577,8 +577,9 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(Result) ) return BME280_PARAM_ERR;
 
-	/* check if sensor has been initialized before */
-	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
 	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
@@ -603,8 +604,9 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
 
-	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
@@ -628,8 +630,9 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(TempInt) || IS_NULL(TempFract) ) return BME280_PARAM_ERR;
 
-	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_temp, Dev, &temp, 0, 0);
@@ -655,8 +658,9 @@ int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
 	/* check parameters */
 	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
 
-	/* check if sensor is in normal mode */
-	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
@@ -963,8 +967,28 @@ static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
 	data->humidity_fract = hum % (BME280_U32_t)1000;
 }
 
-/* function converts BME280_U32_t humidity to BME280_DataF_t structure */
+	/* function converts BME280_U32_t humidity to BME280_DataF_t structure */
 static void bme280_convert_h_U32_struct_float(BME280_U32_t hum, BME280_DataF_t *data){
 
 	data->hum = (float)hum / 1000.0F;
+}
+
+	/* function checks if device was initialized and is in normal mode nowe */
+static int8_t bme280_is_normal_mode(BME280_t *Dev){
+
+	if(BME280_NOT_INITIALIZED == Dev->initialized) {return BME280_NO_INIT_ERR;}
+
+	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
+
+	return BME280_OK;
+}
+
+	/* function checks if device was initialized and is in sleep mode nowe */
+static int8_t bme280_is_sleep_mode(BME280_t *Dev){
+
+	if(BME280_NOT_INITIALIZED == Dev->initialized) {return BME280_NO_INIT_ERR;}
+
+	if(sleep_mode != Dev->mode) return BME280_CONDITION_ERR;
+
+	return BME280_OK;
 }
