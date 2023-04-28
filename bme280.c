@@ -73,10 +73,10 @@ static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 	/* function converts BME280_U32_t humidity to BME280_DataF_t structure */
 static void bme280_convert_h_U32_struct_float(BME280_U32_t hum, BME280_DataF_t *data);
 
-	/* function checks if device was initialized and is in normal mode nowe */
+	/* function checks if device was initialized and is in normal mode */
 static int8_t bme280_is_normal_mode(BME280_t *Dev);
 
-	/* function checks if device was initialized and is in sleep mode nowe */
+	/* function checks if device was initialized and is in sleep mode */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev);
 
 //***************************************
@@ -620,6 +620,32 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 	return res;
 }
 
+	/* function reads last measured values from sensor in normal mode (with floats) */
+int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press, hum;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit values to Data structure */
+	bme280_convert_t_S32_struct_float(temp, Data);
+	bme280_convert_p_U32_struct_float(press, Data);
+	bme280_convert_h_U32_struct_float(hum, Data);
+
+	return res;
+}
+
 /* function reads last measured temperature from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
@@ -647,33 +673,6 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
 	return res;
 }
-
-	/* function reads last measured values from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
-
-	int8_t res = BME280_OK;
-	BME280_S32_t temp;
-	BME280_U32_t press, hum;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized and in normal mode */
-	res = bme280_is_normal_mode(Dev);
-	if(BME280_OK != res) return res;
-
-	/* read the data from sensor */
-	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
-	if(BME280_OK != res) return res;
-
-	/* convert 32bit values to Data structure */
-	bme280_convert_t_S32_struct_float(temp, Data);
-	bme280_convert_p_U32_struct_float(press, Data);
-	bme280_convert_h_U32_struct_float(hum, Data);
-
-	return res;
-}
-
 
 //***************************************
 /* static functions */
@@ -973,7 +972,7 @@ static void bme280_convert_h_U32_struct_float(BME280_U32_t hum, BME280_DataF_t *
 	data->hum = (float)hum / 1000.0F;
 }
 
-	/* function checks if device was initialized and is in normal mode nowe */
+	/* function checks if device was initialized and is in normal mode */
 static int8_t bme280_is_normal_mode(BME280_t *Dev){
 
 	if(BME280_NOT_INITIALIZED == Dev->initialized) {return BME280_NO_INIT_ERR;}
@@ -983,7 +982,7 @@ static int8_t bme280_is_normal_mode(BME280_t *Dev){
 	return BME280_OK;
 }
 
-	/* function checks if device was initialized and is in sleep mode nowe */
+	/* function checks if device was initialized and is in sleep mode */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev){
 
 	if(BME280_NOT_INITIALIZED == Dev->initialized) {return BME280_NO_INIT_ERR;}
