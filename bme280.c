@@ -58,20 +58,20 @@ static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H);
 	/* function converts BME280_S32_t temperature to BME280_Data_t structure */
 static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
 
-	/* function converts BME280_S32_t temperature to BME280_DataF_t structure */
-static void bme280_convert_t_S32_struct_float(BME280_S32_t temp, BME280_DataF_t *data);
+	/* function converts BME280_S32_t temperature to float  */
+static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out);
 
 	/* function converts BME280_S32_t pressure to BME280_Data_t structure */
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data);
 
-	/* function converts BME280_U32_t pressure to BME280_DataF_t structure */
-static void bme280_convert_p_U32_struct_float(BME280_U32_t press, BME280_DataF_t *data);
+	/* function converts BME280_U32_t pressure to float */
+static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out);
 
 	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 
-	/* function converts BME280_U32_t humidity to BME280_DataF_t structure */
-static void bme280_convert_h_U32_struct_float(BME280_U32_t hum, BME280_DataF_t *data);
+	/* function converts BME280_U32_t humidity to float */
+static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out);
 
 	/* function checks if device was initialized and is in normal mode */
 static int8_t bme280_is_normal_mode(BME280_t *Dev);
@@ -639,14 +639,14 @@ int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
 	if(BME280_OK != res) return res;
 
 	/* convert 32bit values to Data structure */
-	bme280_convert_t_S32_struct_float(temp, Data);
-	bme280_convert_p_U32_struct_float(press, Data);
-	bme280_convert_h_U32_struct_float(hum, Data);
+	bme280_convert_t_S32_float(temp, &Data->temp);
+	bme280_convert_p_U32_float(press, &Data->press);
+	bme280_convert_h_U32_float(hum, &Data->hum);
 
 	return res;
 }
 
-/* function reads last measured temperature from sensor in normal mode (no floats) */
+	/* function reads last measured temperature from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
 	int8_t res = BME280_OK;
@@ -670,6 +670,29 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 	/* set values of external variables */
 	*TempInt = data.temp_int;
 	*TempFract = data.temp_fract;
+
+	return res;
+}
+
+	/* function reads last measured temperature from sensor in normal mode (with floats) */
+int8_t BME280_ReadLastTempF(BME280_t *Dev, float *Temp){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Temp) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_temp, Dev, &temp, 0, 0);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to external float */
+	bme280_convert_t_S32_float(temp, Temp);
 
 	return res;
 }
@@ -925,10 +948,10 @@ static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data){
 	data->temp_fract = (BME280_S32_t)temp % 100;
 }
 
-	/* function converts BME280_S32_t temperature to BME280_DataF_t structure */
-static void bme280_convert_t_S32_struct_float(BME280_S32_t temp, BME280_DataF_t *data){
+	/* function converts BME280_S32_t temperature to float */
+static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out){
 
-	data->temp = (float)temp / 100.0F;
+	*temp_out= (float)temp_in / 100.0F;
 }
 
 	/* function converts BME280_U32_t pressure to BME280_Data_t structure */
@@ -946,16 +969,16 @@ static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data)
 }
 #endif
 
-/* function converts BME280_U32_t pressure to BME280_DataF_t structure */
+	/* function converts BME280_U32_t pressure to float */
 #ifdef USE_64BIT
-static void bme280_convert_p_U32_struct_float(BME280_U32_t press, BME280_DataF_t *data){
+static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){
 
-	data->press = (float)press / 10000.0F;
+	*press_out = (float)press_in / 10000.0F;
 }
 #else
-static void bme280_convert_p_U32_struct_float(BME280_U32_t press, BME280_DataF_t *data){
+static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){{
 
-	data->pressure = (float)press / 100.0F;
+	*press_out  = (float)press_in / 100.0F;
 }
 #endif
 
@@ -966,10 +989,10 @@ static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
 	data->humidity_fract = hum % (BME280_U32_t)1000;
 }
 
-	/* function converts BME280_U32_t humidity to BME280_DataF_t structure */
-static void bme280_convert_h_U32_struct_float(BME280_U32_t hum, BME280_DataF_t *data){
+	/* function converts BME280_U32_t humidity to float */
+static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out){
 
-	data->hum = (float)hum / 1000.0F;
+	*hum_out = (float)hum_in / 1000.0F;
 }
 
 	/* function checks if device was initialized and is in normal mode */
