@@ -9,6 +9,8 @@
 /* private types and structures */
 //***************************************
 
+#define IS_NULL(x)	((NULL == x))
+
 enum { read_all = 0, read_temp, read_press, read_hum};
 
 __attribute__((aligned(1))) struct adc_regs {
@@ -84,8 +86,8 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	uint8_t id = 0;
 
 	/* check parameters */
-	if((NULL == ReadFun) || (NULL == WriteFun) ||
-		(NULL == Dev || (NULL == Delay))) return BME280_PARAM_ERR;
+	if( IS_NULL(ReadFun) || IS_NULL(WriteFun) ||IS_NULL(Dev) ||
+			IS_NULL(Delay) ) return BME280_PARAM_ERR;
 
 	/* fill the structure */
 	Dev->i2c_address = I2cAddr;
@@ -121,7 +123,7 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	uint8_t ctrl_hum = 0, ctrl_meas = 0, config = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == Config)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(Config) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -155,7 +157,7 @@ int8_t BME280_Reset(BME280_t *Dev){
 	int8_t res = BME280_OK;
 
 	/* check parameter */
-	if((NULL == Dev) || (NULL == Dev->write)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(Dev->write) ) return BME280_PARAM_ERR;
 
 	/* write reset commad to reset register */
 	res = Dev->write(BME280_RESET_ADDR, BME280_RESET_VALUE, Dev->i2c_address, Dev->env_spec_data);
@@ -173,7 +175,7 @@ int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 	uint8_t ctrl_meas = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == Mode)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(Mode) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -202,7 +204,7 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	uint8_t ctrl_meas = 0, tmp = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (Mode > BME280_NORMALMODE)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || (Mode > BME280_NORMALMODE) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -235,7 +237,7 @@ int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
 	uint8_t ctrl_meas = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == POvs)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(POvs) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -260,7 +262,7 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	uint8_t ctrl_meas = 0, tmp = 0, mode = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (POvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || (POvs > BME280_OVERSAMPLING_X16) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -293,7 +295,7 @@ int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
 	uint8_t ctrl_meas = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == TOvs)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(TOvs) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -318,7 +320,7 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	uint8_t ctrl_meas = 0, tmp = 0, mode = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (TOvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || (TOvs > BME280_OVERSAMPLING_X16) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -351,7 +353,7 @@ int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
 	uint8_t ctrl_hum = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == HOvs)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(HOvs) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -376,7 +378,7 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 	uint8_t tmp = 0, mode = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (HOvs > BME280_OVERSAMPLING_X16)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || (HOvs > BME280_OVERSAMPLING_X16) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -406,7 +408,7 @@ int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby){
 	uint8_t config = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == TStby)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(TStby) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -431,7 +433,7 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
 	uint8_t config = 0, tmp = 0, mode = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (TStby > BME280_STBY_20MS)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || (TStby > BME280_STBY_20MS) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -464,7 +466,7 @@ int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter){
 	uint8_t config = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == Filter)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(Filter) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -489,7 +491,7 @@ int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter){
 	uint8_t config = 0, tmp = 0, mode = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (Filter > BME280_FILTER_16)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || (Filter > BME280_FILTER_16) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -522,7 +524,7 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev){
 	uint8_t config = 0, tmp = 0, mode = 0;
 
 	/* check parameter */
-	if(NULL == Dev) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -555,7 +557,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 	uint8_t config = 0, tmp = 0, mode = 0;
 
 	/* check parameter */
-	if(NULL == Dev) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -587,7 +589,7 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 	uint8_t config = 0;
 
 	/* check parameters */
-	if((NULL == Dev) || (NULL == Result)) return BME280_PARAM_ERR;
+	if( IS_NULL(Dev) || IS_NULL(Result) ) return BME280_PARAM_ERR;
 
 	/* check if sensor has been initialized before */
 	if(BME280_NOT_INITIALIZED == Dev->initialized) return BME280_NO_INIT_ERR;
@@ -612,11 +614,15 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 	BME280_S32_t temp;
 	BME280_U32_t press, hum;
 
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
+
 	/* check if sensor is in normal mode */
 	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
+	if(BME280_OK != res) return res;
 
 	/* convert 32bit values to Data structure */
 	bme280_convert_t_S32_struct(temp, Data);
@@ -632,6 +638,9 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
 	BME280_Data_t data;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(TempInt) || IS_NULL(TempFract) ) return BME280_PARAM_ERR;
 
 	/* check if sensor is in normal mode */
 	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
@@ -657,11 +666,15 @@ int8_t BME280_ReadLastAllF(BME280_t *Dev, BME280_DataF_t *Data){
 	BME280_S32_t temp;
 	BME280_U32_t press, hum;
 
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
+
 	/* check if sensor is in normal mode */
 	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
 
 	/* read the data from sensor */
 	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
+	if(BME280_OK != res) return res;
 
 	/* convert 32bit values to Data structure */
 	bme280_convert_t_S32_struct_float(temp, Data);
@@ -725,13 +738,6 @@ static int8_t bme280_read_compensate(uint8_t read_type, BME280_t *Dev, BME280_S3
 	int8_t res = BME280_OK;
 	BME280_S32_t adc_T, adc_P, adc_H;
 	struct adc_regs adc_raw;
-
-	/* check parameters */
-	if((NULL == Dev) || (NULL == temp)) return BME280_PARAM_ERR;
-	if(((read_press == read_type) || (read_all == read_type)) && (NULL == press))
-		return BME280_PARAM_ERR;
-	if(((read_hum == read_type) || (read_all == read_type)) && (NULL == hum))
-		return BME280_PARAM_ERR;
 
 	/* read selected adc data from sensor */
 	switch(read_type){
