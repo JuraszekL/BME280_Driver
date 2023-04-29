@@ -1,9 +1,22 @@
-/*
- * This is a non-commercial project for learning purposes only. Feel free to use it.
+/**
+ *******************************************
+ * @file    bme280_definitions.h
+ * @author  Łukasz Juraszek / JuraszekL
+ * @version 1.0.0
+ * @date	20.04.2023
+ * @brief   Defined types for BME280 Driver
+ * @note 	https://github.com/JuraszekL/BME280_Driver
+ *******************************************
  *
- * JuraszekL
- *
- * */
+ * @note https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/
+ * @note https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf
+*/
+
+/**
+ * @addtogroup BME280_Driver
+ * @brief BME280 Driver
+ * @{
+ */
 
 //***************************************
 
@@ -14,98 +27,134 @@
 
 #include <stdint.h>
 
-//***************************************
-/* general */
-//***************************************
+/**
+ * @defgroup BME280_DevStat BME280 Device Status
+ * @brief Possible values of #initialized field that informs is the device properly initialized
+ * @{
+ */
+#define BME280_NOT_INITIALIZED	(0x00) 	///< device is not initialized
+#define BME280_INITIALIZED		(0x01)	///< device is initialized
+///@}
 
-	/* possible states of sensor in BME280_device.initialized */
-#define BME280_NOT_INITIALIZED	(0x00)
-#define BME280_INITIALIZED		(0x01)
+/**
+ * @defgroup BME280_Ret BME280 Returnd Values
+ * @brief Values that can be returned by the driver's functions
+ * @{
+ */
+#define BME280_OK				(0)		///< operation completed successfully
+#define BME280_PARAM_ERR		(-1)	///< wrong parameters were passed to the function
+#define BME280_INTERFACE_ERR	(-2)	///< user-defined function to communicate with sensor returned non-zero value
+#define BME280_ID_ERR			(-3)	///< device ID doesn't match with #BME280_ID
+#define BME280_NO_INIT_ERR		(-4)	///< device wasn't initialized properly and operation cannot be performed
+#define BME280_CONDITION_ERR	(-5)	///< device is set to wrong operation mode, cannot perform operation
+///@}
 
-//***************************************
-/* returned values */
-//***************************************
+/**
+ * @defgroup BME280_I2CAddr BME280 I2C Address
+ * @brief Address on I2C bus depends of SDO pin connection. Use one of these values as #I2cAddr parameter in #BME280_Init function
+ * @{
+ */
+#define BME280_I2CADDR_SDOL	(0x76)		///< if SDO pin is connected to GND
+#define BME280_I2CADDR_SDOH	(0x77)		///< if SDO pin is connected to VCC
+///@}
 
-#define BME280_OK				(0)
-#define BME280_PARAM_ERR		(-1)
-#define BME280_INTERFACE_ERR	(-2)
-#define BME280_ID_ERR			(-3)
-#define BME280_NO_INIT_ERR		(-4)
-#define BME280_CONDITION_ERR	(-5)
-
-//***************************************
-/* I2C address */
-//***************************************
-
-// if SDO pin is connected to GND
-#define BME280_I2CADDR_SDOL	(0x76)
-// if SDO pin is connected to VCC
-#define BME280_I2CADDR_SDOH	(0x77)
-
-//***************************************
-/* registers values */
-//***************************************
-
-	/* ID related */
-#define BME280_ID			(0x60)
-#define BME280_ID_ADDR		(0xD0)
+/**
+ * @defgroup BME280_Regs BME280 Registers
+ * @brief Definition of register addresses and lenghts
+ * @{
+ */
+#define BME280_ID			(0x60)		///< Chip ID
+#define BME280_ID_ADDR		(0xD0)		///< address of Chip ID
 
 	/* Reset related */
-#define BME280_RESET_ADDR	(0xE0)
-#define BME280_RESET_VALUE	(0xB6)
+#define BME280_RESET_ADDR	(0xE0)		///< address of Reset register
+#define BME280_RESET_VALUE	(0xB6)		///< value that should be written to Reset register
 
 	/* calibration data related */
-#define BME280_CALIB_DATA1_ADDR	(0x88)
-#define BME280_CALIB_DATA1_LEN	(25U)
-#define BME280_CALIB_DATA2_ADDR	(0xE1)
-#define BME280_CALIB_DATA2_LEN	(7U)
+#define BME280_CALIB_DATA1_ADDR	(0x88)	///< address of first block with calibration data
+#define BME280_CALIB_DATA1_LEN	(25U)	///< lenght of first block with calibration data
+#define BME280_CALIB_DATA2_ADDR	(0xE1)	///< address of second block with calibration data
+#define BME280_CALIB_DATA2_LEN	(7U)	///< lenght of second block with calibration data
 
 	/* control and config related */
-#define BME280_CTRL_HUM_ADDR	(0xF2)
-#define BME280_CTRL_MEAS_ADDR	(0xF4)
-#define BME280_CONFIG_ADDR		(0xF5)
+#define BME280_CTRL_HUM_ADDR	(0xF2)	///< address of ctrl_hum register
+#define BME280_CTRL_MEAS_ADDR	(0xF4)	///< address of ctrl_meas register
+#define BME280_CONFIG_ADDR		(0xF5)	///< address of config register
 
 	/* raw adc data related */
-#define BME280_PRESS_ADC_ADDR	(0xF7)
-#define BME280_PRESS_ADC_LEN	(3U)
-#define BME280_TEMP_ADC_ADDR	(0xFA)
-#define BME280_TEMP_ADC_LEN		(3U)
-#define BME280_HUM_ADC_ADDR		(0xFD)
-#define BME280_HUM_ADC_LEN		(2U)
+#define BME280_PRESS_ADC_ADDR	(0xF7)	///< address of pressure adc data
+#define BME280_PRESS_ADC_LEN	(3U)	///< lenght of pressure adc data
+#define BME280_TEMP_ADC_ADDR	(0xFA)	///< address of temperature adc data
+#define BME280_TEMP_ADC_LEN		(3U)	///< lenght of temperature adc data
+#define BME280_HUM_ADC_ADDR		(0xFD)	///< address of humidity adc data
+#define BME280_HUM_ADC_LEN		(2U)	///< lenght of humidity adc data
+///@}
 
-//***************************************
-/* settings */
-//***************************************
+/**
+ * @defgroup BME280_Sett BME280 Settings
+ * @brief Inernal sensor's settings that can be changed
+ * @{
+ */
 
+/**
+ *
+ * @defgroup BME280_Ovs	Oversampling
+ * @brief Possible values of oversampling.
+ * @{
+ */
 	/* oversampling values */
-#define BME280_OVERSAMPLING_SKIPP	(0x00)
-#define BME280_OVERSAMPLING_X1		(0x01)
-#define BME280_OVERSAMPLING_X2		(0x02)
-#define BME280_OVERSAMPLING_X4		(0x03)
-#define BME280_OVERSAMPLING_X8		(0x04)
-#define BME280_OVERSAMPLING_X16		(0x05)
+#define BME280_OVERSAMPLING_SKIPP	(0x00)	///< no oversampling (skipp measure)
+#define BME280_OVERSAMPLING_X1		(0x01)	///< oversampling x1
+#define BME280_OVERSAMPLING_X2		(0x02)	///< oversampling x2
+#define BME280_OVERSAMPLING_X4		(0x03)	///< oversampling x4
+#define BME280_OVERSAMPLING_X8		(0x04)	///< oversampling x8
+#define BME280_OVERSAMPLING_X16		(0x05)	///< oversampling x16
+///@}
 
+/**
+ *
+ * @defgroup BME280_mode Operating Mode
+ * @brief Possible operating modes.
+ * @{
+ */
 	/* operating mode */
-#define BME280_SLEEPMODE	(0x00)
-#define BME280_FORCEDMODE	(0x01)
-#define BME280_NORMALMODE	(0x03)
+#define BME280_SLEEPMODE	(0x00)	///< sleep mode
+#define BME280_FORCEDMODE	(0x01)	///< forced mode
+#define BME280_NORMALMODE	(0x03)	///< normal mode
+///@}
 
+/**
+ *
+ * @defgroup BME280_tstby Standby Time
+ * @brief Possible values of standby time in normal mode
+ * @{
+ */
 	/* standby time in normal mode  */
-#define BME280_STBY_0_5MS	(0x00)
-#define BME280_STBY_62_5MS	(0x01)
-#define BME280_STBY_125MS	(0x02)
-#define BME280_STBY_250MS	(0x03)
-#define BME280_STBY_500MS	(0x04)
-#define BME280_STBY_1000MS	(0x05)
-#define BME280_STBY_10MS	(0x06)
-#define BME280_STBY_20MS	(0x07)
+#define BME280_STBY_0_5MS	(0x00)	///< 0,5ms
+#define BME280_STBY_62_5MS	(0x01)	///< 62,5ms
+#define BME280_STBY_125MS	(0x02)	///< 125ms
+#define BME280_STBY_250MS	(0x03)	///< 250ms
+#define BME280_STBY_500MS	(0x04)	///< 500ms
+#define BME280_STBY_1000MS	(0x05)	///< 1000ms
+#define BME280_STBY_10MS	(0x06)	///< 10ms
+#define BME280_STBY_20MS	(0x07)	///< 20ms
+///@}
 
+/**
+ *
+ * @defgroup BME280_filter IIR Filter
+ * @brief Possible values of IIR filter settings
+ * @{
+ */
 	/* filter coefficient */
-#define BME280_FILTER_OFF	(0x00)
-#define BME280_FILTER_2		(0x01)
-#define BME280_FILTER_4		(0x02)
-#define BME280_FILTER_8		(0x03)
-#define BME280_FILTER_16	(0x04)
+#define BME280_FILTER_OFF	(0x00)	///< no IIR filter
+#define BME280_FILTER_2		(0x01)	///< IIR filter coefficient 2
+#define BME280_FILTER_4		(0x02)	///< IIR filter coefficient 4
+#define BME280_FILTER_8		(0x03)	///< IIR filter coefficient 8
+#define BME280_FILTER_16	(0x04)	///< IIR filter coefficient 16
+///@}
+
+///@}
 
 //***************************************
 /* macros */
@@ -219,3 +268,5 @@ struct BME280_data_float {
 };
 
 #endif /* BME280_DEFINITIONS_H */
+
+///@}

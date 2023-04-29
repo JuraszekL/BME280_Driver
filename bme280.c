@@ -1,3 +1,21 @@
+/**
+ *******************************************
+ * @file    bme280.c
+ * @author  Łukasz Juraszek / JuraszekL
+ * @version 1.0.0
+ * @date	20.04.2023
+ * @brief   Source code for BME280 Driver
+ * @note 	https://github.com/JuraszekL/BME280_Driver
+ *******************************************
+ *
+ * @note https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/
+ * @note https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf
+*/
+
+/**
+ * @addtogroup BME280_Driver
+ * @{
+ */
 
 //***************************************
 
@@ -1120,3 +1138,5 @@ static int8_t bme280_is_sleep_mode(BME280_t *Dev){
 
 	return BME280_OK;
 }
+
+///@}
