@@ -1,9 +1,16 @@
-/*
- * This is a non-commercial project for learning purposes only. Feel free to use it.
+/**.
+ *******************************************
+ * @file    bme280.h
+ * @author  Łukasz Juraszek / JuraszekL
+ * @version 1.0.0
+ * @date	29,04,23
+ * @brief   Header for BME280 Driver
+ * @note 	https://github.com/JuraszekL/BME280_Driver
+ *******************************************
  *
- * JuraszekL
- *
- * */
+ * @note https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/
+ * @note https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf
+*/
 
 //***************************************
 
