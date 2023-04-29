@@ -71,6 +71,12 @@ int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data);
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
 int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp);
 
+int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract);
+int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
+
+int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
+int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
+
 
 
 //***************************************
