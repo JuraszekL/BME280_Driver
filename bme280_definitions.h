@@ -108,15 +108,6 @@
 #define BME280_FILTER_16	(0x04)
 
 //***************************************
-/* macros */
-//***************************************
-
-	/* concatenate two bytes into signed half-word */
-#define CAT_I16T(msb, lsb) ((int16_t)(((int16_t)msb << 8) | (int16_t)lsb))
-	/* concatenate two bytes into unsigned half-word */
-#define CAT_UI16T(msb, lsb) ((uint16_t)(((uint16_t)msb << 8) | (uint16_t)lsb))
-
-//***************************************
 /* typedefs */
 //***************************************
 
