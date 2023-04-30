@@ -157,7 +157,7 @@
 ///@}
 
 /**
- * @defgroup BME280_prots Function prototypes
+ * @defgroup BME280_prots Function pointers
  * @brief Platform speicific functions
  *
  * These functions have to be created by user and passed as agruments to #BME280_Init function.
