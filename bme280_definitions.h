@@ -156,22 +156,73 @@
 
 ///@}
 
-//***************************************
-/* typedefs */
-//***************************************
+/**
+ * @defgroup BME280_prots Function prototypes
+ * @brief Platform speicific functions
+ *
+ * These functions have to be created by user and passed as agruments to #BME280_Init function.
+ * @{
+ */
 
-	/* pointers prototypes to user-defined and platform-dependent functions to
-	 * comminucate with sensor */
+/**
+ * Function to read the data from sensor in burst mode.
+ * @param[in] reg_addr address of register to be read (f.e. #BME280_ID_ADDR)
+ * @param[in] *rxbuff pointer to the buffer where data will be stored
+ * @param[in] rxlen lenght of data to be read (in bytes)
+ * @param[in] dev_addr address of the device on I2C bus (#BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH)
+ * @param[in] env_spec_data pointer to platform specific data required to perform bus operation
+ * (f.e. pointer to i2c bus strucure)
+ * @return 0 success
+ * @return -1 failure
+ */
 typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data);
+
+/**
+ * Function to write one byte to sensor.
+ * @param[in] reg_addr address of register to be written (f.e. #BME280_RESET_ADDR)
+ * @param[in] value value to write (f.e. #BME280_RESET_VALUE)
+ * @param[in] dev_addr address of the device on I2C bus (#BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH)
+ * @param[in] env_spec_data pointer to platform specific data required to perform bus operation
+ * (f.e. pointer to i2c bus strucure)
+ * @return 0 success
+ * @return -1 failure
+ */
 typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
+
+/**
+ * Delay function.
+ * @param[in] delay_time time to delay in miliseconds
+ */
 typedef void (*bme280_delayms)(uint8_t delay_time);
+///@}
 
-typedef enum {sleep_mode = 0x00, forced_mode = 0x01, normal_mode = 0x03} BME280_Mode_t;
+/**
+ * @enum BME280_Mode_t
+ * @brief BME280 operating mode
+ *
+ * Actual mode is always stored in #BME280_t structure and used to check correct conditions of actual operation.
+ * @{
+ */
+typedef enum {
 
-	/* types used for compensation formules */
-typedef int32_t BME280_S32_t;
-typedef uint32_t BME280_U32_t;
-typedef int64_t BME280_S64_t;
+	sleep_mode = 0x00,	///< sensor is in sleep mide
+	forced_mode = 0x01,	///< sensor is in forced mode
+	normal_mode = 0x03	///< sensor is in normal mode
+
+} BME280_Mode_t;
+///@}
+
+/**
+ * @defgroup BME280_privtypedef Private typedefs
+ * @brief Typedefs for internal calculations
+ *
+ * Change if needed
+ * @{
+ */
+typedef int32_t BME280_S32_t;	///< signed 32-bit integer variable
+typedef uint32_t BME280_U32_t;	///< unsigned 32-bit integer variable
+typedef int64_t BME280_S64_t;	///< signed 64-bit integer variable
+///@}
 
 	/* structure keeps calibration data that were read from sensor */
 struct BME280_calibration_data {
