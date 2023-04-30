@@ -411,11 +411,75 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 /**
  * @defgroup BME280_readfl Read Functions (float)
  * @brief read measured data from sensor as floating point values
+ * @note #USE_FLOAT in @ref BME280_libconf must be uncommented to use these functions
  * @{
  */
+
+/**
+ * @brief Function reads all measured data at once
+ * @note Sensor must be in #BME280_NORMALMODE to read last measured values.
+ *
+ * Function reads all adc values from sensor, converts them into single variables and compensate
+ * with use #BME280_calibration_data. Compensated values are then converted into #BME280_DataF_t structure.
+ * @param[in] *Dev pointer to sensor's #BME280_t structure
+ * @param[out] *Data pointer to structure where result will be stored
+ * @return #BME280_OK success
+ * @return #BME280_PARAM_ERR wrong parameter passed
+ * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
+ * @return #BME280_NO_INIT_ERR sensor was not initialized before
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data);
+
+/**
+ * @brief Function reads last measured temperature
+ * @note Sensor must be in #BME280_NORMALMODE to read last measured values.
+ *
+ * Function reads temperature related adc values from sensor, converts them into single variable and compensate
+ * with use #BME280_calibration_data. Compensated value is then converted into floating point value and stored in
+ * external variable
+ * @param[in] *Dev pointer to sensor's #BME280_t structure
+ * @param[out] *Temp pointer to variable where temperature will be stored
+ * @return #BME280_OK success
+ * @return #BME280_PARAM_ERR wrong parameter passed
+ * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
+ * @return #BME280_NO_INIT_ERR sensor was not initialized before
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ */
 int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp);
+
+/**
+ * @brief Function reads last measured pressure
+ * @note Sensor must be in #BME280_NORMALMODE to read last measured values.
+ *
+ * Function reads temperature and pressure related adc values from sensor, converts them into single variables and compensate
+ * with use #BME280_calibration_data. Compensated value is then converted into floating point value and stored in
+ * external variable
+ * @param[in] *Dev pointer to sensor's #BME280_t structure
+ * @param[out] *Press pointer to variable where temperature will be stored
+ * @return #BME280_OK success
+ * @return #BME280_PARAM_ERR wrong parameter passed
+ * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
+ * @return #BME280_NO_INIT_ERR sensor was not initialized before
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ */
 int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
+
+/**
+ * @brief Function reads last measured humidity
+ * @note Sensor must be in #BME280_NORMALMODE to read last measured values.
+ *
+ * Function reads temperature and humidity related adc values from sensor, converts them into single variables and compensate
+ * with use #BME280_calibration_data. Compensated value is then converted into floating point value and stored in
+ * external variable
+ * @param[in] *Dev pointer to sensor's #BME280_t structure
+ * @param[out] *Hum pointer to variable where temperature will be stored
+ * @return #BME280_OK success
+ * @return #BME280_PARAM_ERR wrong parameter passed
+ * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
+ * @return #BME280_NO_INIT_ERR sensor was not initialized before
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ */
 int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
 ///@}
 ///@}
