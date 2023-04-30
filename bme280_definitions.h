@@ -250,7 +250,7 @@ struct BME280_calibration_data {
 };
 
 	/* main structure where single sensor is cofigured */
-typedef struct BME280_device {
+typedef struct {
 
 	uint8_t i2c_address;
 	void *env_spec_data;
@@ -268,7 +268,7 @@ typedef struct BME280_device {
 } BME280_t;
 
 	/* structure used to configure every parameters in sensor at once */
-typedef struct BME280_conf {
+typedef struct {
 
 	uint8_t oversampling_h;
 	uint8_t oversampling_p;
@@ -281,7 +281,7 @@ typedef struct BME280_conf {
 } BME280_Config_t;
 
 	/* structure used to present data from sensor (without floating point types) */
-typedef struct BME280_data {
+typedef struct {
 
 	/* 21.37 deg */
 	int8_t temp_int;
@@ -298,7 +298,7 @@ typedef struct BME280_data {
 } BME280_Data_t;
 
 /* structure used to present data from sensor (with floating point types) */
-typedef struct BME280_data_float {
+typedef struct {
 
 	float temp;
 	float press;
