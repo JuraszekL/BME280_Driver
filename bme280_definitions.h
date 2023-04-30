@@ -224,7 +224,12 @@ typedef uint32_t BME280_U32_t;	///< unsigned 32-bit integer variable
 typedef int64_t BME280_S64_t;	///< signed 64-bit integer variable
 ///@}
 
-	/* structure keeps calibration data that were read from sensor */
+/**
+ * @struct BME280_calibration_data
+ * @brief Keeps calibration data that were read from sensor
+ * @note User should not manipulate this structure. It is only for internal library use.
+ * @{
+ */
 struct BME280_calibration_data {
 
 	uint16_t dig_T1;
@@ -248,63 +253,98 @@ struct BME280_calibration_data {
 	int16_t dig_H5;
 	int8_t dig_H6;
 };
+///@}
 
-	/* main structure where single sensor is cofigured */
+/**
+ * @struct BME280_t
+ * @brief Keeps all data related to a single sensor.
+ * @note User should not manipulate this structure. It is only for internal library use.
+ * Any changes should be done by dedicated public functions.
+ * @{
+ */
 typedef struct {
 
+	/// current address on I2C bus, value should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH
 	uint8_t i2c_address;
+	/// pointer to platform specific data (f.e. to i2c bus structure)
 	void *env_spec_data;
 
+	/// pointer to user defined function that reads data from sensor
 	bme280_readbytes read;
+	/// pointer to user defined function that writes data to sensor
 	bme280_writebyte write;
+	/// pointer to user defined delay function
 	bme280_delayms delay;
 
+	/// structure with calibration data
 	struct BME280_calibration_data trimm;
+	/// variable keeps result of internal temperature compensation and is used to compensate pressure and humidity
 	BME280_S32_t t_fine;
 
+	/// variable stores current initialization status, value should be #BME280_NOT_INITIALIZED or #BME280_INITIALIZED
 	uint8_t initialized;
+	/// variable stores current operating mode
 	BME280_Mode_t mode;
 
 } BME280_t;
+///@}
 
-	/* structure used to configure every parameters in sensor at once */
+/**
+ * @struct BME280_Config_t
+ * @brief Contains all sensor's settings
+ *
+ * Use this structure with #BME280_ConfigureAll function to set all sensor's settings at once.
+ * @{
+ */
 typedef struct {
 
-	uint8_t oversampling_h;
-	uint8_t oversampling_p;
-	uint8_t oversampling_t;
-	uint8_t mode;
-	uint8_t t_stby;
-	uint8_t filter;
-	uint8_t spi3w_enable;
+	uint8_t oversampling_h;	///< value of humidity oversampling, should be in range of @ref BME280_Ovs
+	uint8_t oversampling_p;	///< value of pressure oversampling, should be in range of @ref BME280_Ovs
+	uint8_t oversampling_t;	///< value of temperature oversampling, should be in range of @ref BME280_Ovs
+	uint8_t mode;	///< operating mode, should be in range of @ref BME280_mode
+	uint8_t t_stby;	///< standby time for normal mode, should be in range of @ref BME280_tstby
+	uint8_t filter;	///< filter coeficient, should be in range of @ref BME280_filter
+	uint8_t spi3w_enable;	///< enable SPI 3-wire mode, 1 - enable, 0 - disable
 
 } BME280_Config_t;
+///@}
 
-	/* structure used to present data from sensor (without floating point types) */
+/**
+ * @struct BME280_Data_t
+ * @brief Contains result of measure (no floating points variables)
+ *
+ * Use this structure to read all thata from sensor at once. No floating points are needed.
+ * @{
+ */
 typedef struct {
 
-	/* 21.37 deg */
-	int8_t temp_int;
-	uint8_t temp_fract;
+	int8_t temp_int;	///< contains integer value of measured temperature, f.e contains 21 for 21.37deg C
+	uint8_t temp_fract;	///< contains fractional part value of measured temperature, f.e contains 37 for 21.37deg C
 
-	/* 1001.891 hPa */
-	uint16_t pressure_int;
-	uint16_t pressure_fract;
+	uint16_t pressure_int;	///< contains integer value of measured pressure, f.e contains 1001 for 1001.891 hPa
+	uint16_t pressure_fract;	///< contains fractional part value of measured pressure, f.e contains 891 for 1001.891 hPa
 
-	/* 49.274 % */
-	uint8_t humidity_int;
-	uint16_t humidity_fract;
+	uint8_t humidity_int;	///< contains integer value of measured humidity, f.e contains 49 for 49.274 %
+	uint16_t humidity_fract;	///< contains fractional part value of measured humidity, f.e contains 274 for 49.274 %
 
 } BME280_Data_t;
+///@}
 
-/* structure used to present data from sensor (with floating point types) */
+/**
+ * @struct BME280_DataF_t
+ * @brief Contains result of measure (with floating points variables)
+ *
+ * Use this structure to read all thata from sensor at once. Floating point variables are required.
+ * @{
+ */
 typedef struct {
 
-	float temp;
-	float press;
-	float hum;
+	float temp;	///< contains measured temperature, f.e. 21.37deg C
+	float press;	///< contains measured pressure, f.e. 1001.891 hPa
+	float hum;	///< contains measured humidity, f.e. 49.274 %
 
 } BME280_DataF_t;
+///@}
 
 #endif /* BME280_DEFINITIONS_H */
 
