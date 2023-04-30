@@ -70,6 +70,13 @@ extern "C" {
  */
 int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 		bme280_readbytes ReadFun, bme280_writebyte WriteFun, bme280_delayms Delay);
+/**
+ * @defgroup BME280_setfunctions Set Functions
+ * @brief change sensor's settings
+ * @note Sensor must be in #BME280_SLEEPMODE to change settings. Only #BME280_SetMode function can be used when
+ * sensors is in different working mode,
+ * @{
+ */
 
 /**
  * @brief Function to set all sensor settings at once
@@ -86,6 +93,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
  */
 int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config);
+///@}
 
 /**
  * @brief Function to perform sensor's software reset
