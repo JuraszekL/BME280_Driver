@@ -38,6 +38,9 @@
 	/* type of read */
 enum { read_all = 0, read_temp, read_press, read_hum};
 
+	/* possible value of mode variable inside BME280_t structure */
+enum {sleep_mode = 0x00, forced_mode = 0x01, normal_mode = 0x03};
+
 __attribute__((aligned(1))) struct adc_regs {
 
 	uint8_t press_raw[BME280_PRESS_ADC_LEN];

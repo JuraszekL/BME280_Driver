@@ -197,22 +197,6 @@ typedef void (*bme280_delayms)(uint8_t delay_time);
 ///@}
 
 /**
- * @enum BME280_Mode_t
- * @brief BME280 operating mode
- *
- * Actual mode is always stored in #BME280_t structure and used to check correct conditions of actual operation.
- * @{
- */
-typedef enum {
-
-	sleep_mode = 0x00,	///< sensor is in sleep mide
-	forced_mode = 0x01,	///< sensor is in forced mode
-	normal_mode = 0x03	///< sensor is in normal mode
-
-} BME280_Mode_t;
-///@}
-
-/**
  * @defgroup BME280_privtypedef Private typedefs
  * @brief Typedefs for internal calculations
  *
@@ -284,7 +268,7 @@ typedef struct {
 	/// variable stores current initialization status, value should be #BME280_NOT_INITIALIZED or #BME280_INITIALIZED
 	uint8_t initialized;
 	/// variable stores current operating mode
-	BME280_Mode_t mode;
+	uint8_t mode;
 
 } BME280_t;
 ///@}
