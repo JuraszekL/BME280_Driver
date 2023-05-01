@@ -747,32 +747,6 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 	return res;
 }
 
-	/* function reads last measured values from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
-
-	int8_t res = BME280_OK;
-	BME280_S32_t temp;
-	BME280_U32_t press, hum;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized and in normal mode */
-	res = bme280_is_normal_mode(Dev);
-	if(BME280_OK != res) return res;
-
-	/* read the data from sensor */
-	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
-	if(BME280_OK != res) return res;
-
-	/* convert 32bit values to Data structure */
-	bme280_convert_t_S32_float(temp, &Data->temp);
-	bme280_convert_p_U32_float(press, &Data->press);
-	bme280_convert_h_U32_float(hum, &Data->hum);
-
-	return res;
-}
-
 	/* function reads last measured temperature from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
@@ -797,29 +771,6 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 	/* set values of external variables */
 	*TempInt = data.temp_int;
 	*TempFract = data.temp_fract;
-
-	return res;
-}
-
-	/* function reads last measured temperature from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp){
-
-	int8_t res = BME280_OK;
-	BME280_S32_t temp;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(Temp) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized and in normal mode */
-	res = bme280_is_normal_mode(Dev);
-	if(BME280_OK != res) return res;
-
-	/* read the data from sensor */
-	res = bme280_read_compensate(read_temp, Dev, &temp, 0, 0);
-	if(BME280_OK != res) return res;
-
-	/* convert 32bit value to external float */
-	bme280_convert_t_S32_float(temp, Temp);
 
 	return res;
 }
@@ -853,30 +804,6 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
 	return res;
 }
 
-	/* function reads last measured pressure from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press){
-
-	int8_t res = BME280_OK;
-	BME280_S32_t temp;
-	BME280_U32_t press;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(Press) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized and in normal mode */
-	res = bme280_is_normal_mode(Dev);
-	if(BME280_OK != res) return res;
-
-	/* read the data from sensor */
-	res = bme280_read_compensate(read_press, Dev, &temp, &press, 0);
-	if(BME280_OK != res) return res;
-
-	/* convert 32bit value to external float */
-	bme280_convert_p_U32_float(press, Press);
-
-	return res;
-}
-
 	/* function reads last measured humidity from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 
@@ -906,6 +833,80 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 	return res;
 }
 
+#ifdef USE_FLOAT
+	/* function reads last measured values from sensor in normal mode (with floats) */
+int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press, hum;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit values to Data structure */
+	bme280_convert_t_S32_float(temp, &Data->temp);
+	bme280_convert_p_U32_float(press, &Data->press);
+	bme280_convert_h_U32_float(hum, &Data->hum);
+
+	return res;
+}
+
+	/* function reads last measured temperature from sensor in normal mode (with floats) */
+int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Temp) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_temp, Dev, &temp, 0, 0);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to external float */
+	bme280_convert_t_S32_float(temp, Temp);
+
+	return res;
+}
+
+	/* function reads last measured pressure from sensor in normal mode (with floats) */
+int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Press) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in normal mode */
+	res = bme280_is_normal_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_press, Dev, &temp, &press, 0);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to external float */
+	bme280_convert_p_U32_float(press, Press);
+
+	return res;
+}
+
 	/* function reads last measured humidity from sensor in normal mode (with floats) */
 int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum){
 
@@ -929,6 +930,7 @@ int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum){
 
 	return res;
 }
+#endif
 
 //***************************************
 /* static functions */

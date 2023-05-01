@@ -408,6 +408,7 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
 int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 ///@}
 
+#ifdef USE_FLOAT
 /**
  * @defgroup BME280_readfl Read Functions (float)
  * @brief read measured data from sensor as floating point values
@@ -481,6 +482,7 @@ int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
  */
 int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
+#endif
 ///@}
 ///@}
 
