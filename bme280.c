@@ -139,12 +139,14 @@ static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H);
  */
 static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
 
+#ifdef USE_FLOAT
 /**
  * @brief convert temperature to float
  *
  * Function converts temperature stored in #BME280_S32_t to float variable
  */
 static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out);
+#endif
 
 /**
  * @brief convert pressure to structure
@@ -153,12 +155,14 @@ static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out);
  */
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data);
 
+#ifdef USE_FLOAT
 /**
  * @brief convert pressure to structure
  *
  * Function converts pressure stored in #BME280_U32_t to float variable
  */
 static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out);
+#endif
 
 /**
  * @brief convert humidity to structure
@@ -167,12 +171,14 @@ static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out);
  */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 
+#ifdef USE_FLOAT
 /**
  * @brief convert humidity to structure
  *
  * Function converts humidity stored in #BME280_U32_t to float variable
  */
 static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out);
+#endif
 
 /**
  * @brief check for normal mode
@@ -302,6 +308,7 @@ int8_t BME280_Reset(BME280_t *Dev){
 	return res;
 }
 
+#ifdef USE_GETTERS
 	/* Function reads current operation mode from sensor */
 int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 
@@ -332,6 +339,165 @@ int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 	return res;
 }
 
+	/* function gets current pressure oversampling value from sensor */
+int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(POvs) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse pressure oversampling value from ctrl_meas */
+	ctrl_meas = (ctrl_meas >> 2) & 0x07;
+
+	/* set output pointer */
+	*POvs = ctrl_meas;
+
+	return res;
+}
+
+	/* function gets current temperature oversampling value from sensor */
+int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_meas = 0;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(TOvs) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse temperature oversampling value from ctrl_meas */
+	ctrl_meas = (ctrl_meas >> 5) & 0x07;
+
+	/* set output pointer */
+	*TOvs = ctrl_meas;
+
+	return res;
+}
+
+
+	/* function gets current humidity oversampling value from sensor */
+int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
+
+	int8_t res = BME280_OK;
+	uint8_t ctrl_hum = 0;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(HOvs) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
+
+	/* read value of ctrl_hum register from sensor */
+	res = Dev->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse humidity oversampling value from ctrl_hum */
+	ctrl_hum = ctrl_hum & 0x07;
+
+	/* set output pointer */
+	*HOvs = ctrl_hum;
+
+	return res;
+}
+
+	/* function gets current standby time for normal mode */
+int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(TStby) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
+
+	/* read value of config register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse standby time value from config */
+	config = (config >> 5) & 0x07;
+
+	/* set output pointer */
+	*TStby = config;
+
+	return res;
+}
+
+	/* function gets current value of IIR filter */
+int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Filter) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
+
+	/* read value of config register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse filter value from config */
+	config = (config >> 2) & 0x07;
+
+	/* set output pointer */
+	*Filter = config;
+
+	return res;
+}
+
+	/* function reads current 3-wire SPI setup (0 = 3w SPI disabled, 1 - 3w SPI enabled) */
+int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
+
+	int8_t res = BME280_OK;
+	uint8_t config = 0;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Result) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_NO_INIT_ERR == res) return res;
+
+	/* read value of ctrl_meas register from sensor */
+	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* parse mode values from ctrl_meas */
+	config &= 0x01;
+
+	/* set output pointer */
+	*Result = config;
+
+	return res;
+}
+#endif
+
+#ifdef USE_SETTERS
 	/* Function sets sensor operation mode */
 int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 
@@ -366,32 +532,6 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	return res;
 }
 
-	/* function gets current pressure oversampling value from sensor */
-int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
-
-	int8_t res = BME280_OK;
-	uint8_t ctrl_meas = 0;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(POvs) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized */
-	res = bme280_is_sleep_mode(Dev);
-	if(BME280_NO_INIT_ERR == res) return res;
-
-	/* read value of ctrl_meas register from sensor */
-	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse pressure oversampling value from ctrl_meas */
-	ctrl_meas = (ctrl_meas >> 2) & 0x07;
-
-	/* set output pointer */
-	*POvs = ctrl_meas;
-
-	return res;
-}
-
 	/* function sets pressure oversampling value  */
 int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 
@@ -421,33 +561,7 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	return res;
 }
 
-/* function gets current temperature oversampling value from sensor */
-int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
-
-	int8_t res = BME280_OK;
-	uint8_t ctrl_meas = 0;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(TOvs) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized */
-	res = bme280_is_sleep_mode(Dev);
-	if(BME280_NO_INIT_ERR == res) return res;
-
-	/* read value of ctrl_meas register from sensor */
-	res = Dev->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse temperature oversampling value from ctrl_meas */
-	ctrl_meas = (ctrl_meas >> 5) & 0x07;
-
-	/* set output pointer */
-	*TOvs = ctrl_meas;
-
-	return res;
-}
-
-/* function sets temperature oversampling value  */
+	/* function sets temperature oversampling value  */
 int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 
 	int8_t res = BME280_OK;
@@ -476,33 +590,7 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	return res;
 }
 
-/* function gets current humidity oversampling value from sensor */
-int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
-
-	int8_t res = BME280_OK;
-	uint8_t ctrl_hum = 0;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(HOvs) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized */
-	res = bme280_is_sleep_mode(Dev);
-	if(BME280_NO_INIT_ERR == res) return res;
-
-	/* read value of ctrl_hum register from sensor */
-	res = Dev->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse humidity oversampling value from ctrl_hum */
-	ctrl_hum = ctrl_hum & 0x07;
-
-	/* set output pointer */
-	*HOvs = ctrl_hum;
-
-	return res;
-}
-
-/* function sets humidity oversampling value  */
+	/* function sets humidity oversampling value  */
 int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 
 	int8_t res = BME280_OK;
@@ -524,32 +612,6 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 	res = Dev->read(BME280_CTRL_MEAS_ADDR, &tmp, 1, Dev->i2c_address, Dev->env_spec_data);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 	res = Dev->write(BME280_CTRL_MEAS_ADDR, tmp, Dev->i2c_address, Dev->env_spec_data);
-
-	return res;
-}
-
-	/* function gets current standby time for normal mode */
-int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby){
-
-	int8_t res = BME280_OK;
-	uint8_t config = 0;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(TStby) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized */
-	res = bme280_is_sleep_mode(Dev);
-	if(BME280_NO_INIT_ERR == res) return res;
-
-	/* read value of config register from sensor */
-	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse standby time value from config */
-	config = (config >> 5) & 0x07;
-
-	/* set output pointer */
-	*TStby = config;
 
 	return res;
 }
@@ -579,32 +641,6 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
 	config &= 0x1F;	//0x1F - 0b00011111
 	config |= (TStby << 5);
 	res = Dev->write(BME280_CONFIG_ADDR, config, Dev->i2c_address, Dev->env_spec_data);
-
-	return res;
-}
-
-	/* function gets current value of IIR filter */
-int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter){
-
-	int8_t res = BME280_OK;
-	uint8_t config = 0;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(Filter) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized */
-	res = bme280_is_sleep_mode(Dev);
-	if(BME280_NO_INIT_ERR == res) return res;
-
-	/* read value of config register from sensor */
-	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse filter value from config */
-	config = (config >> 2) & 0x07;
-
-	/* set output pointer */
-	*Filter = config;
 
 	return res;
 }
@@ -694,32 +730,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 
 	return res;
 }
-
-	/* function reads current 3-wire SPI setup (0 = 3w SPI disabled, 1 - 3w SPI enabled) */
-int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
-
-	int8_t res = BME280_OK;
-	uint8_t config = 0;
-
-	/* check parameters */
-	if( IS_NULL(Dev) || IS_NULL(Result) ) return BME280_PARAM_ERR;
-
-	/* check if sensor is initialized */
-	res = bme280_is_sleep_mode(Dev);
-	if(BME280_NO_INIT_ERR == res) return res;
-
-	/* read value of ctrl_meas register from sensor */
-	res = Dev->read(BME280_CONFIG_ADDR, &config, 1, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-
-	/* parse mode values from ctrl_meas */
-	config &= 0x01;
-
-	/* set output pointer */
-	*Result = config;
-
-	return res;
-}
+#endif
 
 	/* function reads last measured values from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
@@ -1180,11 +1191,13 @@ static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data){
 	data->temp_fract = (BME280_S32_t)temp % 100;
 }
 
+#ifdef USE_FLOAT
 	/* function converts BME280_S32_t temperature to float */
 static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out){
 
 	*temp_out= (float)temp_in / 100.0F;
 }
+#endif
 
 	/* function converts BME280_U32_t pressure to BME280_Data_t structure */
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data){
@@ -1198,6 +1211,7 @@ static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data)
 #endif
 }
 
+#ifdef USE_FLOAT
 	/* function converts BME280_U32_t pressure to float */
 static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){
 
@@ -1207,6 +1221,7 @@ static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){
 	*press_out  = (float)press_in / 100.0F;
 #endif
 }
+#endif
 
 	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
@@ -1215,11 +1230,13 @@ static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
 	data->humidity_fract = hum % (BME280_U32_t)1000;
 }
 
+#ifdef USE_FLOAT
 	/* function converts BME280_U32_t humidity to float */
 static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out){
 
 	*hum_out = (float)hum_in / 1000.0F;
 }
+#endif
 
 	/* function checks if device was initialized and is in normal mode */
 static int8_t bme280_is_normal_mode(BME280_t *Dev){

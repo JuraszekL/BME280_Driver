@@ -41,6 +41,10 @@ extern "C" {
 #define USE_64BIT
 /// comment this line if u don't need to use floating point results
 #define USE_FLOAT
+/// comment this line if you don't need to read single setting with any getX function
+#define USE_GETTERS
+/// comment this line if you don't need to write single setting with any setX function
+#define USE_SETTERS
 ///@}
 
 /**
@@ -83,14 +87,18 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
  */
 int8_t BME280_Reset(BME280_t *Dev);
 
+#ifdef USE_GETTERS
 /**
  * @defgroup BME280_getfunctions Get Functions
- * @brief read sensor's settings
+ * @brief Read sensor's settings
+ * @note #USE_GETTERS in @ref BME280_libconf must be uncommented tu use these functions
  * @{
  */
 
 /**
  * @brief Function gets current @ref BME280_mode from sensor
+ *
+ * Function updates current operating mode inside *Dev structure as well.
  * @param[in] *Dev pointer to sensor's #BME280_t structure
  * @param[out] *Mode pointer to vartiable where result will be stored
  * @return #BME280_OK success
@@ -166,14 +174,7 @@ int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter);
  */
 int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result);
 ///@}
-
-/**
- * @defgroup BME280_setfunctions Set Functions
- * @brief change sensor's settings
- * @note Sensor must be in #BME280_SLEEPMODE to change settings. Only #BME280_SetMode function can be used when
- * sensors is in different working mode,
- * @{
- */
+#endif
 
 /**
  * @brief Function to set all sensor settings at once
@@ -181,6 +182,7 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result);
  * function before or use it directly after #BME280_Init function only.
  *
  * Function writes all 3 config registers without reading them before. It can be usefull after power-up or reset.
+ * It sets current operating mode inside *Dev structure at the end.
  * @param[in] *Dev pointer to sensor's #BME280_t structure
  * @param[in] *Config pointer to #BME280_Config_t structure which contains all paramaters to be set
  * @return #BME280_OK success
@@ -191,12 +193,22 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result);
  */
 int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config);
 
+#ifdef USE_SETTERS
+/**
+ * @defgroup BME280_setfunctions Set Functions
+ * @brief change sensor's settings
+ * @note #USE_SETTERS in @ref BME280_libconf must be uncommented to use these functions
+ * @note Sensor must be in #BME280_SLEEPMODE to change settings. Only #BME280_SetMode function can be used when
+ * sensors is in different working mode,
+ * @{
+ */
+
 /**
  * @brief Function sets sensor's @ref BME280_mode
  *
  * Function reads single register from sensor, and checks if current mode matches mode requested by user.
  * If matches, function skips write operation and returns #BME280_OK. If doesnt, it prepares and sends new register
- * value, then sets correct #BME280_Mode_t inside *Dev structure.
+ * value, then sets correct operating mode inside *Dev structure.
  * @param[in] *Dev pointer to sensor's #BME280_t structure
  * @param[in] Mode value to be set, must be in range of @ref BME280_mode
  * @return #BME280_OK success
@@ -329,6 +341,7 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev);
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
  */
 int8_t BME280_Disable3WireSPI(BME280_t *Dev);
+#endif
 ///@}
 
 /**
@@ -349,7 +362,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data);
 
@@ -367,7 +380,7 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
 
@@ -385,7 +398,7 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract);
 
@@ -403,7 +416,7 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 ///@}
@@ -428,7 +441,7 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data);
 
@@ -445,7 +458,7 @@ int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp);
 
@@ -462,7 +475,7 @@ int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
 
@@ -479,7 +492,7 @@ int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
- * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
 #endif
