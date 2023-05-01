@@ -183,6 +183,20 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	res = Dev->write(BME280_CONFIG_ADDR, config, Dev->i2c_address, Dev->env_spec_data);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
+	/* set oparing mode inside Dev structure */
+	if(BME280_SLEEPMODE == Config->mode){
+
+		Dev->mode = sleep_mode;
+	}
+	else if(BME280_FORCEDMODE == Config->mode){
+
+		Dev->mode = forced_mode;
+	}
+	else if(BME280_NORMALMODE == Config->mode){
+
+			Dev->mode = normal_mode;
+	}
+
 	return res;
 }
 
