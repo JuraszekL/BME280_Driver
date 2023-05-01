@@ -15,14 +15,6 @@
 #include <stdint.h>
 
 //***************************************
-/* general */
-//***************************************
-
-	/* possible states of sensor in BME280_device.initialized */
-#define BME280_NOT_INITIALIZED	(0x00)
-#define BME280_INITIALIZED		(0x01)
-
-//***************************************
 /* returned values */
 //***************************************
 
