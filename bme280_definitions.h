@@ -188,7 +188,7 @@ typedef void (*bme280_delayms)(uint8_t delay_time);
 ///@}
 
 /**
- * @defgroup BME280_privtypedef Private typedefs
+ * @defgroup BME280_pubtypedef Public typedefs
  * @brief Typedefs for internal calculations
  *
  * Change if needed
