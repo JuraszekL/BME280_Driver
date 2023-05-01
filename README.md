@@ -2,8 +2,8 @@ BME280 Driver
 =============
 ![version](https://img.shields.io/github/v/release/JuraszekL/BME280_Driver?color=brightgreen)
 
-![BME280](/Resources/BME280.jpeg)
-![Bosch](/Resources/Bosch.png)
+![BME280](https://raw.githubusercontent.com/JuraszekL/BME280_Driver/master/Resources/BME280.jpeg)
+![Bosch](https://raw.githubusercontent.com/JuraszekL/BME280_Driver/master/Resources/Bosch.png)
 
 ### Driver for Bosch BME280 Combined sensor.
 [BME280 Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)

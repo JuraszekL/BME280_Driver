@@ -181,7 +181,7 @@ static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out);
  * @brief check for normal mode
  *
  * Function checks if device is initializes and if it's status in *Dev structure
- * is set as #normal_mode
+ * is set as "normal_mode"
  */
 static int8_t bme280_is_normal_mode(BME280_t *Dev);
 
@@ -189,7 +189,7 @@ static int8_t bme280_is_normal_mode(BME280_t *Dev);
  * @brief check for sleep mode
  *
  * Function checks if device is initializes and if it's status in *Dev structure
- * is set as #sleep_mode
+ * is set as "sleep_mode"
  */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev);
 ///@}

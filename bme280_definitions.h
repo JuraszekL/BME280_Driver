@@ -38,7 +38,8 @@
 
 /**
  * @defgroup BME280_I2CAddr BME280 I2C Address
- * @brief Address on I2C bus depends of SDO pin connection. Use one of these values as #I2cAddr parameter in #BME280_Init function
+ * @brief Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in
+ * #BME280_Init function
  * @{
  */
 #define BME280_I2CADDR_SDOL	(0x76)		///< if SDO pin is connected to GND
@@ -252,7 +253,7 @@ typedef struct {
 	/// variable keeps result of internal temperature compensation and is used to compensate pressure and humidity
 	BME280_S32_t t_fine;
 
-	/// variable stores current initialization status, value should be #BME280_NOT_INITIALIZED or #BME280_INITIALIZED
+	/// variable stores current initialization status
 	uint8_t initialized;
 	/// variable stores current operating mode
 	uint8_t mode;

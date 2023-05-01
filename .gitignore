@@ -54,3 +54,4 @@ dkms.conf
 # Doxygen
 MyDoxygen~
 /Doc
+/#MyDoxygen#

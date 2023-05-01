@@ -55,7 +55,7 @@ extern "C" {
  *
  * Init funtion performs sensor reset and checks #BME280_ID. It doesn't set any sensor's parameters. Calibration
  * data specific for each one sensor are read while Init function. If operation is completed with
- * success function sets #BME280_INITIALIZED value in #BME280_t structure.
+ * success function sets "initialized" value in #BME280_t structure.
  * @param[in] *Dev pointer to #BME280_t structure which should be initialized
  * @param[in] I2cAddr value of sensor's I2C address, should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOL only
  * @param[in] *EnvSpecData pointer to platform specific data which are required to transfer data (f.e. pointer
@@ -75,7 +75,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
  * @brief Function to perform sensor's software reset
  *
  * Function sends #BME280_RESET_VALUE to #BME280_RESET_ADDR. To perform this operation #bme280_writebyte
- * function must be set inside #BME280_t *Dev structure. Function sets #sleep_mode inside *Dev structure after reset.
+ * function must be set inside #BME280_t *Dev structure. Function sets "sleep_mode" inside *Dev structure after reset.
  * @param[in] *Dev pointer to sensor's #BME280_t structure
  * @return #BME280_OK success
  * @return #BME280_PARAM_ERR wrong parameter passed or #bme280_writebyte function is not set
