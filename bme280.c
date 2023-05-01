@@ -1076,9 +1076,9 @@ static BME280_S32_t bme280_compensate_t_s32t(BME280_t *Dev, BME280_S32_t adc_T){
 	/* Returns pressure in Pa as unsigned 32 bit integer in Q24.8 format
 	 * (24 integer bits and 8 fractional bits). Output value of “24674867”
 	 * represents 24674867/256 = 96386.2 Pa = 963.862 hPa */
-#ifdef USE_64BIT
 static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P){
 
+#ifdef USE_64BIT
 	BME280_S64_t var1;
 	BME280_S64_t var2;
 	BME280_S64_t var3;
@@ -1109,11 +1109,7 @@ static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P){
         pressure = 0;
     }
 
-    return pressure;
-}
 #else
-static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P){
-
 	BME280_S32_t var1, var2;
 	BME280_U32_t pressure;
 
@@ -1140,9 +1136,10 @@ static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P){
 	var1 = (((BME280_S32_t)Dev->trimm.dig_P9) * ((BME280_S32_t)(((pressure>>3) * (pressure>>3))>>13)))>>12;
 	var2 = (((BME280_S32_t)(pressure>>2)) * ((BME280_S32_t)Dev->trimm.dig_P8))>>13;
 	pressure = (BME280_U32_t)((BME280_S32_t)pressure + ((var1 + var2 + Dev->trimm.dig_P7) >> 4));
-	return pressure;
-}
 #endif
+
+    return pressure;
+}
 
 	/* Returns humidity in %RH as unsigned 32bit integer in Q22.10 format (22 integer
 	 * and 10 fractional bits). Output value of "47445" represents 47445/1024 = 46.333 %RH */
@@ -1188,32 +1185,26 @@ static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out){
 }
 
 	/* function converts BME280_U32_t pressure to BME280_Data_t structure */
-#ifdef USE_64BIT
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data){
 
+#ifdef USE_64BIT
 	data->pressure_int = press / (BME280_U32_t)10000;
 	data->pressure_fract = (press % (BME280_U32_t)10000) / (BME280_U32_t)10;
-}
 #else
-static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data){
-
 	data->pressure_int = press / (BME280_U32_t)100;
 	data->pressure_fract = press % (BME280_U32_t)100;
-}
 #endif
+}
 
 	/* function converts BME280_U32_t pressure to float */
-#ifdef USE_64BIT
 static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){
 
+#ifdef USE_64BIT
 	*press_out = (float)press_in / 10000.0F;
-}
 #else
-static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){{
-
 	*press_out  = (float)press_in / 100.0F;
-}
 #endif
+}
 
 	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
