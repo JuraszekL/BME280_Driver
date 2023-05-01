@@ -23,92 +23,174 @@
 #include <stddef.h>
 #include "bme280.h"
 
-//***************************************
-/* private types and structures */
-//***************************************
+/**
+ * @defgroup BME280_priv Private Resources
+ * @brief only for internal library purposes
+ * @{
+ */
 
-	/* concatenate two bytes into signed half-word */
+/**
+ * @defgroup BME280_privmacros Macros
+ * @{
+ */
+	/// concatenate two bytes into signed half-word
 #define CAT_I16T(msb, lsb) ((int16_t)(((int16_t)msb << 8) | (int16_t)lsb))
-	/* concatenate two bytes into unsigned half-word */
+
+	/// concatenate two bytes into unsigned half-word
 #define CAT_UI16T(msb, lsb) ((uint16_t)(((uint16_t)msb << 8) | (uint16_t)lsb))
 
-	/* check if x is null */
+	/// check if x is null
 #define IS_NULL(x)	((NULL == x))
+///@}
 
-	/* type of read */
+/**
+ * @defgroup BME280_privenums Enums
+ * @{
+ */
+	/// type of read, used as parameter to call #bme280_read_compensate function
 enum { read_all = 0, read_temp, read_press, read_hum};
 
-	/* possible value of "mode" variable inside BME280_t structure */
+	/// possible value of "mode" variable inside #BME280_t structure
 enum { sleep_mode = 0x00, forced_mode = 0x01, normal_mode = 0x03 };
 
-	/* possible value of "initialized" variabie inside BME280_t structure */
+	/// possible value of "initialized" variabie inside #BME280_t structure
 enum { not_initialized = 0x00, initialized };
+///@}
 
-__attribute__((aligned(1))) struct adc_regs {
+/**
+ * @struct adc_regs
+ * @brief keeps raw adc values from sensor, used in #bme280_read_compensate function
+ * @{
+ */
+struct adc_regs {
 
-	uint8_t press_raw[BME280_PRESS_ADC_LEN];
-	uint8_t temp_raw[BME280_TEMP_ADC_LEN];
-	uint8_t hum_raw[BME280_HUM_ADC_LEN];
+	uint8_t press_raw[BME280_PRESS_ADC_LEN];	///< keeps raw adc value of pressure
+	uint8_t temp_raw[BME280_TEMP_ADC_LEN];	///< keeps raw adc value of temperature
+	uint8_t hum_raw[BME280_HUM_ADC_LEN];	///< keeps raw adc value of humidity
 
-};
+} __attribute__((aligned(1))) ;
+///@}
 
-//***************************************
-/* static functions declarations */
-//***************************************
+/**
+ *@defgroup BME280_privfunct Functions
+ *@{
+ */
 
-	/* private function to read compensation parameters from sensor and
-	 * parse them inside  BME280_t structure */
+/**
+ * @brief read compensation data
+ *
+ * Function reads individual compensation data from sensor and stores them into #BME280_calibration_data
+ * inside *Dev structure
+ */
 static int8_t bme280_read_compensation_parameters(BME280_t *Dev);
 
-	/* private function to read and compensate selected adc
-	 * data from sensor  */
+/**
+ * @brief read and compensate measured values
+ *
+ * Function reads selected adc values from sensor, converts them into single variables and
+ * compensate with calibration data stored in #BME280_calibration_data inside *Dev structure. These
+ * variales are then returned as single integer values.
+ */
 static int8_t bme280_read_compensate(uint8_t read_type, BME280_t *Dev, BME280_S32_t *temp,
 	BME280_U32_t *press, BME280_U32_t *hum);
 
-	/* private function that parses raw adc pressure or temp values
-	 * from sensor into a single BME280_S32_t variable */
+/**
+ * @brief convert buffer to single variable
+ *
+ * Function converts raw adc values of temperature or pressure to single #BME280_S32_t variable
+ */
 static BME280_S32_t bme280_parse_press_temp_s32t(uint8_t *raw);
 
-	/* private function that parses raw adc humidity values
-	 * from sensor into a single BME280_S32_t variable */
+/**
+ * @brief convert buffer to single variable
+ *
+ * Function converts raw adc values of humidity to single #BME280_S32_t variable
+ */
 static BME280_S32_t bme280_parse_hum_s32t(uint8_t *raw);
 
-	/* Returns temperature in DegC, resolution is 0.01 DegC. Output value of “5123”
-	 * equals 51.23 DegC. t_fine carries fine temperature as global value */
+/**
+ * @brief compensate temperature value
+ *
+ * Function returns compensated temperature in DegC, resolution is 0.01 DegC. Output value of “5123”
+ * equals 51.23 DegC. It calculates t_fine variable stored inside *Dev structure as well.
+ */
 static BME280_S32_t bme280_compensate_t_s32t(BME280_t *Dev, BME280_S32_t adc_T);
 
-	/* Returns pressure in Pa as unsigned 32 bit integer in Q24.8 format
-	 * (24 integer bits and 8 fractional bits). Output value of “24674867”
-	 * represents 24674867/256 = 96386.2 Pa = 963.862 hPa */
+/**
+ * @brief compensate pressure value
+ *
+ * Function returns compensated pressure in Pa as unsigned 32 bit integer. Output value depends of #USE_64BIT
+ * configuration.
+ */
 static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P);
 
-	/* Returns humidity in %RH as unsigned 32bit integer in Q22.10 format (22 integer
-	 * and 10 fractional bits). Output value of "47445" represents 47445/1024 = 46.333 %RH */
+/**
+ * @brief compensate humidity value
+ *
+ * Function returns compensated humidity in %RH as unsigned 32bit integer. Output value of "47445"
+ * represents 47445/1000 = 47.445 %RH
+ */
 static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H);
 
-	/* function converts BME280_S32_t temperature to BME280_Data_t structure */
+/**
+ * @brief convert temperature to structure
+ *
+ * Function converts temperature stored in #BME280_S32_t to #BME280_Data_t structure
+ */
 static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
 
-	/* function converts BME280_S32_t temperature to float  */
+/**
+ * @brief convert temperature to float
+ *
+ * Function converts temperature stored in #BME280_S32_t to float variable
+ */
 static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out);
 
-	/* function converts BME280_S32_t pressure to BME280_Data_t structure */
+/**
+ * @brief convert pressure to structure
+ *
+ * Function converts pressure stored in #BME280_U32_t to #BME280_Data_t structure
+ */
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data);
 
-	/* function converts BME280_U32_t pressure to float */
+/**
+ * @brief convert pressure to structure
+ *
+ * Function converts pressure stored in #BME280_U32_t to float variable
+ */
 static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out);
 
-	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
+/**
+ * @brief convert humidity to structure
+ *
+ * Function converts humidity stored in #BME280_U32_t to #BME280_Data_t structure
+ */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 
-	/* function converts BME280_U32_t humidity to float */
+/**
+ * @brief convert humidity to structure
+ *
+ * Function converts humidity stored in #BME280_U32_t to float variable
+ */
 static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out);
 
-	/* function checks if device was initialized and is in normal mode */
+/**
+ * @brief check for normal mode
+ *
+ * Function checks if device is initializes and if it's status in *Dev structure
+ * is set as #normal_mode
+ */
 static int8_t bme280_is_normal_mode(BME280_t *Dev);
 
-	/* function checks if device was initialized and is in sleep mode */
+/**
+ * @brief check for sleep mode
+ *
+ * Function checks if device is initializes and if it's status in *Dev structure
+ * is set as #sleep_mode
+ */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev);
+///@}
+///@}
 
 //***************************************
 /* public functions */
