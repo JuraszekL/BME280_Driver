@@ -25,18 +25,19 @@
 var NAVTREE =
 [
   [ "BME280 Driver", "index.html", [
-    [ "Motivation", "index.html#autotoc_md3", null ],
-    [ "How to use", "index.html#autotoc_md4", [
-      [ "Driver for Bosch BME280 Combined sensor.", "index.html#autotoc_md0", null ],
-      [ "Features", "index.html#autotoc_md1", null ],
-      [ "Sensor description", "index.html#autotoc_md2", null ],
-      [ "1. Clone driver into your workign directory:", "index.html#autotoc_md5", null ],
-      [ "2. Include **__bme280.h__** file:", "index.html#autotoc_md6", null ],
-      [ "3. Perform configuration in **__bme280.h__** file if needed:", "index.html#autotoc_md7", null ],
-      [ "4. Write platform-specific functions required by driver:", "index.html#autotoc_md8", null ],
-      [ "5. Use BME280_Init Function before any operation:", "index.html#autotoc_md9", null ]
+    [ "Motivation", "index.html#autotoc_md4", null ],
+    [ "How to use", "index.html#autotoc_md5", [
+      [ "For Doxygen documentation click <a href=\"https://juraszekl.github.io/BME280_Driver/index.html\" >here</a>.", "index.html#autotoc_md0", null ],
+      [ "Driver for Bosch BME280 Combined sensor.", "index.html#autotoc_md1", null ],
+      [ "Features", "index.html#autotoc_md2", null ],
+      [ "Sensor description", "index.html#autotoc_md3", null ],
+      [ "1. Clone driver into your workign directory:", "index.html#autotoc_md6", null ],
+      [ "2. Include **__bme280.h__** file:", "index.html#autotoc_md7", null ],
+      [ "3. Perform configuration in **__bme280.h__** file if needed:", "index.html#autotoc_md8", null ],
+      [ "4. Write platform-specific functions required by driver:", "index.html#autotoc_md9", null ],
+      [ "5. Use BME280_Init Function before any operation:", "index.html#autotoc_md10", null ]
     ] ],
-    [ "Optional steps", "index.html#autotoc_md10", null ],
+    [ "Optional steps", "index.html#autotoc_md11", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
