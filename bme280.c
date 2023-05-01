@@ -25,6 +25,7 @@
  * @{
  */
 
+
 /**
  * @defgroup BME280_privmacros Macros
  * @{
