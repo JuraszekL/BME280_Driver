@@ -5,6 +5,8 @@ BME280 Driver
 ![BME280](https://raw.githubusercontent.com/JuraszekL/BME280_Driver/master/Resources/BME280.jpeg)
 ![Bosch](https://raw.githubusercontent.com/JuraszekL/BME280_Driver/master/Resources/Bosch.png)
 
+### For Doxygen documentation click [here](https://juraszekl.github.io/BME280_Driver/index.html).
+
 ### Driver for Bosch BME280 Combined sensor.
 [BME280 Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)
 
