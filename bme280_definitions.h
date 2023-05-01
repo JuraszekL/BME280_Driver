@@ -28,15 +28,6 @@
 #include <stdint.h>
 
 /**
- * @defgroup BME280_DevStat BME280 Device Status
- * @brief Possible values of #initialized field that informs is the device properly initialized
- * @{
- */
-#define BME280_NOT_INITIALIZED	(0x00) 	///< device is not initialized
-#define BME280_INITIALIZED		(0x01)	///< device is initialized
-///@}
-
-/**
  * @defgroup BME280_Ret BME280 Returnd Values
  * @brief Values that can be returned by the driver's functions
  * @{

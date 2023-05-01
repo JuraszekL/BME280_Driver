@@ -38,8 +38,11 @@
 	/* type of read */
 enum { read_all = 0, read_temp, read_press, read_hum};
 
-	/* possible value of mode variable inside BME280_t structure */
-enum {sleep_mode = 0x00, forced_mode = 0x01, normal_mode = 0x03};
+	/* possible value of "mode" variable inside BME280_t structure */
+enum { sleep_mode = 0x00, forced_mode = 0x01, normal_mode = 0x03 };
+
+	/* possible value of "initialized" variabie inside BME280_t structure */
+enum { not_initialized = 0x00, initialized };
 
 __attribute__((aligned(1))) struct adc_regs {
 
@@ -146,7 +149,7 @@ int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
 	/* read, parse and store compensation data */
 	res = bme280_read_compensation_parameters(Dev);
 
-	if(BME280_OK == res) Dev->initialized = BME280_INITIALIZED;
+	if(BME280_OK == res) Dev->initialized = initialized;
 	return res;
 }
 
@@ -1146,7 +1149,7 @@ static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out){
 	/* function checks if device was initialized and is in normal mode */
 static int8_t bme280_is_normal_mode(BME280_t *Dev){
 
-	if(BME280_NOT_INITIALIZED == Dev->initialized) {return BME280_NO_INIT_ERR;}
+	if(not_initialized == Dev->initialized) {return BME280_NO_INIT_ERR;}
 
 	if(normal_mode != Dev->mode) return BME280_CONDITION_ERR;
 
@@ -1156,7 +1159,7 @@ static int8_t bme280_is_normal_mode(BME280_t *Dev){
 	/* function checks if device was initialized and is in sleep mode */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev){
 
-	if(BME280_NOT_INITIALIZED == Dev->initialized) {return BME280_NO_INIT_ERR;}
+	if(not_initialized == Dev->initialized) {return BME280_NO_INIT_ERR;}
 
 	if(sleep_mode != Dev->mode) return BME280_CONDITION_ERR;
 
