@@ -1,0 +1,5 @@
+<map id="bme280_convert_h_U32_struct" name="bme280_convert_h_U32_struct">
+<area shape="rect" id="node1" title="convert humidity to structure" alt="" coords="215,23,377,64"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga35d468a2a302a5a99fea9e24c5460a0d" title="Function reads all measured data at once." alt="" coords="12,5,160,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga70c44b1e7ca47f1fb9c83bfd5f8ed186" title="Function reads last measured humidity." alt="" coords="5,55,167,80"/>
+</map>

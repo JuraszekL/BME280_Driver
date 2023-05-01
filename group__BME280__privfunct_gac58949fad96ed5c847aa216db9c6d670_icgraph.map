@@ -1,0 +1,12 @@
+<map id="bme280_compensate_h_u32t" name="bme280_compensate_h_u32t">
+<area shape="rect" id="node1" title="compensate humidity value" alt="" coords="461,179,652,204"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="236,179,413,204"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga35d468a2a302a5a99fea9e24c5460a0d" title="Function reads all measured data at once." alt="" coords="22,5,171,31"/>
+<area shape="rect" id="node4" href="$group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2" title="Function reads all measured data at once." alt="" coords="15,55,178,80"/>
+<area shape="rect" id="node5" href="$group__BME280__Driver.html#ga70c44b1e7ca47f1fb9c83bfd5f8ed186" title="Function reads last measured humidity." alt="" coords="16,104,177,130"/>
+<area shape="rect" id="node6" href="$group__BME280__Driver.html#gad796f4f86c3e8d85b4455da9c2f3ef2f" title="Function reads last measured humidity." alt="" coords="8,153,185,179"/>
+<area shape="rect" id="node7" href="$group__BME280__Driver.html#ga4c0d83c58eb71d3119e6d8c628a22659" title="Function reads last measured pressure." alt="" coords="13,203,180,228"/>
+<area shape="rect" id="node8" href="$group__BME280__Driver.html#ga606bbaaa98428f2c45f998de08265291" title="Function reads last measured pressure." alt="" coords="5,252,188,278"/>
+<area shape="rect" id="node9" href="$group__BME280__Driver.html#gab99f8811ddb1be885964dab35fe15e08" title="Function reads last measured temperature." alt="" coords="13,301,180,327"/>
+<area shape="rect" id="node10" href="$group__BME280__Driver.html#gad6cced9eb52bbaf726f25e55e8b247f0" title="Function reads last measured temperature." alt="" coords="6,351,187,376"/>
+</map>

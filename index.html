@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BME280 Driver: Main Page</title>
+<title>BME280 Driver: BME280 Driver</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -48,6 +52,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,14 +89,96 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">BME280 Driver Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">BME280 Driver </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://img.shields.io/github/v/release/JuraszekL/BME280_Driver?color=brightgreen" alt="version" class="inline"/></p>
+<p><img src="https://raw.githubusercontent.com/JuraszekL/BME280_Driver/master/Resources/BME280.jpeg" alt="BME280" class="inline"/> <img src="https://raw.githubusercontent.com/JuraszekL/BME280_Driver/master/Resources/Bosch.png" alt="Bosch" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md0"></a>
+Driver for Bosch BME280 Combined sensor.</h2>
+<p><a href="https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf">BME280 Datasheet</a></p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Features</h2>
+<ul>
+<li>Communication with I2C bus only</li>
+<li>Read all measured values in Normal mode only</li>
+<li>Results returned as integers or floats</li>
+<li>Configurable use 32-bit variables only (when 64-bit are not avalible)</li>
+<li>No dynamic memory allocation used</li>
+</ul>
+<p>Driver is still under development, next features will be add soon. Current version - v0.1.x</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Sensor description</h2>
+<p>The BME280 is a humidity sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters. The unit combines high linearity and high accuracy sensors and is perfectly feasible for low current consumption, long-term stability and high EMC robustness. The humidity sensor offers an extremely fast response time and therefore supports performance requirements for emerging applications such as context awareness, and high accuracy over a wide temperature range.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Motivation</h1>
+<p>This project is for learning purposes only. Feel free to use it.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+How to use</h1>
+<p>To use this driver perform steps listed below:</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+1. Clone driver into your workign directory:</h2>
+<div class="fragment"><div class="line">git clone https://github.com/JuraszekL/BME280_Driver.git</div>
+</div><!-- fragment --><p> or use as submodule if your working directory is a git repo </p><div class="fragment"><div class="line">git submodule add https://github.com/JuraszekL/BME280_Driver.git</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+2. Include **__bme280.h__** file:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="bme280_8h.html">bme280.h</a>&quot;</span></div>
+<div class="ttc" id="abme280_8h_html"><div class="ttname"><a href="bme280_8h.html">bme280.h</a></div><div class="ttdoc">Header for BME280 Driver.</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+3. Perform configuration in **__bme280.h__** file if needed:</h2>
+<div class="fragment"><div class="line"> </div>
+<div class="line"><span class="preprocessor">#define USE_64BIT</span></div>
+<div class="line"><span class="preprocessor">#define USE_FLOAT</span></div>
+<div class="line"><span class="preprocessor">#define USE_GETTERS</span></div>
+<div class="line"><span class="preprocessor">#define USE_SETTERS</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+4. Write platform-specific functions required by driver:</h2>
+<ul>
+<li>Read Function: <div class="fragment"><div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> int8_t (*<a class="code hl_typedef" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a>)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, <span class="keywordtype">void</span> *env_spec_data);</div>
+<div class="ttc" id="agroup__BME280__prots_html_ga118d97987d70651dc4f04647e3976eb3"><div class="ttname"><a href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a></div><div class="ttdeci">int8_t(* bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data)</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:166</div></div>
+</div><!-- fragment --></li>
+<li>Write Function: <div class="fragment"><div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> int8_t (*<a class="code hl_typedef" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a>)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, <span class="keywordtype">void</span> *env_spec_data);</div>
+<div class="ttc" id="agroup__BME280__prots_html_ga7c71502b5222452a999790497f860309"><div class="ttname"><a href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a></div><div class="ttdeci">int8_t(* bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data)</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:178</div></div>
+</div><!-- fragment --></li>
+<li>Delay Function: <div class="fragment"><div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a>)(uint8_t delay_time);</div>
+<div class="ttc" id="agroup__BME280__prots_html_ga53e2f01b2fff79561c1548da10bd2042"><div class="ttname"><a href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a></div><div class="ttdeci">void(* bme280_delayms)(uint8_t delay_time)</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:184</div></div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+5. Use BME280_Init Function before any operation:</h2>
+<div class="fragment"><div class="line"> </div>
+<div class="line">int8_t <a class="code hl_function" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6">BME280_Init</a>(<a class="code hl_struct" href="structBME280__t.html">BME280_t</a> *Dev, uint8_t I2cAddr, <span class="keywordtype">void</span> *EnvSpecData,</div>
+<div class="line">        <a class="code hl_typedef" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a> ReadFun, <a class="code hl_typedef" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> WriteFun, <a class="code hl_typedef" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a> Delay);</div>
+<div class="ttc" id="agroup__BME280__Driver_html_ga77f7a5746a22bccd06e46a7bc1c3e3f6"><div class="ttname"><a href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6">BME280_Init</a></div><div class="ttdeci">int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData, bme280_readbytes ReadFun, bme280_writebyte WriteFun, bme280_delayms Delay)</div><div class="ttdoc">Function to initialize sensor and resources.</div><div class="ttdef"><b>Definition:</b> bme280.c:204</div></div>
+<div class="ttc" id="astructBME280__t_html"><div class="ttname"><a href="structBME280__t.html">BME280_t</a></div><div class="ttdoc">Keeps all data related to a single sensor.</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:237</div></div>
+</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md10"></a>
+Optional steps</h1>
+<ul>
+<li>Change defined types if needed: <div class="fragment"><div class="line"><span class="keyword">typedef</span> int32_t <a class="code hl_typedef" href="group__BME280__pubtypedef.html#gae70d7f84cd968247f7b090605860575f">BME280_S32_t</a>;   </div>
+<div class="line"><span class="keyword">typedef</span> uint32_t <a class="code hl_typedef" href="group__BME280__pubtypedef.html#gaabb6320b11fe7353c3151d2ad006f5b4">BME280_U32_t</a>;  </div>
+<div class="line"><span class="keyword">typedef</span> int64_t <a class="code hl_typedef" href="group__BME280__pubtypedef.html#ga8ce132d31d34bed9f1878ac34e44c5b7">BME280_S64_t</a>;   </div>
+<div class="ttc" id="agroup__BME280__pubtypedef_html_ga8ce132d31d34bed9f1878ac34e44c5b7"><div class="ttname"><a href="group__BME280__pubtypedef.html#ga8ce132d31d34bed9f1878ac34e44c5b7">BME280_S64_t</a></div><div class="ttdeci">int64_t BME280_S64_t</div><div class="ttdoc">signed 64-bit integer variable</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:196</div></div>
+<div class="ttc" id="agroup__BME280__pubtypedef_html_gaabb6320b11fe7353c3151d2ad006f5b4"><div class="ttname"><a href="group__BME280__pubtypedef.html#gaabb6320b11fe7353c3151d2ad006f5b4">BME280_U32_t</a></div><div class="ttdeci">uint32_t BME280_U32_t</div><div class="ttdoc">unsigned 32-bit integer variable</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:195</div></div>
+<div class="ttc" id="agroup__BME280__pubtypedef_html_gae70d7f84cd968247f7b090605860575f"><div class="ttname"><a href="group__BME280__pubtypedef.html#gae70d7f84cd968247f7b090605860575f">BME280_S32_t</a></div><div class="ttdeci">int32_t BME280_S32_t</div><div class="ttdoc">signed 32-bit integer variable</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:194</div></div>
+</div><!-- fragment --></li>
+<li>Set all sensor's settings at once (after Init function) <div class="fragment"><div class="line"> </div>
+<div class="line">int8_t <a class="code hl_function" href="group__BME280__Driver.html#ga234d9a634cbc6f19a39847602646ff56">BME280_ConfigureAll</a>(<a class="code hl_struct" href="structBME280__t.html">BME280_t</a> *Dev, <a class="code hl_struct" href="structBME280__Config__t.html">BME280_Config_t</a> *Config);</div>
+<div class="ttc" id="agroup__BME280__Driver_html_ga234d9a634cbc6f19a39847602646ff56"><div class="ttname"><a href="group__BME280__Driver.html#ga234d9a634cbc6f19a39847602646ff56">BME280_ConfigureAll</a></div><div class="ttdeci">int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config)</div><div class="ttdoc">Function to set all sensor settings at once.</div><div class="ttdef"><b>Definition:</b> bme280.c:242</div></div>
+<div class="ttc" id="astructBME280__Config__t_html"><div class="ttname"><a href="structBME280__Config__t.html">BME280_Config_t</a></div><div class="ttdoc">Contains all sensor's settings.</div><div class="ttdef"><b>Definition:</b> bme280_definitions.h:271</div></div>
+</div><!-- fragment --> </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
 </body>
 </html>

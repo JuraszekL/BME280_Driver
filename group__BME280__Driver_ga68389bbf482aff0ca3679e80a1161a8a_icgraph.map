@@ -1,0 +1,4 @@
+<map id="BME280_Reset" name="BME280_Reset">
+<area shape="rect" id="node1" title="Function to perform sensor&#39;s software reset." alt="" coords="149,5,260,31"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources." alt="" coords="5,5,101,31"/>
+</map>

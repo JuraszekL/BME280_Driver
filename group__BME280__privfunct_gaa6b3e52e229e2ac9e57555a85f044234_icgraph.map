@@ -1,0 +1,4 @@
+<map id="bme280_read_compensation_parameters" name="bme280_read_compensation_parameters">
+<area shape="rect" id="node1" title="read compensation data" alt="" coords="149,5,336,46"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources." alt="" coords="5,13,101,39"/>
+</map>

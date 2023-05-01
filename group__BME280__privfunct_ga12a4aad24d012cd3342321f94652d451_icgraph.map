@@ -1,0 +1,5 @@
+<map id="bme280_convert_t_S32_struct" name="bme280_convert_t_S32_struct">
+<area shape="rect" id="node1" title="convert temperature to structure" alt="" coords="220,23,378,64"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga35d468a2a302a5a99fea9e24c5460a0d" title="Function reads all measured data at once." alt="" coords="14,5,163,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#gab99f8811ddb1be885964dab35fe15e08" title="Function reads last measured temperature." alt="" coords="5,55,172,80"/>
+</map>

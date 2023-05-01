@@ -1,0 +1,5 @@
+<map id="bme280_convert_t_S32_float" name="bme280_convert_t_S32_float">
+<area shape="rect" id="node1" title="convert temperature to float" alt="" coords="235,23,393,64"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2" title="Function reads all measured data at once." alt="" coords="14,5,178,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#gad6cced9eb52bbaf726f25e55e8b247f0" title="Function reads last measured temperature." alt="" coords="5,55,187,80"/>
+</map>

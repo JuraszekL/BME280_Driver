@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -48,6 +52,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('group__BME280__readfl.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -151,6 +171,24 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph.png" border="0" usemap="#agroup__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph" alt=""/></div>
+<map name="agroup__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph" id="agroup__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph">
+<area shape="rect" title="Function reads all measured data at once." alt="" coords="5,144,169,169"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="224,5,387,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="224,71,387,111"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="226,136,385,177"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="221,201,390,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="217,250,394,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="442,152,633,177"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="442,201,633,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="444,250,632,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="453,300,623,325"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="465,349,610,390"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -198,6 +236,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph.png" border="0" usemap="#agroup__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" alt=""/></div>
+<map name="agroup__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" id="agroup__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph">
+<area shape="rect" title="Function reads last measured humidity." alt="" coords="5,70,182,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="237,5,400,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="234,70,403,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="230,120,407,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="455,21,646,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="455,70,646,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="457,120,645,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="466,169,636,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="478,219,623,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -245,6 +299,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph.png" border="0" usemap="#agroup__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph" alt=""/></div>
+<map name="agroup__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph" id="agroup__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph">
+<area shape="rect" title="Function reads last measured pressure." alt="" coords="5,70,188,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="243,5,406,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="240,70,409,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="236,120,413,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="461,21,652,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="461,70,652,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="463,120,651,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="472,169,642,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="484,219,629,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -292,13 +362,32 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph.png" border="0" usemap="#agroup__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" alt=""/></div>
+<map name="agroup__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" id="agroup__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph">
+<area shape="rect" title="Function reads last measured temperature." alt="" coords="5,70,187,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="244,5,403,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="239,70,408,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="235,120,412,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="460,21,651,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="460,70,651,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="462,120,650,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="471,169,641,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="483,219,628,259"/>
+</map>
+</div>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
 </body>
 </html>

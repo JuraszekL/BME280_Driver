@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -48,6 +52,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('group__BME280__Driver.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -86,7 +106,7 @@ Collaboration diagram for BME280_Driver:</div>
 <div class="center"><img src="group__BME280__Driver.png" border="0" usemap="#agroup____BME280____Driver" alt=""/></div>
 <map name="agroup____BME280____Driver" id="agroup____BME280____Driver">
 <area shape="rect" title="BME280 Driver." alt="" coords="5,203,117,228"/>
-<area shape="rect" href="group__BME280__I2CAddr.html" title="Address on I2C bus depends of SDO pin connection. Use one of these values as #I2cAddr parameter in BM..." alt="" coords="173,5,318,31"/>
+<area shape="rect" href="group__BME280__I2CAddr.html" title="Address on I2C bus depends of SDO pin connection. Use one of these values as &quot;I2cAddr&quot; parameter in B..." alt="" coords="173,5,318,31"/>
 <area shape="rect" href="group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="189,55,302,80"/>
 <area shape="rect" href="group__BME280__Regs.html" title="Definition of register addresses and lenghts." alt="" coords="181,104,310,130"/>
 <area shape="rect" href="group__BME280__Ret.html" title="Values that can be returned by the driver&#39;s functions." alt="" coords="165,153,326,179"/>
@@ -113,7 +133,7 @@ Modules</h2></td></tr>
 <tr class="memdesc:group__BME280__Ret"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values that can be returned by the driver's functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__BME280__I2CAddr"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__I2CAddr.html">BME280 I2C Address</a></td></tr>
-<tr class="memdesc:group__BME280__I2CAddr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address on I2C bus depends of SDO pin connection. Use one of these values as #I2cAddr parameter in <a class="el" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function. <br /></td></tr>
+<tr class="memdesc:group__BME280__I2CAddr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in <a class="el" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__BME280__Regs"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Regs.html">BME280 Registers</a></td></tr>
 <tr class="memdesc:group__BME280__Regs"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of register addresses and lenghts. <br /></td></tr>
@@ -274,6 +294,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga234d9a634cbc6f19a39847602646ff56_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga234d9a634cbc6f19a39847602646ff56_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga234d9a634cbc6f19a39847602646ff56_cgraph" id="agroup__BME280__Driver_ga234d9a634cbc6f19a39847602646ff56_cgraph">
+<area shape="rect" title="Function to set all sensor settings at once." alt="" coords="5,5,152,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="200,5,361,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -310,6 +339,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gae11ebd6d7bd44d29029b38c9ed25c4f5_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gae11ebd6d7bd44d29029b38c9ed25c4f5_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gae11ebd6d7bd44d29029b38c9ed25c4f5_cgraph" id="agroup__BME280__Driver_gae11ebd6d7bd44d29029b38c9ed25c4f5_cgraph">
+<area shape="rect" title="Function disables 3&#45;wire SPI bus." alt="" coords="5,5,181,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="229,5,390,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -346,6 +384,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga3ee05f6cdc49f08360b7ddb23501c877_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga3ee05f6cdc49f08360b7ddb23501c877_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga3ee05f6cdc49f08360b7ddb23501c877_cgraph" id="agroup__BME280__Driver_ga3ee05f6cdc49f08360b7ddb23501c877_cgraph">
+<area shape="rect" title="Function enables 3&#45;wire SPI bus." alt="" coords="5,5,177,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="225,5,386,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -390,6 +437,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gab105f46ef83181777c044da90811d9af_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gab105f46ef83181777c044da90811d9af_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gab105f46ef83181777c044da90811d9af_cgraph" id="agroup__BME280__Driver_gab105f46ef83181777c044da90811d9af_cgraph">
+<area shape="rect" title="Function gets current humidity Oversampling from sensor." alt="" coords="5,5,138,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="186,5,347,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -434,6 +490,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gabac6aa8248a7a8505655960497fed56b_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gabac6aa8248a7a8505655960497fed56b_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gabac6aa8248a7a8505655960497fed56b_cgraph" id="agroup__BME280__Driver_gabac6aa8248a7a8505655960497fed56b_cgraph">
+<area shape="rect" title="Function gets current Operating Mode from sensor." alt="" coords="5,5,136,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="184,5,345,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -478,6 +543,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga6bac94aca5f465eb65661482969692ae_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga6bac94aca5f465eb65661482969692ae_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga6bac94aca5f465eb65661482969692ae_cgraph" id="agroup__BME280__Driver_ga6bac94aca5f465eb65661482969692ae_cgraph">
+<area shape="rect" title="Function gets current pressure Oversampling from sensor." alt="" coords="5,5,137,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="185,5,346,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -522,6 +596,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga5543c6d619ba917c7dac2cda0cafb08d_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga5543c6d619ba917c7dac2cda0cafb08d_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga5543c6d619ba917c7dac2cda0cafb08d_cgraph" id="agroup__BME280__Driver_ga5543c6d619ba917c7dac2cda0cafb08d_cgraph">
+<area shape="rect" title="Function gets current IIR Filter coeficient from sensor." alt="" coords="5,5,141,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="189,5,350,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -566,6 +649,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga4c61f72e84a4f4ed90e46eeb11796f95_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga4c61f72e84a4f4ed90e46eeb11796f95_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga4c61f72e84a4f4ed90e46eeb11796f95_cgraph" id="agroup__BME280__Driver_ga4c61f72e84a4f4ed90e46eeb11796f95_cgraph">
+<area shape="rect" title="Function gets current temperature Oversampling from sensor." alt="" coords="5,5,136,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="184,5,345,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -610,6 +702,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gab215d4921f1604f9257e9ac7c2f67cd3_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gab215d4921f1604f9257e9ac7c2f67cd3_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gab215d4921f1604f9257e9ac7c2f67cd3_cgraph" id="agroup__BME280__Driver_gab215d4921f1604f9257e9ac7c2f67cd3_cgraph">
+<area shape="rect" title="Function gets current Standby Time from sensor." alt="" coords="5,5,138,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="186,5,347,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -665,7 +766,7 @@ Functions</h2></td></tr>
 
 <p>Function to initialize sensor and resources. </p>
 <dl class="section note"><dt>Note</dt><dd>This must be a first function usend in code before any other opearion can be performed!</dd></dl>
-<p>Init funtion performs sensor reset and checks <a class="el" href="group__BME280__Regs.html#ga9aa1e714b7260f21de419112f041aad7" title="Chip ID.">BME280_ID</a>. It doesn't set any sensor's parameters. Calibration data specific for each one sensor are read while Init function. If operation is completed with success function sets #BME280_INITIALIZED value in <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Init funtion performs sensor reset and checks <a class="el" href="group__BME280__Regs.html#ga9aa1e714b7260f21de419112f041aad7" title="Chip ID.">BME280_ID</a>. It doesn't set any sensor's parameters. Calibration data specific for each one sensor are read while Init function. If operation is completed with success function sets "initialized" value in <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure which should be initialized </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">I2cAddr</td><td>value of sensor's I2C address, should be <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> or <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> only </td></tr>
@@ -683,6 +784,16 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gac2ba5cf36e4e6d585f2e0292a150f37f" title="device ID doesn&#39;t match with BME280_ID">BME280_ID_ERR</a> sensor's id doesnt match with <a class="el" href="group__BME280__Regs.html#ga9aa1e714b7260f21de419112f041aad7" title="Chip ID.">BME280_ID</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph" id="agroup__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph">
+<area shape="rect" title="Function to initialize sensor and resources." alt="" coords="5,42,101,68"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaa6b3e52e229e2ac9e57555a85f044234" title="read compensation data" alt="" coords="149,5,336,46"/>
+<area shape="rect" href="group__BME280__Driver.html#ga68389bbf482aff0ca3679e80a1161a8a" title="Function to perform sensor&#39;s software reset." alt="" coords="187,70,298,96"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -727,6 +838,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gad3f3110ddd3b0b848a336f502ede24e8_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gad3f3110ddd3b0b848a336f502ede24e8_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gad3f3110ddd3b0b848a336f502ede24e8_cgraph" id="agroup__BME280__Driver_gad3f3110ddd3b0b848a336f502ede24e8_cgraph">
+<area shape="rect" title="Function checks if 3&#45;wire SPI is enabled." alt="" coords="5,5,195,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="243,5,404,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -774,6 +894,24 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph" id="agroup__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph">
+<area shape="rect" title="Function reads all measured data at once." alt="" coords="5,144,154,169"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab95b8d21c52e0b0d2e4777a9cd7d7b2d" title="convert humidity to structure" alt="" coords="209,5,372,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="209,71,372,111"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="211,136,370,177"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="206,201,375,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="202,250,379,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="427,152,618,177"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="427,201,618,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="429,250,617,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="438,300,608,325"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="450,349,595,390"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -821,6 +959,24 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph" id="agroup__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph">
+<area shape="rect" title="Function reads all measured data at once." alt="" coords="5,144,169,169"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="224,5,387,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="224,71,387,111"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="226,136,385,177"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="221,201,390,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="217,250,394,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="442,152,633,177"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="442,201,633,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="444,250,632,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="453,300,623,325"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="465,349,610,390"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -875,6 +1031,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph" id="agroup__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph">
+<area shape="rect" title="Function reads last measured humidity." alt="" coords="5,70,167,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab95b8d21c52e0b0d2e4777a9cd7d7b2d" title="convert humidity to structure" alt="" coords="222,5,385,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="219,70,388,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="215,120,392,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="440,21,631,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="440,70,631,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="442,120,630,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="451,169,621,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="463,219,608,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -922,6 +1094,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" id="agroup__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph">
+<area shape="rect" title="Function reads last measured humidity." alt="" coords="5,70,182,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="237,5,400,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="234,70,403,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="230,120,407,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="455,21,646,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="455,70,646,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="457,120,645,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="466,169,636,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="478,219,623,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -976,6 +1164,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph" id="agroup__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph">
+<area shape="rect" title="Function reads last measured pressure." alt="" coords="5,70,173,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="228,5,391,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="225,70,394,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="221,120,398,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="446,21,637,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="446,70,637,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="448,120,636,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="457,169,627,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="469,219,614,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1023,6 +1227,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph" id="agroup__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph">
+<area shape="rect" title="Function reads last measured pressure." alt="" coords="5,70,188,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="243,5,406,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="240,70,409,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="236,120,413,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="461,21,652,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="461,70,652,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="463,120,651,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="472,169,642,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="484,219,629,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1077,6 +1297,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph" id="agroup__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph">
+<area shape="rect" title="Function reads last measured temperature." alt="" coords="5,70,172,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="229,5,388,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="224,70,393,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="220,120,397,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="445,21,636,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="445,70,636,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="447,120,635,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="456,169,626,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="468,219,613,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1124,6 +1360,22 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" id="agroup__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph">
+<area shape="rect" title="Function reads last measured temperature." alt="" coords="5,70,187,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="244,5,403,46"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="239,70,408,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="235,120,412,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="460,21,651,47"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="460,70,651,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="462,120,650,145"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="471,169,641,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="483,219,628,259"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1144,7 +1396,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to perform sensor's software reset. </p>
-<p>Function sends <a class="el" href="group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950" title="value that should be written to Reset register">BME280_RESET_VALUE</a> to <a class="el" href="group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4" title="address of Reset register">BME280_RESET_ADDR</a>. To perform this operation <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> function must be set inside <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> *Dev structure. Function sets sleep_mode inside *Dev structure after reset. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function sends <a class="el" href="group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950" title="value that should be written to Reset register">BME280_RESET_VALUE</a> to <a class="el" href="group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4" title="address of Reset register">BME280_RESET_ADDR</a>. To perform this operation <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> function must be set inside <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> *Dev structure. Function sets "sleep_mode" inside *Dev structure after reset. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
   </table>
@@ -1155,6 +1407,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed or <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> function is not set </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph.png" border="0" usemap="#agroup__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph" id="agroup__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph">
+<area shape="rect" title="Function to perform sensor&#39;s software reset." alt="" coords="149,5,260,31"/>
+<area shape="rect" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources." alt="" coords="5,5,101,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1202,6 +1463,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga5e945ae3a0ff27c3c3b4a0ebe5649404_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga5e945ae3a0ff27c3c3b4a0ebe5649404_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga5e945ae3a0ff27c3c3b4a0ebe5649404_cgraph" id="agroup__BME280__Driver_ga5e945ae3a0ff27c3c3b4a0ebe5649404_cgraph">
+<area shape="rect" title="Function sets sensor&#39;s IIR Filter coeficient." alt="" coords="5,5,132,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="180,5,341,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1249,6 +1519,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gafd8641bfda9f876780a985a22d4e9f4e_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gafd8641bfda9f876780a985a22d4e9f4e_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gafd8641bfda9f876780a985a22d4e9f4e_cgraph" id="agroup__BME280__Driver_gafd8641bfda9f876780a985a22d4e9f4e_cgraph">
+<area shape="rect" title="Function sets sensor&#39;s humidity Oversampling." alt="" coords="5,5,137,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="185,5,346,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1293,6 +1572,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga3e0acbb8b2b084d390dbad162c16cd3c_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga3e0acbb8b2b084d390dbad162c16cd3c_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga3e0acbb8b2b084d390dbad162c16cd3c_cgraph" id="agroup__BME280__Driver_ga3e0acbb8b2b084d390dbad162c16cd3c_cgraph">
+<area shape="rect" title="Function sets sensor&#39;s Operating Mode." alt="" coords="5,5,135,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="183,5,344,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1340,6 +1628,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga18dc50119c4eaba4a541a0c252112c1b_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga18dc50119c4eaba4a541a0c252112c1b_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga18dc50119c4eaba4a541a0c252112c1b_cgraph" id="agroup__BME280__Driver_ga18dc50119c4eaba4a541a0c252112c1b_cgraph">
+<area shape="rect" title="Function sets sensor&#39;s pressure Oversampling." alt="" coords="5,5,136,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="184,5,345,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1387,6 +1684,15 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gaaea37172f9ecfc23c2d1812813376ca4_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gaaea37172f9ecfc23c2d1812813376ca4_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gaaea37172f9ecfc23c2d1812813376ca4_cgraph" id="agroup__BME280__Driver_gaaea37172f9ecfc23c2d1812813376ca4_cgraph">
+<area shape="rect" title="Function sets sensor&#39;s temperature Oversampling." alt="" coords="5,5,135,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="183,5,344,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1434,13 +1740,25 @@ Functions</h2></td></tr>
 <a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga201381e8e1b2ec5500493eb27a3d5d9d_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga201381e8e1b2ec5500493eb27a3d5d9d_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga201381e8e1b2ec5500493eb27a3d5d9d_cgraph" id="agroup__BME280__Driver_ga201381e8e1b2ec5500493eb27a3d5d9d_cgraph">
+<area shape="rect" title="Function sets sensor&#39;s Standby Time." alt="" coords="5,5,137,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="185,5,346,31"/>
+</map>
+</div>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
 </body>
 </html>

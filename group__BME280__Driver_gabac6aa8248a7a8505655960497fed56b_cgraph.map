@@ -1,0 +1,4 @@
+<map id="BME280_GetMode" name="BME280_GetMode">
+<area shape="rect" id="node1" title="Function gets current Operating Mode from sensor." alt="" coords="5,5,136,31"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="184,5,345,31"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="bme280_convert_p_U32_float" name="bme280_convert_p_U32_float">
+<area shape="rect" id="node1" title="convert pressure to structure" alt="" coords="236,23,398,64"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2" title="Function reads all measured data at once." alt="" coords="15,5,178,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga606bbaaa98428f2c45f998de08265291" title="Function reads last measured pressure." alt="" coords="5,55,188,80"/>
+</map>

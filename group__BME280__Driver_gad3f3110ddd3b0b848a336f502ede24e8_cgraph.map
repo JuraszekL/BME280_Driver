@@ -1,0 +1,4 @@
+<map id="BME280_Is3WireSPIEnabled" name="BME280_Is3WireSPIEnabled">
+<area shape="rect" id="node1" title="Function checks if 3&#45;wire SPI is enabled." alt="" coords="5,5,195,31"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="243,5,404,31"/>
+</map>
