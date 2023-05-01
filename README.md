@@ -1,7 +1,12 @@
 BME280 Driver
 =============
 ![version](https://img.shields.io/github/v/release/JuraszekL/BME280_Driver?color=brightgreen)
+
 ![BME280](/Resources/BME280.jpeg)
+![Bosch](/Resources/Bosch.png)
+
+### Driver for Bosch BME280 Combined sensor.
+[BME280 Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)
 
 ### Features
 
@@ -14,7 +19,7 @@ BME280 Driver
 Driver is still under development, next features will be add soon.
 Current version - v0.1.x
 
-### Driver for Bosch BME280 Combined sensor.
+### Sensor description
 
 The BME280 is a humidity sensor especially developed for mobile applications and wearables where size and low power consumption are key design parameters.
 The unit combines high linearity and high accuracy sensors and is perfectly feasible for low current consumption, long-term stability and high EMC robustness.
