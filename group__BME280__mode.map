@@ -1,0 +1,4 @@
+<map id="Operating Mode" name="Operating Mode">
+<area shape="rect" id="node1" href="$group__BME280__Sett.html" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="5,5,127,31"/>
+<area shape="rect" id="node2" title="Possible operating modes." alt="" coords="175,5,287,31"/>
+</map>

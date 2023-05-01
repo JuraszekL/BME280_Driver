@@ -1,0 +1,4 @@
+<map id="BME280_t" name="BME280_t">
+<area shape="rect" id="node1" title="Keeps all data related to a single sensor." alt="" coords="49,94,130,120"/>
+<area shape="rect" id="node2" href="$structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor." alt="" coords="5,5,174,31"/>
+</map>

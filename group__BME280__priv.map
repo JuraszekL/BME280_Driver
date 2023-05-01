@@ -1,0 +1,7 @@
+<map id="Private Resources" name="Private Resources">
+<area shape="rect" id="node1" href="$group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,55,117,80"/>
+<area shape="rect" id="node2" title="only for internal library purposes" alt="" coords="165,55,292,80"/>
+<area shape="rect" id="node3" href="$group__BME280__privenums.html" title=" " alt="" coords="349,5,410,31"/>
+<area shape="rect" id="node4" href="$group__BME280__privfunct.html" title=" " alt="" coords="340,55,418,80"/>
+<area shape="rect" id="node5" href="$group__BME280__privmacros.html" title=" " alt="" coords="347,104,411,130"/>
+</map>
