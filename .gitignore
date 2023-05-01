@@ -52,5 +52,5 @@ Mkfile.old
 dkms.conf
 
 # Doxygen
-MyDoxygen
+MyDoxygen~
 /Doc
