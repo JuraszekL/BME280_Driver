@@ -34,6 +34,7 @@
 #define BME280_ID_ERR			(-3)	///< device ID doesn't match with #BME280_ID
 #define BME280_NO_INIT_ERR		(-4)	///< device wasn't initialized properly and operation cannot be performed
 #define BME280_CONDITION_ERR	(-5)	///< device is set to wrong operation mode, cannot perform operation
+#define BME280_BUSY_ERR			(-6)	///< device is busy
 ///@}
 
 /**
