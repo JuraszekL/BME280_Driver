@@ -306,7 +306,7 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	}
 	else if(BME280_NORMALMODE == Config->mode){
 
-			Dev->mode = normal_mode;
+		Dev->mode = normal_mode;
 	}
 
 	return res;
@@ -1012,9 +1012,9 @@ static int8_t bme280_read_compensation_parameters(BME280_t *Dev){
 
 	/* read two calibration data's areas from sensor */
 	res = Dev->read(BME280_CALIB_DATA1_ADDR, &tmp_buff[0], BME280_CALIB_DATA1_LEN, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return res;
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 	res = Dev->read(BME280_CALIB_DATA2_ADDR, &tmp_buff[25], BME280_CALIB_DATA2_LEN, Dev->i2c_address, Dev->env_spec_data);
-	if(BME280_OK != res) return res;
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	// parse data to the structure inside Dev
 	Dev->trimm.dig_T1 = CAT_UI16T(tmp_buff[1], tmp_buff[0]);
@@ -1080,6 +1080,7 @@ static int8_t bme280_read_compensate(uint8_t read_type, BME280_t *Dev, BME280_S3
 		return BME280_PARAM_ERR;
 		break;
 	}
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse  and compensate data from adc_raw structure to variables */
 	adc_T = bme280_parse_press_temp_s32t((uint8_t *)&adc_raw.temp_raw);
