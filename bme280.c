@@ -192,6 +192,30 @@ static int8_t bme280_is_normal_mode(BME280_t *Dev);
  * is set as "sleep_mode"
  */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev);
+
+/**
+ * @brief check and set forced mode
+ *
+ * Function checks if conditions to set forced mode are met, calculates and returns required
+ * delay time (via *delay pointer) then sets forced mode
+ */
+static int8_t bme280_set_forced_mode(BME280_t *Dev, uint8_t *delay);
+
+/**
+ * @brief change osrs_x reg value to oversampling
+ *
+ * Function converts register value to oversampling value
+ * f.e. osrs_p = 0x04 then pressure oversampling = x8
+ */
+static void bme280_osrs_to_oversampling(uint8_t *osrs);
+
+/**
+ * @brief check if sensor is busy
+ *
+ * Function reads "status" register and checks value of two its bits
+ * returns #BME280_BUSY_ERR if any of them is set
+ */
+static int8_t bme280_busy_check(BME280_t *Dev);
 ///@}
 ///@}
 
@@ -841,6 +865,41 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 	return res;
 }
 
+	/* function forces single measurement and reads the data (no floats) */
+int8_t BME280_ReadForceAll(BME280_t *Dev, BME280_Data_t *Data){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press, hum;
+	uint8_t delay;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	res = bme280_set_forced_mode(Dev, &delay);
+	if(BME280_OK != res) return res;
+
+	Dev->delay(delay);
+
+	res = bme280_busy_check(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit values to Data structure */
+	bme280_convert_t_S32_struct(temp, Data);
+	bme280_convert_p_U32_struct(press, Data);
+	bme280_convert_h_U32_struct(hum, Data);
+
+	return res;
+}
+
 #ifdef USE_FLOAT
 	/* function reads last measured values from sensor in normal mode (with floats) */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
@@ -1255,4 +1314,70 @@ static int8_t bme280_is_sleep_mode(BME280_t *Dev){
 	return BME280_OK;
 }
 
+	/* function checks and sets forced mode if possible + calculates delay */
+static int8_t bme280_set_forced_mode(BME280_t *Dev, uint8_t *delay){
+
+	int8_t res = BME280_OK;
+	uint8_t buff[3];
+	uint8_t mode, osrs_t, osrs_p, osrs_h;
+
+	/* read ctrl_hum, status and ctrl_meas registers */
+	res = Dev->read(BME280_CTRL_HUM_ADDR, buff, 3, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if sensor is not busy */
+	buff[1] &= 0x09; // mask bits "measuring" - bit 0 and "im_update" - bit 3 only (0x09 = 0b00001001)
+	if(0 != buff[1]) return BME280_BUSY_ERR;
+
+	/* check if sensor is in sleep mode */
+	mode = buff[2] & 0x03;
+	if(BME280_SLEEPMODE != mode) return BME280_CONDITION_ERR;
+
+	/* parse oversampling values from ctrl_meas */
+	osrs_p = (buff[2] >> 2) & 0x07;
+	osrs_t = (buff[2] >> 5) & 0x07;
+	osrs_h = buff[0] & 0x07;
+
+	/* covert osrs_x reg values into oversampling values */
+	bme280_osrs_to_oversampling(&osrs_p);
+	bme280_osrs_to_oversampling(&osrs_t);
+	bme280_osrs_to_oversampling(&osrs_h);
+
+	/* calculate delay */
+	*delay = ((125U + (230U * osrs_t) + ((230U * osrs_p) + 58U) + ((230U * osrs_h) + 58U)) / 100U) + 1U;
+
+	/* set forced mode */
+	buff[2] &= 0xFC;	///0xFC - 0b11111100
+	buff[2] |= BME280_FORCEDMODE;
+	res = Dev->write(BME280_CTRL_MEAS_ADDR, buff[2], Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	return res;
+}
+
+	/* convers osrs_x register value to oversampling value */
+static void bme280_osrs_to_oversampling(uint8_t *osrs){
+
+	if(*osrs <= BME280_OVERSAMPLING_X2) return;				// here reg value = ovs value, no need to change
+	else if(BME280_OVERSAMPLING_X4 == *osrs) *osrs = 4U;	// set ovs = 4
+	else if(BME280_OVERSAMPLING_X8 == *osrs) *osrs = 8U;	// set ovs = 8
+	else *osrs = 16U;										// any other case set ovs max = 16
+}
+
+	/* checks sensor's status */
+static int8_t bme280_busy_check(BME280_t *Dev){
+
+	int8_t res = BME280_OK;
+	uint8_t status;
+
+	/* read status register */
+	res = Dev->read(BME280_STATUS_ADDR, &status, 1, Dev->i2c_address, Dev->env_spec_data);
+	if(BME280_OK != res) return BME280_INTERFACE_ERR;
+
+	/* check if both bits are not set */
+	status &= 0x09; // mask bits "measuring" - bit 0 and "im_update" - bit 3 only (0x09 = 0b00001001)
+	if(0 != status) return BME280_BUSY_ERR;
+
+	return res;
+}
 ///@}

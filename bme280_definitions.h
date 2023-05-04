@@ -77,6 +77,9 @@
 #define BME280_TEMP_ADC_LEN		(3U)	///< lenght of temperature adc data
 #define BME280_HUM_ADC_ADDR		(0xFD)	///< address of humidity adc data
 #define BME280_HUM_ADC_LEN		(2U)	///< lenght of humidity adc data
+
+	/* status register */
+#define BME280_STATUS_ADDR		(0xF3)	///< address of status register
 ///@}
 
 /**
