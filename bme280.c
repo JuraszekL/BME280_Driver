@@ -866,7 +866,7 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 }
 
 	/* function forces single measurement and reads the data (no floats) */
-int8_t BME280_ReadForceAll(BME280_t *Dev, BME280_Data_t *Data){
+int8_t BME280_ReadAllForce(BME280_t *Dev, BME280_Data_t *Data){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -994,6 +994,41 @@ int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum){
 
 	/* convert 32bit value to external float */
 	bme280_convert_h_U32_float(hum, Hum);
+
+	return res;
+}
+
+	/* function forces single measurement and reads the data (with floats) */
+int8_t BME280_ReadAllForce_F(BME280_t *Dev, BME280_DataF_t *Data){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press, hum;
+	uint8_t delay;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Data) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	res = bme280_set_forced_mode(Dev, &delay);
+	if(BME280_OK != res) return res;
+
+	Dev->delay(delay);
+
+	res = bme280_busy_check(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_all, Dev, &temp, &press, &hum);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit values to Data structure */
+	bme280_convert_t_S32_float(temp, &Data->temp);
+	bme280_convert_p_U32_float(press, &Data->press);
+	bme280_convert_h_U32_float(hum, &Data->hum);
 
 	return res;
 }
