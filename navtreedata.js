@@ -27,7 +27,7 @@ var NAVTREE =
   [ "BME280 Driver", "index.html", [
     [ "Motivation", "index.html#autotoc_md4", null ],
     [ "How to use", "index.html#autotoc_md5", [
-      [ "For Doxygen documentation click <a href=\"https://juraszekl.github.io/BME280_Driver/index.html\" >here</a>.", "index.html#autotoc_md0", null ],
+      [ "For Doxygen documentation click <a href=\"https://juraszekl.github.io/BME280_Driver/index.html\" >here</a>. (only latest version)", "index.html#autotoc_md0", null ],
       [ "Driver for Bosch BME280 Combined sensor.", "index.html#autotoc_md1", null ],
       [ "Features", "index.html#autotoc_md2", null ],
       [ "Sensor description", "index.html#autotoc_md3", null ],
