@@ -232,10 +232,10 @@ struct BME280_calibration_data {
 ///@}
 
 /**
- * @struct BME280_t
- * @brief Keeps all data related to a single sensor.
- * @note User should not manipulate this structure. It is only for internal library use.
- * Any changes should be done by dedicated public functions.
+ * @struct BME280_Driver_t
+ * @brief Keeps all data specific for used platform
+ *
+ * Use this structure with #BME280_Init function
  * @{
  */
 typedef struct {
@@ -244,13 +244,26 @@ typedef struct {
 	uint8_t i2c_address;
 	/// pointer to platform specific data (f.e. to i2c bus structure)
 	void *env_spec_data;
-
 	/// pointer to user defined function that reads data from sensor
 	bme280_readbytes read;
 	/// pointer to user defined function that writes data to sensor
 	bme280_writebyte write;
 	/// pointer to user defined delay function
 	bme280_delayms delay;
+
+} BME280_Driver_t;
+
+/**
+ * @struct BME280_t
+ * @brief Keeps all data related to a single sensor.
+ * @note User should not manipulate this structure. It is only for internal library use.
+ * Any changes should be done by dedicated public functions.
+ * @{
+ */
+typedef struct {
+
+	/// structure with driver functions
+	BME280_Driver_t *driver;
 
 	/// structure with calibration data
 	struct BME280_calibration_data trimm;

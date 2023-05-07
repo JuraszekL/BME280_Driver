@@ -63,19 +63,14 @@ extern "C" {
  * data specific for each one sensor are read while Init function. If operation is completed with
  * success function sets "initialized" value in #BME280_t structure.
  * @param[in] *Dev pointer to #BME280_t structure which should be initialized
- * @param[in] I2cAddr value of sensor's I2C address, should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOL only
- * @param[in] *EnvSpecData pointer to platform specific data which are required to transfer data (f.e. pointer
- * to i2c structure)
- * @param[in] ReadFun pointer to user-created function that will be used to read data from sensor
- * @param[in] WriteFun pointer to user-created function that will be used to write data to sensor
- * @param[in] Delay pointer to user-created delay function
+ * @param[in] *Driver pointer to BME280_Driver_t structure where all platform specific data are stored. This structure
+ * MUST exist while program is running - do not use local structures to init sensor!
  * @return #BME280_OK success
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_ID_ERR sensor's id doesnt match with #BME280_ID
  */
-int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
-		bme280_readbytes ReadFun, bme280_writebyte WriteFun, bme280_delayms Delay);
+int8_t BME280_Init(BME280_t *Dev, BME280_Driver_t *Driver);
 
 /**
  * @brief Function to perform sensor's software reset
