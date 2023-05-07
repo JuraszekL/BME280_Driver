@@ -43,6 +43,10 @@ extern "C" {
 #define USE_GETTERS
 /// comment this line if you don't need to write single setting with any setX function
 #define USE_SETTERS
+/// comment this line if you don't use functionns to read data in normal mode (BME280_ReadxxxLast/BME280_ReadxxxLast_F)
+#define USE_NORMAL_MODE
+/// comment this line if you don't use functionns to read data in forced mode (BME280_ReadxxxForce/BME280_ReadxxxForce_F)
+#define USE_FORCED_MODE
 ///@}
 
 /**
@@ -346,6 +350,15 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev);
 /**
  * @defgroup BME280_readnofl Read Functions (int)
  * @brief read measured data from sensor as integers
+ * @note #USE_INTEGER_RESULTS in @ref BME280_libconf must be uncommented to use these functions
+ * @{
+ */
+
+#ifdef USE_NORMAL_MODE
+/**
+ * @defgroup BME280_readnormalmodei Read in normal mode
+ * @brief read last measured data from sensor in normal mode
+ * @note #USE_NORMAL_MODE in @ref BME280_libconf must be uncommented to use these functions
  * @{
  */
 
@@ -418,6 +431,16 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
+///@}
+#endif
+
+#ifdef USE_FORCED_MODE
+/**
+ * @defgroup BME280_readforcedmodei Read in forced mode
+ * @brief force single measure and read data when finished
+ * @note #USE_FORCED_MODE in @ref BME280_libconf must be uncommented to use these functions
+ * @{
+ */
 
 /**
  * @brief Function forces single measure and returns all data as integers
@@ -503,12 +526,22 @@ int8_t BME280_ReadPressForce(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressF
 int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 ///@}
 #endif
+///@}
+#endif
 
 #ifdef USE_FLOATS_RESULTS
 /**
  * @defgroup BME280_readfl Read Functions (float)
  * @brief read measured data from sensor as floating point values
  * @note #USE_FLOATS_RESULTS in @ref BME280_libconf must be uncommented to use these functions
+ * @{
+ */
+
+#ifdef USE_NORMAL_MODE
+/**
+ * @defgroup BME280_readnormalmodef Read in normal mode
+ * @brief read last measured data from sensor in normal mode
+ * @note #USE_NORMAL_MODE in @ref BME280_libconf must be uncommented to use these functions
  * @{
  */
 
@@ -578,6 +611,16 @@ int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
 int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
+/// @}
+#endif
+
+#ifdef USE_FORCED_MODE
+/**
+ * @defgroup BME280_readforcedmodef Read in forced mode
+ * @brief force single measure and read data when finished
+ * @note #USE_FORCED_MODE in @ref BME280_libconf must be uncommented to use these functions
+ * @{
+ */
 
 /**
  * @brief Function forces single measure and returns all data as floats
@@ -658,8 +701,10 @@ int8_t BME280_ReadPressForce_F(BME280_t *Dev, float *Press);
  * @return #BME280_BUSY_ERR sensor is busy so cannot proceed
  */
 int8_t BME280_ReadHumForce_F(BME280_t *Dev, float *Hum);
+///@}
 #endif
 ///@}
+#endif
 ///@}
 
 

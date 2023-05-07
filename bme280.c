@@ -183,6 +183,7 @@ static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
 static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out);
 #endif
 
+#ifdef USE_NORMAL_MODE
 /**
  * @brief check for normal mode
  *
@@ -190,6 +191,7 @@ static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out);
  * is set as "normal_mode"
  */
 static int8_t bme280_is_normal_mode(BME280_t *Dev);
+#endif
 
 /**
  * @brief check for sleep mode
@@ -199,6 +201,7 @@ static int8_t bme280_is_normal_mode(BME280_t *Dev);
  */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev);
 
+#ifdef USE_FORCED_MODE
 /**
  * @brief check and set forced mode
  *
@@ -222,6 +225,7 @@ static void bme280_osrs_to_oversampling(uint8_t *osrs);
  * returns #BME280_BUSY_ERR if any of them is set
  */
 static int8_t bme280_busy_check(BME280_t *Dev);
+#endif
 ///@}
 ///@}
 
@@ -760,6 +764,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 #endif
 
 #ifdef USE_INTEGER_RESULTS
+#ifdef USE_NORMAL_MODE
 	/* function reads last measured values from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 
@@ -871,7 +876,9 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 
 	return res;
 }
+#endif
 
+#ifdef USE_FORCED_MODE
 	/* function forces single measurement and reads all data (no floats) */
 int8_t BME280_ReadAllForce(BME280_t *Dev, BME280_Data_t *Data){
 
@@ -1032,8 +1039,10 @@ int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 	return res;
 }
 #endif
+#endif
 
 #ifdef USE_FLOATS_RESULTS
+#ifdef USE_NORMAL_MODE
 	/* function reads last measured values from sensor in normal mode (with floats) */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
 
@@ -1130,7 +1139,9 @@ int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum){
 
 	return res;
 }
+#endif
 
+#ifdef USE_FORCED_MODE
 	/* function forces single measurement and reads the data (with floats) */
 int8_t BME280_ReadAllForce_F(BME280_t *Dev, BME280_DataF_t *Data){
 
@@ -1272,6 +1283,7 @@ int8_t BME280_ReadHumForce_F(BME280_t *Dev, float *Hum){
 
 	return res;
 }
+#endif
 #endif
 
 //***************************************
@@ -1576,6 +1588,7 @@ static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out){
 }
 #endif
 
+#ifdef USE_NORMAL_MODE
 	/* function checks if device was initialized and is in normal mode */
 static int8_t bme280_is_normal_mode(BME280_t *Dev){
 
@@ -1585,6 +1598,7 @@ static int8_t bme280_is_normal_mode(BME280_t *Dev){
 
 	return BME280_OK;
 }
+#endif
 
 	/* function checks if device was initialized and is in sleep mode */
 static int8_t bme280_is_sleep_mode(BME280_t *Dev){
@@ -1596,6 +1610,7 @@ static int8_t bme280_is_sleep_mode(BME280_t *Dev){
 	return BME280_OK;
 }
 
+#ifdef USE_FORCED_MODE
 	/* function checks and sets forced mode if possible + calculates delay */
 static int8_t bme280_set_forced_mode(BME280_t *Dev, uint8_t *delay){
 
@@ -1662,4 +1677,5 @@ static int8_t bme280_busy_check(BME280_t *Dev){
 
 	return res;
 }
+#endif
 ///@}
