@@ -15,6 +15,7 @@ var group__BME280__Regs =
     [ "BME280_PRESS_ADC_LEN", "group__BME280__Regs.html#ga17560836f0bdd37445cb83c88a0db309", null ],
     [ "BME280_RESET_ADDR", "group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4", null ],
     [ "BME280_RESET_VALUE", "group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950", null ],
+    [ "BME280_STATUS_ADDR", "group__BME280__Regs.html#ga4c24f9719642803fe7ea624ba487645b", null ],
     [ "BME280_TEMP_ADC_ADDR", "group__BME280__Regs.html#gaac341b4b1687973bb08cafbc04895860", null ],
     [ "BME280_TEMP_ADC_LEN", "group__BME280__Regs.html#ga09c012db6165503a3986214dff56d777", null ]
 ];

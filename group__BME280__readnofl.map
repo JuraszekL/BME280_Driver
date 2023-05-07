@@ -1,4 +1,6 @@
 <map id="Read Functions (int)" name="Read Functions (int)">
-<area shape="rect" id="node1" href="$group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="5,5,119,31"/>
-<area shape="rect" id="node2" title="read measured data from sensor as integers" alt="" coords="167,5,303,31"/>
+<area shape="rect" id="node1" href="$group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="5,31,119,56"/>
+<area shape="rect" id="node3" title="read measured data from sensor as integers" alt="" coords="167,31,303,56"/>
+<area shape="rect" id="node2" href="$group__BME280__readforcedmodei.html" title="force single measure and read data when finished" alt="" coords="353,5,491,31"/>
+<area shape="rect" id="node4" href="$group__BME280__readnormalmodei.html" title="read last measured data from sensor in normal mode" alt="" coords="351,55,492,80"/>
 </map>

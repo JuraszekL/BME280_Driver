@@ -1,5 +1,7 @@
 <map id="bme280_convert_t_S32_float" name="bme280_convert_t_S32_float">
-<area shape="rect" id="node1" title="convert temperature to float" alt="" coords="235,23,393,64"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2" title="Function reads all measured data at once." alt="" coords="14,5,178,31"/>
-<area shape="rect" id="node3" href="$group__BME280__Driver.html#gad6cced9eb52bbaf726f25e55e8b247f0" title="Function reads last measured temperature." alt="" coords="5,55,187,80"/>
+<area shape="rect" id="node1" title="convert temperature to float" alt="" coords="242,73,400,113"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="14,5,185,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga02e9364d7737a3ee1565ac00597981c5" title="Function reads all measured data at once." alt="" coords="18,55,181,80"/>
+<area shape="rect" id="node4" href="$group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="5,104,194,130"/>
+<area shape="rect" id="node5" href="$group__BME280__Driver.html#gacf484ccb5aa2b3f35746c9c44500668b" title="Function reads last measured temperature." alt="" coords="9,153,190,179"/>
 </map>

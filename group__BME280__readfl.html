@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('group__BME280__readfl.html',''); initR
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#groups">Modules</a>  </div>
   <div class="headertitle"><div class="title">Read Functions (float)<div class="ingroups"><a class="el" href="group__BME280__Driver.html">BME280_Driver</a> &raquo; <a class="el" href="group__BME280__Pubfunc.html">Public functions</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -103,284 +103,25 @@ Collaboration diagram for Read Functions (float):</div>
 <div class="dyncontent">
 <div class="center"><img src="group__BME280__readfl.png" border="0" usemap="#agroup____BME280____readfl" alt=""/></div>
 <map name="agroup____BME280____readfl" id="agroup____BME280____readfl">
-<area shape="rect" href="group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="5,5,119,31"/>
-<area shape="rect" title="read measured data from sensor as floating point values" alt="" coords="167,5,313,31"/>
+<area shape="rect" href="group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="5,31,119,56"/>
+<area shape="rect" title="read measured data from sensor as floating point values" alt="" coords="167,31,313,56"/>
+<area shape="rect" href="group__BME280__readforcedmodef.html" title="force single measure and read data when finished" alt="" coords="363,5,501,31"/>
+<area shape="rect" href="group__BME280__readnormalmodef.html" title="read last measured data from sensor in normal mode" alt="" coords="361,55,502,80"/>
 </map>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:gaa32b8e4359e942fec305c972abc897b2"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__readfl.html#gaa32b8e4359e942fec305c972abc897b2">BME280_ReadLastAll_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__DataF__t.html">BME280_DataF_t</a> *Data)</td></tr>
-<tr class="memdesc:gaa32b8e4359e942fec305c972abc897b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads all measured data at once.  <br /></td></tr>
-<tr class="separator:gaa32b8e4359e942fec305c972abc897b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6cced9eb52bbaf726f25e55e8b247f0"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__readfl.html#gad6cced9eb52bbaf726f25e55e8b247f0">BME280_ReadLastTemp_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Temp)</td></tr>
-<tr class="memdesc:gad6cced9eb52bbaf726f25e55e8b247f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured temperature.  <br /></td></tr>
-<tr class="separator:gad6cced9eb52bbaf726f25e55e8b247f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga606bbaaa98428f2c45f998de08265291"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__readfl.html#ga606bbaaa98428f2c45f998de08265291">BME280_ReadLastPress_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Press)</td></tr>
-<tr class="memdesc:ga606bbaaa98428f2c45f998de08265291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured pressure.  <br /></td></tr>
-<tr class="separator:ga606bbaaa98428f2c45f998de08265291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad796f4f86c3e8d85b4455da9c2f3ef2f"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__readfl.html#gad796f4f86c3e8d85b4455da9c2f3ef2f">BME280_ReadLastHum_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Hum)</td></tr>
-<tr class="memdesc:gad796f4f86c3e8d85b4455da9c2f3ef2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured humidity.  <br /></td></tr>
-<tr class="separator:gad796f4f86c3e8d85b4455da9c2f3ef2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__BME280__readnormalmodef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__readnormalmodef.html">Read in normal mode</a></td></tr>
+<tr class="memdesc:group__BME280__readnormalmodef"><td class="mdescLeft">&#160;</td><td class="mdescRight">read last measured data from sensor in normal mode <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__BME280__readforcedmodef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__readforcedmodef.html">Read in forced mode</a></td></tr>
+<tr class="memdesc:group__BME280__readforcedmodef"><td class="mdescLeft">&#160;</td><td class="mdescRight">force single measure and read data when finished <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>read measured data from sensor as floating point values </p>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="group__BME280__libconf.html#ga5a03415e5a2d7bdc6ce680c47ddc156a" title="comment this line if u don&#39;t need to use floating point results">USE_FLOAT</a> in <a class="el" href="group__BME280__libconf.html">Library Configuration</a> must be uncommented to use these functions </dd></dl>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="gaa32b8e4359e942fec305c972abc897b2" name="gaa32b8e4359e942fec305c972abc897b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa32b8e4359e942fec305c972abc897b2">&#9670;&#160;</a></span>BME280_ReadLastAll_F()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int8_t BME280_ReadLastAll_F </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
-          <td class="paramname"><em>Dev</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structBME280__DataF__t.html">BME280_DataF_t</a> *&#160;</td>
-          <td class="paramname"><em>Data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function reads all measured data at once. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> to read last measured values.</dd></dl>
-<p>Function reads all adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into <a class="el" href="structBME280__DataF__t.html" title="Contains result of measure (with floating points variables)">BME280_DataF_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*Data</td><td>pointer to structure where result will be stored </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="group__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph.png" border="0" usemap="#agroup__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph" alt=""/></div>
-<map name="agroup__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph" id="agroup__BME280__readfl_gaa32b8e4359e942fec305c972abc897b2_cgraph">
-<area shape="rect" title="Function reads all measured data at once." alt="" coords="5,144,169,169"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="224,5,387,46"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="224,71,387,111"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="226,136,385,177"/>
-<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="221,201,390,227"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="217,250,394,276"/>
-<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="442,152,633,177"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="442,201,633,227"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="444,250,632,276"/>
-<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="453,300,623,325"/>
-<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="465,349,610,390"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gad796f4f86c3e8d85b4455da9c2f3ef2f" name="gad796f4f86c3e8d85b4455da9c2f3ef2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad796f4f86c3e8d85b4455da9c2f3ef2f">&#9670;&#160;</a></span>BME280_ReadLastHum_F()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int8_t BME280_ReadLastHum_F </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
-          <td class="paramname"><em>Dev</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>Hum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function reads last measured humidity. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> to read last measured values.</dd></dl>
-<p>Function reads temperature and humidity related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated value is then converted into floating point value and stored in external variable </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*Hum</td><td>pointer to variable where temperature will be stored </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="group__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph.png" border="0" usemap="#agroup__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" alt=""/></div>
-<map name="agroup__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" id="agroup__BME280__readfl_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph">
-<area shape="rect" title="Function reads last measured humidity." alt="" coords="5,70,182,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="237,5,400,46"/>
-<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="234,70,403,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="230,120,407,145"/>
-<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="455,21,646,47"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="455,70,646,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="457,120,645,145"/>
-<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="466,169,636,195"/>
-<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="478,219,623,259"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ga606bbaaa98428f2c45f998de08265291" name="ga606bbaaa98428f2c45f998de08265291"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga606bbaaa98428f2c45f998de08265291">&#9670;&#160;</a></span>BME280_ReadLastPress_F()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int8_t BME280_ReadLastPress_F </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
-          <td class="paramname"><em>Dev</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>Press</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function reads last measured pressure. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> to read last measured values.</dd></dl>
-<p>Function reads temperature and pressure related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated value is then converted into floating point value and stored in external variable </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*Press</td><td>pointer to variable where temperature will be stored </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="group__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph.png" border="0" usemap="#agroup__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph" alt=""/></div>
-<map name="agroup__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph" id="agroup__BME280__readfl_ga606bbaaa98428f2c45f998de08265291_cgraph">
-<area shape="rect" title="Function reads last measured pressure." alt="" coords="5,70,188,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="243,5,406,46"/>
-<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="240,70,409,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="236,120,413,145"/>
-<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="461,21,652,47"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="461,70,652,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="463,120,651,145"/>
-<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="472,169,642,195"/>
-<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="484,219,629,259"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="gad6cced9eb52bbaf726f25e55e8b247f0" name="gad6cced9eb52bbaf726f25e55e8b247f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad6cced9eb52bbaf726f25e55e8b247f0">&#9670;&#160;</a></span>BME280_ReadLastTemp_F()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int8_t BME280_ReadLastTemp_F </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
-          <td class="paramname"><em>Dev</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>Temp</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function reads last measured temperature. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> to read last measured values.</dd></dl>
-<p>Function reads temperature related adc values from sensor, converts them into single variable and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated value is then converted into floating point value and stored in external variable </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*Temp</td><td>pointer to variable where temperature will be stored </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
-<dd>
-<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#ga2e2d6a1e2969b4b54f79fab9315dff9e" title="normal mode">BME280_NORMALMODE</a> </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="group__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph.png" border="0" usemap="#agroup__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" alt=""/></div>
-<map name="agroup__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" id="agroup__BME280__readfl_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph">
-<area shape="rect" title="Function reads last measured temperature." alt="" coords="5,70,187,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="244,5,403,46"/>
-<area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="239,70,408,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="235,120,412,145"/>
-<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="460,21,651,47"/>
-<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="460,70,651,96"/>
-<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="462,120,650,145"/>
-<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="471,169,641,195"/>
-<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="483,219,628,259"/>
-</map>
-</div>
-
-</div>
-</div>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="group__BME280__libconf.html#ga76bfb17ae3bd38938997b0e2d42e868d" title="comment this line if you don&#39;t need to use functions with floating point results">USE_FLOATS_RESULTS</a> in <a class="el" href="group__BME280__libconf.html">Library Configuration</a> must be uncommented to use these functions </dd></dl>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

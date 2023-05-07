@@ -1,0 +1,11 @@
+<map id="BME280_ReadHumLast_F" name="BME280_ReadHumLast_F">
+<area shape="rect" id="node1" title="Function reads last measured humidity." alt="" coords="5,70,182,96"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="237,5,400,46"/>
+<area shape="rect" id="node3" href="$group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="234,70,403,96"/>
+<area shape="rect" id="node4" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="230,120,407,145"/>
+<area shape="rect" id="node5" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="455,21,646,47"/>
+<area shape="rect" id="node6" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="455,70,646,96"/>
+<area shape="rect" id="node7" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="457,120,645,145"/>
+<area shape="rect" id="node8" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="466,169,636,195"/>
+<area shape="rect" id="node9" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="478,219,623,259"/>
+</map>

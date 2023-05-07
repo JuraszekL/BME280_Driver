@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -114,10 +114,14 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_64BIT</b></td></tr>
 <tr class="memdesc:ga2cf2919ea2507e9d9cf2b329eac28be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't want to use 64bit variables in calculations <br /></td></tr>
 <tr class="separator:ga2cf2919ea2507e9d9cf2b329eac28be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5a03415e5a2d7bdc6ce680c47ddc156a"><td class="memItemLeft" align="right" valign="top"><a id="ga5a03415e5a2d7bdc6ce680c47ddc156a" name="ga5a03415e5a2d7bdc6ce680c47ddc156a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_FLOAT</b></td></tr>
-<tr class="memdesc:ga5a03415e5a2d7bdc6ce680c47ddc156a"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if u don't need to use floating point results <br /></td></tr>
-<tr class="separator:ga5a03415e5a2d7bdc6ce680c47ddc156a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76bfb17ae3bd38938997b0e2d42e868d"><td class="memItemLeft" align="right" valign="top"><a id="ga76bfb17ae3bd38938997b0e2d42e868d" name="ga76bfb17ae3bd38938997b0e2d42e868d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_FLOATS_RESULTS</b></td></tr>
+<tr class="memdesc:ga76bfb17ae3bd38938997b0e2d42e868d"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't need to use functions with floating point results <br /></td></tr>
+<tr class="separator:ga76bfb17ae3bd38938997b0e2d42e868d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92e7fcc6187945f9d8e26efd159073a7"><td class="memItemLeft" align="right" valign="top"><a id="ga92e7fcc6187945f9d8e26efd159073a7" name="ga92e7fcc6187945f9d8e26efd159073a7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_INTEGER_RESULTS</b></td></tr>
+<tr class="memdesc:ga92e7fcc6187945f9d8e26efd159073a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't need to use functions with integer results <br /></td></tr>
+<tr class="separator:ga92e7fcc6187945f9d8e26efd159073a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa10db2f0d121e8249d7e24b2929bde92"><td class="memItemLeft" align="right" valign="top"><a id="gaa10db2f0d121e8249d7e24b2929bde92" name="gaa10db2f0d121e8249d7e24b2929bde92"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_GETTERS</b></td></tr>
 <tr class="memdesc:gaa10db2f0d121e8249d7e24b2929bde92"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't need to read single setting with any getX function <br /></td></tr>
@@ -126,6 +130,14 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_SETTERS</b></td></tr>
 <tr class="memdesc:gae9c33b7ded9b49f10c6293c986a00d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't need to write single setting with any setX function <br /></td></tr>
 <tr class="separator:gae9c33b7ded9b49f10c6293c986a00d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d07d0713356990b7bbacf48ba9e89da"><td class="memItemLeft" align="right" valign="top"><a id="ga9d07d0713356990b7bbacf48ba9e89da" name="ga9d07d0713356990b7bbacf48ba9e89da"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_NORMAL_MODE</b></td></tr>
+<tr class="memdesc:ga9d07d0713356990b7bbacf48ba9e89da"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't use functionns to read data in normal mode (BME280_ReadxxxLast/BME280_ReadxxxLast_F) <br /></td></tr>
+<tr class="separator:ga9d07d0713356990b7bbacf48ba9e89da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc0d86d413b4b82e63a137037bd14c76"><td class="memItemLeft" align="right" valign="top"><a id="gafc0d86d413b4b82e63a137037bd14c76" name="gafc0d86d413b4b82e63a137037bd14c76"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USE_FORCED_MODE</b></td></tr>
+<tr class="memdesc:gafc0d86d413b4b82e63a137037bd14c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">comment this line if you don't use functionns to read data in forced mode (BME280_ReadxxxForce/BME280_ReadxxxForce_F) <br /></td></tr>
+<tr class="separator:gafc0d86d413b4b82e63a137037bd14c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Set library options here. </p>

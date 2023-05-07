@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -133,7 +133,7 @@ Modules</h2></td></tr>
 <tr class="memdesc:group__BME280__Ret"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values that can be returned by the driver's functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__BME280__I2CAddr"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__I2CAddr.html">BME280 I2C Address</a></td></tr>
-<tr class="memdesc:group__BME280__I2CAddr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in <a class="el" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function. <br /></td></tr>
+<tr class="memdesc:group__BME280__I2CAddr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in <a class="el" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__BME280__Regs"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Regs.html">BME280 Registers</a></td></tr>
 <tr class="memdesc:group__BME280__Regs"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of register addresses and lenghts. <br /></td></tr>
@@ -153,6 +153,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBME280__calibration__data.html">BME280_calibration_data</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps calibration data that were read from sensor.  <a href="structBME280__calibration__data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps all data specific for used platform.  <a href="structBME280__Driver__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBME280__t.html">BME280_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps all data related to a single sensor.  <a href="structBME280__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,9 +171,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga77f7a5746a22bccd06e46a7bc1c3e3f6"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6">BME280_Init</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint8_t I2cAddr, void *EnvSpecData, <a class="el" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a> ReadFun, <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> WriteFun, <a class="el" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a> Delay)</td></tr>
-<tr class="memdesc:ga77f7a5746a22bccd06e46a7bc1c3e3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize sensor and resources.  <br /></td></tr>
-<tr class="separator:ga77f7a5746a22bccd06e46a7bc1c3e3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9bf9479f5ed6d4d9c805fb3dcd660410"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410">BME280_Init</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a> *Driver)</td></tr>
+<tr class="memdesc:ga9bf9479f5ed6d4d9c805fb3dcd660410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize sensor and resources.  <br /></td></tr>
+<tr class="separator:ga9bf9479f5ed6d4d9c805fb3dcd660410"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga234d9a634cbc6f19a39847602646ff56"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga234d9a634cbc6f19a39847602646ff56">BME280_ConfigureAll</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__Config__t.html">BME280_Config_t</a> *Config)</td></tr>
 <tr class="memdesc:ga234d9a634cbc6f19a39847602646ff56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set all sensor settings at once.  <br /></td></tr>
 <tr class="separator:ga234d9a634cbc6f19a39847602646ff56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,30 +225,54 @@ Functions</h2></td></tr>
 <tr class="memitem:gae11ebd6d7bd44d29029b38c9ed25c4f5"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gae11ebd6d7bd44d29029b38c9ed25c4f5">BME280_Disable3WireSPI</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev)</td></tr>
 <tr class="memdesc:gae11ebd6d7bd44d29029b38c9ed25c4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function disables 3-wire SPI bus.  <br /></td></tr>
 <tr class="separator:gae11ebd6d7bd44d29029b38c9ed25c4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga35d468a2a302a5a99fea9e24c5460a0d"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga35d468a2a302a5a99fea9e24c5460a0d">BME280_ReadLastAll</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__Data__t.html">BME280_Data_t</a> *Data)</td></tr>
-<tr class="memdesc:ga35d468a2a302a5a99fea9e24c5460a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads all measured data at once.  <br /></td></tr>
-<tr class="separator:ga35d468a2a302a5a99fea9e24c5460a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab99f8811ddb1be885964dab35fe15e08"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gab99f8811ddb1be885964dab35fe15e08">BME280_ReadLastTemp</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, int8_t *TempInt, uint8_t *TempFract)</td></tr>
-<tr class="memdesc:gab99f8811ddb1be885964dab35fe15e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured temperature.  <br /></td></tr>
-<tr class="separator:gab99f8811ddb1be885964dab35fe15e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4c0d83c58eb71d3119e6d8c628a22659"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga4c0d83c58eb71d3119e6d8c628a22659">BME280_ReadLastPress</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint16_t *PressInt, uint16_t *PressFract)</td></tr>
-<tr class="memdesc:ga4c0d83c58eb71d3119e6d8c628a22659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured pressure.  <br /></td></tr>
-<tr class="separator:ga4c0d83c58eb71d3119e6d8c628a22659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga70c44b1e7ca47f1fb9c83bfd5f8ed186"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga70c44b1e7ca47f1fb9c83bfd5f8ed186">BME280_ReadLastHum</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint8_t *HumInt, uint16_t *HumFract)</td></tr>
-<tr class="memdesc:ga70c44b1e7ca47f1fb9c83bfd5f8ed186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured humidity.  <br /></td></tr>
-<tr class="separator:ga70c44b1e7ca47f1fb9c83bfd5f8ed186"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa32b8e4359e942fec305c972abc897b2"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2">BME280_ReadLastAll_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__DataF__t.html">BME280_DataF_t</a> *Data)</td></tr>
-<tr class="memdesc:gaa32b8e4359e942fec305c972abc897b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads all measured data at once.  <br /></td></tr>
-<tr class="separator:gaa32b8e4359e942fec305c972abc897b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6cced9eb52bbaf726f25e55e8b247f0"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gad6cced9eb52bbaf726f25e55e8b247f0">BME280_ReadLastTemp_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Temp)</td></tr>
-<tr class="memdesc:gad6cced9eb52bbaf726f25e55e8b247f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured temperature.  <br /></td></tr>
-<tr class="separator:gad6cced9eb52bbaf726f25e55e8b247f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga606bbaaa98428f2c45f998de08265291"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga606bbaaa98428f2c45f998de08265291">BME280_ReadLastPress_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Press)</td></tr>
-<tr class="memdesc:ga606bbaaa98428f2c45f998de08265291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured pressure.  <br /></td></tr>
-<tr class="separator:ga606bbaaa98428f2c45f998de08265291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad796f4f86c3e8d85b4455da9c2f3ef2f"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gad796f4f86c3e8d85b4455da9c2f3ef2f">BME280_ReadLastHum_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Hum)</td></tr>
-<tr class="memdesc:gad796f4f86c3e8d85b4455da9c2f3ef2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured humidity.  <br /></td></tr>
-<tr class="separator:gad796f4f86c3e8d85b4455da9c2f3ef2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a1fa42b116bd05996150dbcfba7dc16"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16">BME280_ReadAllLast</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__Data__t.html">BME280_Data_t</a> *Data)</td></tr>
+<tr class="memdesc:ga5a1fa42b116bd05996150dbcfba7dc16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads all measured data at once.  <br /></td></tr>
+<tr class="separator:ga5a1fa42b116bd05996150dbcfba7dc16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72cfa00fad7c88ba8fd4e5b4f3085a45"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga72cfa00fad7c88ba8fd4e5b4f3085a45">BME280_ReadTempLast</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, int8_t *TempInt, uint8_t *TempFract)</td></tr>
+<tr class="memdesc:ga72cfa00fad7c88ba8fd4e5b4f3085a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured temperature.  <br /></td></tr>
+<tr class="separator:ga72cfa00fad7c88ba8fd4e5b4f3085a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae418270b344349371f7dfb0736556dbf"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gae418270b344349371f7dfb0736556dbf">BME280_ReadPressLast</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint16_t *PressInt, uint16_t *PressFract)</td></tr>
+<tr class="memdesc:gae418270b344349371f7dfb0736556dbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured pressure.  <br /></td></tr>
+<tr class="separator:gae418270b344349371f7dfb0736556dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5e0c9fd51a768a9113ed0405fd053be"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gaa5e0c9fd51a768a9113ed0405fd053be">BME280_ReadHumLast</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint8_t *HumInt, uint16_t *HumFract)</td></tr>
+<tr class="memdesc:gaa5e0c9fd51a768a9113ed0405fd053be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured humidity.  <br /></td></tr>
+<tr class="separator:gaa5e0c9fd51a768a9113ed0405fd053be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f5d7b0428ec0365cceb771942dc1481"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481">BME280_ReadAllForce</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__Data__t.html">BME280_Data_t</a> *Data)</td></tr>
+<tr class="memdesc:ga6f5d7b0428ec0365cceb771942dc1481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns all data as integers.  <br /></td></tr>
+<tr class="separator:ga6f5d7b0428ec0365cceb771942dc1481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga343b146ffaf4496b53bafe1d5bdb5e00"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00">BME280_ReadTempForce</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, int8_t *TempInt, uint8_t *TempFract)</td></tr>
+<tr class="memdesc:ga343b146ffaf4496b53bafe1d5bdb5e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns temperatrue as integers (forced mode)  <br /></td></tr>
+<tr class="separator:ga343b146ffaf4496b53bafe1d5bdb5e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b0e65c5369309644fb6f0ca84127d2c"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c">BME280_ReadPressForce</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint16_t *PressInt, uint16_t *PressFract)</td></tr>
+<tr class="memdesc:ga5b0e65c5369309644fb6f0ca84127d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns pressure as integers (forced mode)  <br /></td></tr>
+<tr class="separator:ga5b0e65c5369309644fb6f0ca84127d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6638ca67d50833051f37b38b901a9d6"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6">BME280_ReadHumForce</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint8_t *HumInt, uint16_t *HumFract)</td></tr>
+<tr class="memdesc:gac6638ca67d50833051f37b38b901a9d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns humidity as integers (forced mode)  <br /></td></tr>
+<tr class="separator:gac6638ca67d50833051f37b38b901a9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02e9364d7737a3ee1565ac00597981c5"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga02e9364d7737a3ee1565ac00597981c5">BME280_ReadAllLast_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__DataF__t.html">BME280_DataF_t</a> *Data)</td></tr>
+<tr class="memdesc:ga02e9364d7737a3ee1565ac00597981c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads all measured data at once.  <br /></td></tr>
+<tr class="separator:ga02e9364d7737a3ee1565ac00597981c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf484ccb5aa2b3f35746c9c44500668b"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gacf484ccb5aa2b3f35746c9c44500668b">BME280_ReadTempLast_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Temp)</td></tr>
+<tr class="memdesc:gacf484ccb5aa2b3f35746c9c44500668b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured temperature.  <br /></td></tr>
+<tr class="separator:gacf484ccb5aa2b3f35746c9c44500668b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72ea87ce22b089ba8bfb3580f5c81f70"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga72ea87ce22b089ba8bfb3580f5c81f70">BME280_ReadPressLast_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Press)</td></tr>
+<tr class="memdesc:ga72ea87ce22b089ba8bfb3580f5c81f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured pressure.  <br /></td></tr>
+<tr class="separator:ga72ea87ce22b089ba8bfb3580f5c81f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadd4533f9c6ace8308b547f6dbf4368c"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gaadd4533f9c6ace8308b547f6dbf4368c">BME280_ReadHumLast_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Hum)</td></tr>
+<tr class="memdesc:gaadd4533f9c6ace8308b547f6dbf4368c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function reads last measured humidity.  <br /></td></tr>
+<tr class="separator:gaadd4533f9c6ace8308b547f6dbf4368c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2562bf31987c0665f05ea3f342531f5"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5">BME280_ReadAllForce_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__DataF__t.html">BME280_DataF_t</a> *Data)</td></tr>
+<tr class="memdesc:gad2562bf31987c0665f05ea3f342531f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns all data as floats.  <br /></td></tr>
+<tr class="separator:gad2562bf31987c0665f05ea3f342531f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b7b3a9af19029a07288b9b2b968570b"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b">BME280_ReadTempForce_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Temp)</td></tr>
+<tr class="memdesc:ga9b7b3a9af19029a07288b9b2b968570b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns temperatrue as floats (forced mode)  <br /></td></tr>
+<tr class="separator:ga9b7b3a9af19029a07288b9b2b968570b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacdc73b2a7662f705e847ffb263870340"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340">BME280_ReadPressForce_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Press)</td></tr>
+<tr class="memdesc:gacdc73b2a7662f705e847ffb263870340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns pressure as floats (forced mode)  <br /></td></tr>
+<tr class="separator:gacdc73b2a7662f705e847ffb263870340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaebfc2d0af136a400f199babc7bdcddde"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde">BME280_ReadHumForce_F</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, float *Hum)</td></tr>
+<tr class="memdesc:gaebfc2d0af136a400f199babc7bdcddde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function forces single measure and returns humidity as floats (forced mode)  <br /></td></tr>
+<tr class="separator:gaebfc2d0af136a400f199babc7bdcddde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>BME280 Driver. </p>
@@ -277,7 +304,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to set all sensor settings at once. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set all parameters. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set all parameters. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function writes all 3 config registers without reading them before. It can be usefull after power-up or reset. It sets current operating mode inside *Dev structure at the end. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -323,7 +350,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function disables 3-wire SPI bus. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -368,7 +395,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function enables 3-wire SPI bus. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -714,8 +741,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga77f7a5746a22bccd06e46a7bc1c3e3f6" name="ga77f7a5746a22bccd06e46a7bc1c3e3f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga77f7a5746a22bccd06e46a7bc1c3e3f6">&#9670;&#160;</a></span>BME280_Init()</h2>
+<a id="ga9bf9479f5ed6d4d9c805fb3dcd660410" name="ga9bf9479f5ed6d4d9c805fb3dcd660410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9bf9479f5ed6d4d9c805fb3dcd660410">&#9670;&#160;</a></span>BME280_Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -729,32 +756,8 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>I2cAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>EnvSpecData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a>&#160;</td>
-          <td class="paramname"><em>ReadFun</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a>&#160;</td>
-          <td class="paramname"><em>WriteFun</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a>&#160;</td>
-          <td class="paramname"><em>Delay</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a> *&#160;</td>
+          <td class="paramname"><em>Driver</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -769,11 +772,7 @@ Here is the call graph for this function:</div>
 <p>Init funtion performs sensor reset and checks <a class="el" href="group__BME280__Regs.html#ga9aa1e714b7260f21de419112f041aad7" title="Chip ID.">BME280_ID</a>. It doesn't set any sensor's parameters. Calibration data specific for each one sensor are read while Init function. If operation is completed with success function sets "initialized" value in <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure which should be initialized </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">I2cAddr</td><td>value of sensor's I2C address, should be <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> or <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> only </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*EnvSpecData</td><td>pointer to platform specific data which are required to transfer data (f.e. pointer to i2c structure) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReadFun</td><td>pointer to user-created function that will be used to read data from sensor </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">WriteFun</td><td>pointer to user-created function that will be used to write data to sensor </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Delay</td><td>pointer to user-created delay function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Driver</td><td>pointer to <a class="el" href="structBME280__Driver__t.html" title="Keeps all data specific for used platform.">BME280_Driver_t</a> structure where all platform specific data are stored. This structure MUST exist while program is running - do not use local structures to init sensor! </td></tr>
   </table>
   </dd>
 </dl>
@@ -787,8 +786,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph" id="agroup__BME280__Driver_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph">
+<div class="center"><img src="group__BME280__Driver_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph" id="agroup__BME280__Driver_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph">
 <area shape="rect" title="Function to initialize sensor and resources." alt="" coords="5,42,101,68"/>
 <area shape="rect" href="group__BME280__privfunct.html#gaa6b3e52e229e2ac9e57555a85f044234" title="read compensation data" alt="" coords="149,5,336,46"/>
 <area shape="rect" href="group__BME280__Driver.html#ga68389bbf482aff0ca3679e80a1161a8a" title="Function to perform sensor&#39;s software reset." alt="" coords="187,70,298,96"/>
@@ -850,14 +849,154 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga35d468a2a302a5a99fea9e24c5460a0d" name="ga35d468a2a302a5a99fea9e24c5460a0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga35d468a2a302a5a99fea9e24c5460a0d">&#9670;&#160;</a></span>BME280_ReadLastAll()</h2>
+<a id="ga6f5d7b0428ec0365cceb771942dc1481" name="ga6f5d7b0428ec0365cceb771942dc1481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6f5d7b0428ec0365cceb771942dc1481">&#9670;&#160;</a></span>BME280_ReadAllForce()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastAll </td>
+          <td class="memname">int8_t BME280_ReadAllForce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structBME280__Data__t.html">BME280_Data_t</a> *&#160;</td>
+          <td class="paramname"><em>Data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns all data as integers. </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads all adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into <a class="el" href="structBME280__Data__t.html" title="Contains result of measure (no floating points variables)">BME280_Data_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*Data</td><td>pointer to structure where result will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga6f5d7b0428ec0365cceb771942dc1481_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga6f5d7b0428ec0365cceb771942dc1481_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga6f5d7b0428ec0365cceb771942dc1481_cgraph" id="agroup__BME280__Driver_ga6f5d7b0428ec0365cceb771942dc1481_cgraph">
+<area shape="rect" title="Function forces single measure and returns all data as integers." alt="" coords="5,193,161,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="226,5,369,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab95b8d21c52e0b0d2e4777a9cd7d7b2d" title="convert humidity to structure" alt="" coords="216,55,379,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="216,121,379,161"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="218,186,377,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="217,251,378,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="209,300,386,326"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="210,381,385,407"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="439,176,630,202"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="439,225,630,251"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="441,275,629,300"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="450,324,620,350"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="462,374,607,415"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="434,439,635,464"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gad2562bf31987c0665f05ea3f342531f5" name="gad2562bf31987c0665f05ea3f342531f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad2562bf31987c0665f05ea3f342531f5">&#9670;&#160;</a></span>BME280_ReadAllForce_F()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadAllForce_F </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structBME280__DataF__t.html">BME280_DataF_t</a> *&#160;</td>
+          <td class="paramname"><em>Data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns all data as floats. </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads all adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into <a class="el" href="structBME280__DataF__t.html" title="Contains result of measure (with floating points variables)">BME280_DataF_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*Data</td><td>pointer to structure where result will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gad2562bf31987c0665f05ea3f342531f5_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gad2562bf31987c0665f05ea3f342531f5_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gad2562bf31987c0665f05ea3f342531f5_cgraph" id="agroup__BME280__Driver_gad2562bf31987c0665f05ea3f342531f5_cgraph">
+<area shape="rect" title="Function forces single measure and returns all data as floats." alt="" coords="5,193,176,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="241,5,384,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="231,55,394,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="231,121,394,161"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="233,186,392,227"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="232,251,393,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="224,300,401,326"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="225,381,400,407"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="454,176,645,202"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="454,225,645,251"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="456,275,644,300"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="465,324,635,350"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="477,374,622,415"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="449,439,650,464"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga5a1fa42b116bd05996150dbcfba7dc16" name="ga5a1fa42b116bd05996150dbcfba7dc16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5a1fa42b116bd05996150dbcfba7dc16">&#9670;&#160;</a></span>BME280_ReadAllLast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadAllLast </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -897,8 +1036,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph" id="agroup__BME280__Driver_ga35d468a2a302a5a99fea9e24c5460a0d_cgraph">
+<div class="center"><img src="group__BME280__Driver_ga5a1fa42b116bd05996150dbcfba7dc16_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga5a1fa42b116bd05996150dbcfba7dc16_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga5a1fa42b116bd05996150dbcfba7dc16_cgraph" id="agroup__BME280__Driver_ga5a1fa42b116bd05996150dbcfba7dc16_cgraph">
 <area shape="rect" title="Function reads all measured data at once." alt="" coords="5,144,154,169"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab95b8d21c52e0b0d2e4777a9cd7d7b2d" title="convert humidity to structure" alt="" coords="209,5,372,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="209,71,372,111"/>
@@ -915,14 +1054,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="gaa32b8e4359e942fec305c972abc897b2" name="gaa32b8e4359e942fec305c972abc897b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa32b8e4359e942fec305c972abc897b2">&#9670;&#160;</a></span>BME280_ReadLastAll_F()</h2>
+<a id="ga02e9364d7737a3ee1565ac00597981c5" name="ga02e9364d7737a3ee1565ac00597981c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga02e9364d7737a3ee1565ac00597981c5">&#9670;&#160;</a></span>BME280_ReadAllLast_F()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastAll_F </td>
+          <td class="memname">int8_t BME280_ReadAllLast_F </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -962,8 +1101,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph" id="agroup__BME280__Driver_gaa32b8e4359e942fec305c972abc897b2_cgraph">
+<div class="center"><img src="group__BME280__Driver_ga02e9364d7737a3ee1565ac00597981c5_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga02e9364d7737a3ee1565ac00597981c5_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga02e9364d7737a3ee1565ac00597981c5_cgraph" id="agroup__BME280__Driver_ga02e9364d7737a3ee1565ac00597981c5_cgraph">
 <area shape="rect" title="Function reads all measured data at once." alt="" coords="5,144,169,169"/>
 <area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="224,5,387,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="224,71,387,111"/>
@@ -980,14 +1119,157 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga70c44b1e7ca47f1fb9c83bfd5f8ed186" name="ga70c44b1e7ca47f1fb9c83bfd5f8ed186"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga70c44b1e7ca47f1fb9c83bfd5f8ed186">&#9670;&#160;</a></span>BME280_ReadLastHum()</h2>
+<a id="gac6638ca67d50833051f37b38b901a9d6" name="gac6638ca67d50833051f37b38b901a9d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac6638ca67d50833051f37b38b901a9d6">&#9670;&#160;</a></span>BME280_ReadHumForce()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastHum </td>
+          <td class="memname">int8_t BME280_ReadHumForce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>HumInt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>HumFract</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns humidity as integers (forced mode) </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads temperarure and humidity related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into integer (*HumInt) and fractial part (*HumFract). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*HumInt</td><td>pointer to variable where integer part of humidity will be stored </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*HumFract</td><td>pointer to variable where fractial part of humidity will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gac6638ca67d50833051f37b38b901a9d6_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gac6638ca67d50833051f37b38b901a9d6_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gac6638ca67d50833051f37b38b901a9d6_cgraph" id="agroup__BME280__Driver_gac6638ca67d50833051f37b38b901a9d6_cgraph">
+<area shape="rect" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="5,120,174,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="239,5,382,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#gab95b8d21c52e0b0d2e4777a9cd7d7b2d" title="convert humidity to structure" alt="" coords="229,55,392,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="230,120,391,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="222,169,399,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="223,251,398,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="452,45,643,71"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="452,95,643,120"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="454,144,642,170"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="463,193,633,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="475,243,620,284"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="447,308,648,334"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaebfc2d0af136a400f199babc7bdcddde" name="gaebfc2d0af136a400f199babc7bdcddde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaebfc2d0af136a400f199babc7bdcddde">&#9670;&#160;</a></span>BME280_ReadHumForce_F()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadHumForce_F </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>Hum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns humidity as floats (forced mode) </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads temperature and humidity related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into float. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*Hum</td><td>pointer to variable where humidity will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gaebfc2d0af136a400f199babc7bdcddde_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gaebfc2d0af136a400f199babc7bdcddde_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gaebfc2d0af136a400f199babc7bdcddde_cgraph" id="agroup__BME280__Driver_gaebfc2d0af136a400f199babc7bdcddde_cgraph">
+<area shape="rect" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="5,120,189,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="254,5,397,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="244,55,407,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="245,120,406,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="237,169,414,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="238,251,413,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="467,45,658,71"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="467,95,658,120"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="469,144,657,170"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="478,193,648,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="490,243,635,284"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="462,308,663,334"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaa5e0c9fd51a768a9113ed0405fd053be" name="gaa5e0c9fd51a768a9113ed0405fd053be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa5e0c9fd51a768a9113ed0405fd053be">&#9670;&#160;</a></span>BME280_ReadHumLast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadHumLast </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -1034,8 +1316,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph" id="agroup__BME280__Driver_ga70c44b1e7ca47f1fb9c83bfd5f8ed186_cgraph">
+<div class="center"><img src="group__BME280__Driver_gaa5e0c9fd51a768a9113ed0405fd053be_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gaa5e0c9fd51a768a9113ed0405fd053be_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gaa5e0c9fd51a768a9113ed0405fd053be_cgraph" id="agroup__BME280__Driver_gaa5e0c9fd51a768a9113ed0405fd053be_cgraph">
 <area shape="rect" title="Function reads last measured humidity." alt="" coords="5,70,167,96"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab95b8d21c52e0b0d2e4777a9cd7d7b2d" title="convert humidity to structure" alt="" coords="222,5,385,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="219,70,388,96"/>
@@ -1050,14 +1332,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="gad796f4f86c3e8d85b4455da9c2f3ef2f" name="gad796f4f86c3e8d85b4455da9c2f3ef2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad796f4f86c3e8d85b4455da9c2f3ef2f">&#9670;&#160;</a></span>BME280_ReadLastHum_F()</h2>
+<a id="gaadd4533f9c6ace8308b547f6dbf4368c" name="gaadd4533f9c6ace8308b547f6dbf4368c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaadd4533f9c6ace8308b547f6dbf4368c">&#9670;&#160;</a></span>BME280_ReadHumLast_F()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastHum_F </td>
+          <td class="memname">int8_t BME280_ReadHumLast_F </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -1097,8 +1379,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph" id="agroup__BME280__Driver_gad796f4f86c3e8d85b4455da9c2f3ef2f_cgraph">
+<div class="center"><img src="group__BME280__Driver_gaadd4533f9c6ace8308b547f6dbf4368c_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gaadd4533f9c6ace8308b547f6dbf4368c_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gaadd4533f9c6ace8308b547f6dbf4368c_cgraph" id="agroup__BME280__Driver_gaadd4533f9c6ace8308b547f6dbf4368c_cgraph">
 <area shape="rect" title="Function reads last measured humidity." alt="" coords="5,70,182,96"/>
 <area shape="rect" href="group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="237,5,400,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="234,70,403,96"/>
@@ -1113,14 +1395,157 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga4c0d83c58eb71d3119e6d8c628a22659" name="ga4c0d83c58eb71d3119e6d8c628a22659"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4c0d83c58eb71d3119e6d8c628a22659">&#9670;&#160;</a></span>BME280_ReadLastPress()</h2>
+<a id="ga5b0e65c5369309644fb6f0ca84127d2c" name="ga5b0e65c5369309644fb6f0ca84127d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5b0e65c5369309644fb6f0ca84127d2c">&#9670;&#160;</a></span>BME280_ReadPressForce()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastPress </td>
+          <td class="memname">int8_t BME280_ReadPressForce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>PressInt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>PressFract</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns pressure as integers (forced mode) </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads temperarure and pressure related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into integer (*PressInt) and fractial part (*PressFract). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*PressInt</td><td>pointer to variable where integer part of pressure will be stored </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*PressFract</td><td>pointer to variable where fractial part of pressure will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga5b0e65c5369309644fb6f0ca84127d2c_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga5b0e65c5369309644fb6f0ca84127d2c_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga5b0e65c5369309644fb6f0ca84127d2c_cgraph" id="agroup__BME280__Driver_ga5b0e65c5369309644fb6f0ca84127d2c_cgraph">
+<area shape="rect" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="5,120,180,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="245,5,388,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="235,55,398,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="236,120,397,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="228,169,405,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="229,251,404,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="458,45,649,71"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="458,95,649,120"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="460,144,648,170"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="469,193,639,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="481,243,626,284"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="453,308,654,334"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gacdc73b2a7662f705e847ffb263870340" name="gacdc73b2a7662f705e847ffb263870340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacdc73b2a7662f705e847ffb263870340">&#9670;&#160;</a></span>BME280_ReadPressForce_F()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadPressForce_F </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>Press</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns pressure as floats (forced mode) </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads temperature and pressure related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into float. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*Press</td><td>pointer to variable where pressure will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_gacdc73b2a7662f705e847ffb263870340_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gacdc73b2a7662f705e847ffb263870340_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gacdc73b2a7662f705e847ffb263870340_cgraph" id="agroup__BME280__Driver_gacdc73b2a7662f705e847ffb263870340_cgraph">
+<area shape="rect" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="5,120,195,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="260,5,403,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="250,55,413,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="251,120,412,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="243,169,420,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="244,251,419,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="473,45,664,71"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="473,95,664,120"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="475,144,663,170"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="484,193,654,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="496,243,641,284"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="468,308,669,334"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gae418270b344349371f7dfb0736556dbf" name="gae418270b344349371f7dfb0736556dbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae418270b344349371f7dfb0736556dbf">&#9670;&#160;</a></span>BME280_ReadPressLast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadPressLast </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -1167,8 +1592,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph" id="agroup__BME280__Driver_ga4c0d83c58eb71d3119e6d8c628a22659_cgraph">
+<div class="center"><img src="group__BME280__Driver_gae418270b344349371f7dfb0736556dbf_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gae418270b344349371f7dfb0736556dbf_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gae418270b344349371f7dfb0736556dbf_cgraph" id="agroup__BME280__Driver_gae418270b344349371f7dfb0736556dbf_cgraph">
 <area shape="rect" title="Function reads last measured pressure." alt="" coords="5,70,173,96"/>
 <area shape="rect" href="group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="228,5,391,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="225,70,394,96"/>
@@ -1183,14 +1608,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga606bbaaa98428f2c45f998de08265291" name="ga606bbaaa98428f2c45f998de08265291"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga606bbaaa98428f2c45f998de08265291">&#9670;&#160;</a></span>BME280_ReadLastPress_F()</h2>
+<a id="ga72ea87ce22b089ba8bfb3580f5c81f70" name="ga72ea87ce22b089ba8bfb3580f5c81f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga72ea87ce22b089ba8bfb3580f5c81f70">&#9670;&#160;</a></span>BME280_ReadPressLast_F()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastPress_F </td>
+          <td class="memname">int8_t BME280_ReadPressLast_F </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -1230,8 +1655,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph" id="agroup__BME280__Driver_ga606bbaaa98428f2c45f998de08265291_cgraph">
+<div class="center"><img src="group__BME280__Driver_ga72ea87ce22b089ba8bfb3580f5c81f70_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga72ea87ce22b089ba8bfb3580f5c81f70_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga72ea87ce22b089ba8bfb3580f5c81f70_cgraph" id="agroup__BME280__Driver_ga72ea87ce22b089ba8bfb3580f5c81f70_cgraph">
 <area shape="rect" title="Function reads last measured pressure." alt="" coords="5,70,188,96"/>
 <area shape="rect" href="group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="243,5,406,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="240,70,409,96"/>
@@ -1246,14 +1671,157 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="gab99f8811ddb1be885964dab35fe15e08" name="gab99f8811ddb1be885964dab35fe15e08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab99f8811ddb1be885964dab35fe15e08">&#9670;&#160;</a></span>BME280_ReadLastTemp()</h2>
+<a id="ga343b146ffaf4496b53bafe1d5bdb5e00" name="ga343b146ffaf4496b53bafe1d5bdb5e00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga343b146ffaf4496b53bafe1d5bdb5e00">&#9670;&#160;</a></span>BME280_ReadTempForce()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastTemp </td>
+          <td class="memname">int8_t BME280_ReadTempForce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t *&#160;</td>
+          <td class="paramname"><em>TempInt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>TempFract</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns temperatrue as integers (forced mode) </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads temperature related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into integer (*TempInt) and fractial part (*TempFract). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*TempInt</td><td>pointer to variable where integer part of temperature will be stored </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*TempFract</td><td>pointer to variable where fractial part of temperature will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga343b146ffaf4496b53bafe1d5bdb5e00_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga343b146ffaf4496b53bafe1d5bdb5e00_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga343b146ffaf4496b53bafe1d5bdb5e00_cgraph" id="agroup__BME280__Driver_ga343b146ffaf4496b53bafe1d5bdb5e00_cgraph">
+<area shape="rect" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="5,120,179,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="244,5,387,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="236,55,395,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="235,120,396,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="227,169,404,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="228,251,403,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="457,45,648,71"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="457,95,648,120"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="459,144,647,170"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="468,193,638,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="480,243,625,284"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="452,308,653,334"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga9b7b3a9af19029a07288b9b2b968570b" name="ga9b7b3a9af19029a07288b9b2b968570b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9b7b3a9af19029a07288b9b2b968570b">&#9670;&#160;</a></span>BME280_ReadTempForce_F()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadTempForce_F </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
+          <td class="paramname"><em>Dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>Temp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function forces single measure and returns temperatrue as floats (forced mode) </p>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to force a single measurement.</dd></dl>
+<p>Function reads sensor's configuration to check conditions and calculate max. delay time required for measure cycle. Then sends command to force single measurement and calls used-defined delay function. When delay function returns ir reads temperature related adc values from sensor, converts them into single variables and compensate with use <a class="el" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor.">BME280_calibration_data</a>. Compensated values are then converted into float. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*Temp</td><td>pointer to variable where temperature will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga848a61967bf8cea667065de6bb42fdc1" title="device wasn&#39;t initialized properly and operation cannot be performed">BME280_NO_INIT_ERR</a> sensor was not initialized before </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44" title="device is set to wrong operation mode, cannot perform operation">BME280_CONDITION_ERR</a> sensor is not in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> </dd>
+<dd>
+<a class="el" href="group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a" title="device is busy">BME280_BUSY_ERR</a> sensor is busy so cannot proceed </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__BME280__Driver_ga9b7b3a9af19029a07288b9b2b968570b_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga9b7b3a9af19029a07288b9b2b968570b_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga9b7b3a9af19029a07288b9b2b968570b_cgraph" id="agroup__BME280__Driver_ga9b7b3a9af19029a07288b9b2b968570b_cgraph">
+<area shape="rect" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="5,120,194,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="259,5,402,31"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="251,55,410,96"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="250,120,411,146"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="242,169,419,195"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="243,251,418,276"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="472,45,663,71"/>
+<area shape="rect" href="group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="472,95,663,120"/>
+<area shape="rect" href="group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="474,144,662,170"/>
+<area shape="rect" href="group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="483,193,653,219"/>
+<area shape="rect" href="group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="495,243,640,284"/>
+<area shape="rect" href="group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="467,308,668,334"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga72cfa00fad7c88ba8fd4e5b4f3085a45" name="ga72cfa00fad7c88ba8fd4e5b4f3085a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga72cfa00fad7c88ba8fd4e5b4f3085a45">&#9670;&#160;</a></span>BME280_ReadTempLast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t BME280_ReadTempLast </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -1300,8 +1868,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph" id="agroup__BME280__Driver_gab99f8811ddb1be885964dab35fe15e08_cgraph">
+<div class="center"><img src="group__BME280__Driver_ga72cfa00fad7c88ba8fd4e5b4f3085a45_cgraph.png" border="0" usemap="#agroup__BME280__Driver_ga72cfa00fad7c88ba8fd4e5b4f3085a45_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_ga72cfa00fad7c88ba8fd4e5b4f3085a45_cgraph" id="agroup__BME280__Driver_ga72cfa00fad7c88ba8fd4e5b4f3085a45_cgraph">
 <area shape="rect" title="Function reads last measured temperature." alt="" coords="5,70,172,96"/>
 <area shape="rect" href="group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="229,5,388,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="224,70,393,96"/>
@@ -1316,14 +1884,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="gad6cced9eb52bbaf726f25e55e8b247f0" name="gad6cced9eb52bbaf726f25e55e8b247f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad6cced9eb52bbaf726f25e55e8b247f0">&#9670;&#160;</a></span>BME280_ReadLastTemp_F()</h2>
+<a id="gacf484ccb5aa2b3f35746c9c44500668b" name="gacf484ccb5aa2b3f35746c9c44500668b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacf484ccb5aa2b3f35746c9c44500668b">&#9670;&#160;</a></span>BME280_ReadTempLast_F()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t BME280_ReadLastTemp_F </td>
+          <td class="memname">int8_t BME280_ReadTempLast_F </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBME280__t.html">BME280_t</a> *&#160;</td>
           <td class="paramname"><em>Dev</em>, </td>
@@ -1363,8 +1931,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" alt=""/></div>
-<map name="agroup__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph" id="agroup__BME280__Driver_gad6cced9eb52bbaf726f25e55e8b247f0_cgraph">
+<div class="center"><img src="group__BME280__Driver_gacf484ccb5aa2b3f35746c9c44500668b_cgraph.png" border="0" usemap="#agroup__BME280__Driver_gacf484ccb5aa2b3f35746c9c44500668b_cgraph" alt=""/></div>
+<map name="agroup__BME280__Driver_gacf484ccb5aa2b3f35746c9c44500668b_cgraph" id="agroup__BME280__Driver_gacf484ccb5aa2b3f35746c9c44500668b_cgraph">
 <area shape="rect" title="Function reads last measured temperature." alt="" coords="5,70,187,96"/>
 <area shape="rect" href="group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="244,5,403,46"/>
 <area shape="rect" href="group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="239,70,408,96"/>
@@ -1413,7 +1981,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="group__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph.png" border="0" usemap="#agroup__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph" alt=""/></div>
 <map name="agroup__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph" id="agroup__BME280__Driver_ga68389bbf482aff0ca3679e80a1161a8a_icgraph">
 <area shape="rect" title="Function to perform sensor&#39;s software reset." alt="" coords="149,5,260,31"/>
-<area shape="rect" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources." alt="" coords="5,5,101,31"/>
+<area shape="rect" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources." alt="" coords="5,5,101,31"/>
 </map>
 </div>
 
@@ -1446,7 +2014,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function sets sensor's <a class="el" href="group__BME280__filter.html">IIR Filter</a> coeficient. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -1502,7 +2070,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function sets sensor's humidity <a class="el" href="group__BME280__Ovs.html">Oversampling</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -1611,7 +2179,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function sets sensor's pressure <a class="el" href="group__BME280__Ovs.html">Oversampling</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -1667,7 +2235,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function sets sensor's temperature <a class="el" href="group__BME280__Ovs.html">Oversampling</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -1723,7 +2291,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function sets sensor's <a class="el" href="group__BME280__tstby.html">Standby Time</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set this parameter. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function reads single register from sensor, and checks if current value matches value requested by user. If matches, function skips write operation and returns <a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a>. If doesnt, it prepares and sends new register value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>

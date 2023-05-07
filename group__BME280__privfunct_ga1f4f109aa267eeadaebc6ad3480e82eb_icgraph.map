@@ -1,5 +1,5 @@
 <map id="bme280_is_sleep_mode" name="bme280_is_sleep_mode">
-<area shape="rect" id="node1" title="check for sleep mode" alt="" coords="243,376,404,402"/>
+<area shape="rect" id="node1" title="check for sleep mode" alt="" coords="243,573,404,599"/>
 <area shape="rect" id="node2" href="$group__BME280__Driver.html#ga234d9a634cbc6f19a39847602646ff56" title="Function to set all sensor settings at once." alt="" coords="27,5,173,31"/>
 <area shape="rect" id="node3" href="$group__BME280__Driver.html#gae11ebd6d7bd44d29029b38c9ed25c4f5" title="Function disables 3&#45;wire SPI bus." alt="" coords="12,55,188,80"/>
 <area shape="rect" id="node4" href="$group__BME280__Driver.html#ga3ee05f6cdc49f08360b7ddb23501c877" title="Function enables 3&#45;wire SPI bus." alt="" coords="14,104,186,130"/>
@@ -10,10 +10,18 @@
 <area shape="rect" id="node9" href="$group__BME280__Driver.html#ga4c61f72e84a4f4ed90e46eeb11796f95" title="Function gets current temperature Oversampling from sensor." alt="" coords="35,351,165,376"/>
 <area shape="rect" id="node10" href="$group__BME280__Driver.html#gab215d4921f1604f9257e9ac7c2f67cd3" title="Function gets current Standby Time from sensor." alt="" coords="34,400,166,426"/>
 <area shape="rect" id="node11" href="$group__BME280__Driver.html#gad3f3110ddd3b0b848a336f502ede24e8" title="Function checks if 3&#45;wire SPI is enabled." alt="" coords="5,449,195,475"/>
-<area shape="rect" id="node12" href="$group__BME280__Driver.html#ga5e945ae3a0ff27c3c3b4a0ebe5649404" title="Function sets sensor&#39;s IIR Filter coeficient." alt="" coords="37,499,163,524"/>
-<area shape="rect" id="node13" href="$group__BME280__Driver.html#gafd8641bfda9f876780a985a22d4e9f4e" title="Function sets sensor&#39;s humidity Oversampling." alt="" coords="34,548,166,574"/>
-<area shape="rect" id="node14" href="$group__BME280__Driver.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode." alt="" coords="35,597,165,623"/>
-<area shape="rect" id="node15" href="$group__BME280__Driver.html#ga18dc50119c4eaba4a541a0c252112c1b" title="Function sets sensor&#39;s pressure Oversampling." alt="" coords="35,647,165,672"/>
-<area shape="rect" id="node16" href="$group__BME280__Driver.html#gaaea37172f9ecfc23c2d1812813376ca4" title="Function sets sensor&#39;s temperature Oversampling." alt="" coords="35,696,165,722"/>
-<area shape="rect" id="node17" href="$group__BME280__Driver.html#ga201381e8e1b2ec5500493eb27a3d5d9d" title="Function sets sensor&#39;s Standby Time." alt="" coords="34,745,166,771"/>
+<area shape="rect" id="node12" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="22,499,178,524"/>
+<area shape="rect" id="node13" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="15,548,185,574"/>
+<area shape="rect" id="node14" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="16,597,184,623"/>
+<area shape="rect" id="node15" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="8,647,192,672"/>
+<area shape="rect" id="node16" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="13,696,187,722"/>
+<area shape="rect" id="node17" href="$group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="5,745,195,771"/>
+<area shape="rect" id="node18" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="13,795,187,820"/>
+<area shape="rect" id="node19" href="$group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="6,844,194,870"/>
+<area shape="rect" id="node20" href="$group__BME280__Driver.html#ga5e945ae3a0ff27c3c3b4a0ebe5649404" title="Function sets sensor&#39;s IIR Filter coeficient." alt="" coords="37,893,163,919"/>
+<area shape="rect" id="node21" href="$group__BME280__Driver.html#gafd8641bfda9f876780a985a22d4e9f4e" title="Function sets sensor&#39;s humidity Oversampling." alt="" coords="34,943,166,968"/>
+<area shape="rect" id="node22" href="$group__BME280__Driver.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode." alt="" coords="35,992,165,1018"/>
+<area shape="rect" id="node23" href="$group__BME280__Driver.html#ga18dc50119c4eaba4a541a0c252112c1b" title="Function sets sensor&#39;s pressure Oversampling." alt="" coords="35,1041,165,1067"/>
+<area shape="rect" id="node24" href="$group__BME280__Driver.html#gaaea37172f9ecfc23c2d1812813376ca4" title="Function sets sensor&#39;s temperature Oversampling." alt="" coords="35,1091,165,1116"/>
+<area shape="rect" id="node25" href="$group__BME280__Driver.html#ga201381e8e1b2ec5500493eb27a3d5d9d" title="Function sets sensor&#39;s Standby Time." alt="" coords="34,1140,166,1166"/>
 </map>

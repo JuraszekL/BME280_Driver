@@ -1,5 +1,7 @@
 <map id="bme280_convert_t_S32_struct" name="bme280_convert_t_S32_struct">
-<area shape="rect" id="node1" title="convert temperature to structure" alt="" coords="220,23,378,64"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga35d468a2a302a5a99fea9e24c5460a0d" title="Function reads all measured data at once." alt="" coords="14,5,163,31"/>
-<area shape="rect" id="node3" href="$group__BME280__Driver.html#gab99f8811ddb1be885964dab35fe15e08" title="Function reads last measured temperature." alt="" coords="5,55,172,80"/>
+<area shape="rect" id="node1" title="convert temperature to structure" alt="" coords="227,73,385,113"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="14,5,170,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="18,55,166,80"/>
+<area shape="rect" id="node4" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="5,104,179,130"/>
+<area shape="rect" id="node5" href="$group__BME280__Driver.html#ga72cfa00fad7c88ba8fd4e5b4f3085a45" title="Function reads last measured temperature." alt="" coords="9,153,175,179"/>
 </map>

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -128,6 +128,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBME280__calibration__data.html">BME280_calibration_data</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps calibration data that were read from sensor.  <a href="structBME280__calibration__data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps all data specific for used platform.  <a href="structBME280__Driver__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBME280__t.html">BME280_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps all data related to a single sensor.  <a href="structBME280__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,6 +170,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BME280_CONDITION_ERR</b>&#160;&#160;&#160;(-5)</td></tr>
 <tr class="memdesc:ga14ce72f1502c0a552269f77e0e35ff44"><td class="mdescLeft">&#160;</td><td class="mdescRight">device is set to wrong operation mode, cannot perform operation <br /></td></tr>
 <tr class="separator:ga14ce72f1502c0a552269f77e0e35ff44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32e5db18d3a7e0b757149f17e769202a"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BME280_BUSY_ERR</b>&#160;&#160;&#160;(-6)</td></tr>
+<tr class="memdesc:ga32e5db18d3a7e0b757149f17e769202a"><td class="mdescLeft">&#160;</td><td class="mdescRight">device is busy <br /></td></tr>
+<tr class="separator:ga32e5db18d3a7e0b757149f17e769202a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0e1beac980e2c3e3d817a13038a7104f"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BME280_I2CADDR_SDOL</b>&#160;&#160;&#160;(0x76)</td></tr>
 <tr class="memdesc:ga0e1beac980e2c3e3d817a13038a7104f"><td class="mdescLeft">&#160;</td><td class="mdescRight">if SDO pin is connected to GND <br /></td></tr>
@@ -243,6 +250,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BME280_HUM_ADC_LEN</b>&#160;&#160;&#160;(2U)</td></tr>
 <tr class="memdesc:gad0c15a4ff8af9144b469e9afb0084ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">lenght of humidity adc data <br /></td></tr>
 <tr class="separator:gad0c15a4ff8af9144b469e9afb0084ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c24f9719642803fe7ea624ba487645b"><td class="memItemLeft" align="right" valign="top">
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BME280_STATUS_ADDR</b>&#160;&#160;&#160;(0xF3)</td></tr>
+<tr class="memdesc:ga4c24f9719642803fe7ea624ba487645b"><td class="mdescLeft">&#160;</td><td class="mdescRight">address of status register <br /></td></tr>
+<tr class="separator:ga4c24f9719642803fe7ea624ba487645b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga507f651db356f3250fdb5fc3c1023a85"><td class="memItemLeft" align="right" valign="top">
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>BME280_OVERSAMPLING_SKIPP</b>&#160;&#160;&#160;(0x00)</td></tr>
 <tr class="memdesc:ga507f651db356f3250fdb5fc3c1023a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">no oversampling (skipp measure) <br /></td></tr>

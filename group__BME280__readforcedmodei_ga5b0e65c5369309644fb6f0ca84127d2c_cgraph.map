@@ -1,0 +1,14 @@
+<map id="BME280_ReadPressForce" name="BME280_ReadPressForce">
+<area shape="rect" id="node1" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="5,120,180,146"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="$group__BME280__privfunct.html#ga232a14f7b8ce95a6361262d83d4b1f67" title="convert pressure to structure" alt="" coords="235,55,398,96"/>
+<area shape="rect" id="node4" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="236,120,397,146"/>
+<area shape="rect" id="node5" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="228,169,405,195"/>
+<area shape="rect" id="node11" href="$group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="229,251,404,276"/>
+<area shape="rect" id="node6" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="458,45,649,71"/>
+<area shape="rect" id="node7" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="458,95,649,120"/>
+<area shape="rect" id="node8" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="460,144,648,170"/>
+<area shape="rect" id="node9" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="469,193,639,219"/>
+<area shape="rect" id="node10" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="481,243,626,284"/>
+<area shape="rect" id="node12" href="$group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="453,308,654,334"/>
+</map>

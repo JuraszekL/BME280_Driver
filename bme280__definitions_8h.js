@@ -1,5 +1,6 @@
 var bme280__definitions_8h =
 [
+    [ "BME280_BUSY_ERR", "group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a", null ],
     [ "BME280_CALIB_DATA1_ADDR", "group__BME280__Regs.html#ga1998de0e5c668bb766c3eb4d7875a566", null ],
     [ "BME280_CALIB_DATA1_LEN", "group__BME280__Regs.html#ga4dcce354323a4dbf34f3ef1ba80e4857", null ],
     [ "BME280_CALIB_DATA2_ADDR", "group__BME280__Regs.html#ga9907b9a239b463a2ef190f646c77d1f3", null ],
@@ -37,6 +38,7 @@ var bme280__definitions_8h =
     [ "BME280_RESET_ADDR", "group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4", null ],
     [ "BME280_RESET_VALUE", "group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950", null ],
     [ "BME280_SLEEPMODE", "group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea", null ],
+    [ "BME280_STATUS_ADDR", "group__BME280__Regs.html#ga4c24f9719642803fe7ea624ba487645b", null ],
     [ "BME280_STBY_0_5MS", "group__BME280__tstby.html#ga0f2a085489e7d0fa810deca4e27f485d", null ],
     [ "BME280_STBY_1000MS", "group__BME280__tstby.html#ga8ec7f85a06753df72fdd37b8e4a67e0b", null ],
     [ "BME280_STBY_10MS", "group__BME280__tstby.html#ga57ee4040cdbc5ba4b5226180288c129d", null ],

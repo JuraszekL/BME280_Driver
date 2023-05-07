@@ -1,0 +1,4 @@
+<map id="Read in normal mode" name="Read in normal mode">
+<area shape="rect" id="node1" href="$group__BME280__readnofl.html" title="read measured data from sensor as integers" alt="" coords="5,5,142,31"/>
+<area shape="rect" id="node2" title="read last measured data from sensor in normal mode" alt="" coords="190,5,331,31"/>
+</map>

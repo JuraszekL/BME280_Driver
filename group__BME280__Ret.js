@@ -1,5 +1,6 @@
 var group__BME280__Ret =
 [
+    [ "BME280_BUSY_ERR", "group__BME280__Ret.html#ga32e5db18d3a7e0b757149f17e769202a", null ],
     [ "BME280_CONDITION_ERR", "group__BME280__Ret.html#ga14ce72f1502c0a552269f77e0e35ff44", null ],
     [ "BME280_ID_ERR", "group__BME280__Ret.html#gac2ba5cf36e4e6d585f2e0292a150f37f", null ],
     [ "BME280_INTERFACE_ERR", "group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962", null ],

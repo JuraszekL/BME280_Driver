@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -130,9 +130,9 @@ Modules</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga77f7a5746a22bccd06e46a7bc1c3e3f6"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6">BME280_Init</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, uint8_t I2cAddr, void *EnvSpecData, <a class="el" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a> ReadFun, <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> WriteFun, <a class="el" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a> Delay)</td></tr>
-<tr class="memdesc:ga77f7a5746a22bccd06e46a7bc1c3e3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize sensor and resources.  <br /></td></tr>
-<tr class="separator:ga77f7a5746a22bccd06e46a7bc1c3e3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9bf9479f5ed6d4d9c805fb3dcd660410"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410">BME280_Init</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev, <a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a> *Driver)</td></tr>
+<tr class="memdesc:ga9bf9479f5ed6d4d9c805fb3dcd660410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize sensor and resources.  <br /></td></tr>
+<tr class="separator:ga9bf9479f5ed6d4d9c805fb3dcd660410"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga68389bbf482aff0ca3679e80a1161a8a"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Pubfunc.html#ga68389bbf482aff0ca3679e80a1161a8a">BME280_Reset</a> (<a class="el" href="structBME280__t.html">BME280_t</a> *Dev)</td></tr>
 <tr class="memdesc:ga68389bbf482aff0ca3679e80a1161a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to perform sensor's software reset.  <br /></td></tr>
 <tr class="separator:ga68389bbf482aff0ca3679e80a1161a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,7 +170,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to set all sensor settings at once. </p>
-<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set all parameters. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Sensor must be in <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> to set all parameters. Force <a class="el" href="group__BME280__mode.html#gabc5980c14102fd09df9fc7e0fb6275ea" title="sleep mode">BME280_SLEEPMODE</a> with <a class="el" href="group__BME280__setfunctions.html#ga3e0acbb8b2b084d390dbad162c16cd3c" title="Function sets sensor&#39;s Operating Mode.">BME280_SetMode</a> function before or use it directly after <a class="el" href="group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function only.</dd></dl>
 <p>Function writes all 3 config registers without reading them before. It can be usefull after power-up or reset. It sets current operating mode inside *Dev structure at the end. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
@@ -199,8 +199,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ga77f7a5746a22bccd06e46a7bc1c3e3f6" name="ga77f7a5746a22bccd06e46a7bc1c3e3f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga77f7a5746a22bccd06e46a7bc1c3e3f6">&#9670;&#160;</a></span>BME280_Init()</h2>
+<a id="ga9bf9479f5ed6d4d9c805fb3dcd660410" name="ga9bf9479f5ed6d4d9c805fb3dcd660410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9bf9479f5ed6d4d9c805fb3dcd660410">&#9670;&#160;</a></span>BME280_Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,32 +214,8 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>I2cAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>EnvSpecData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a>&#160;</td>
-          <td class="paramname"><em>ReadFun</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a>&#160;</td>
-          <td class="paramname"><em>WriteFun</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a>&#160;</td>
-          <td class="paramname"><em>Delay</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a> *&#160;</td>
+          <td class="paramname"><em>Driver</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -254,11 +230,7 @@ Here is the call graph for this function:</div>
 <p>Init funtion performs sensor reset and checks <a class="el" href="group__BME280__Regs.html#ga9aa1e714b7260f21de419112f041aad7" title="Chip ID.">BME280_ID</a>. It doesn't set any sensor's parameters. Calibration data specific for each one sensor are read while Init function. If operation is completed with success function sets "initialized" value in <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure which should be initialized </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">I2cAddr</td><td>value of sensor's I2C address, should be <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> or <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> only </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*EnvSpecData</td><td>pointer to platform specific data which are required to transfer data (f.e. pointer to i2c structure) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ReadFun</td><td>pointer to user-created function that will be used to read data from sensor </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">WriteFun</td><td>pointer to user-created function that will be used to write data to sensor </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Delay</td><td>pointer to user-created delay function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*Driver</td><td>pointer to <a class="el" href="structBME280__Driver__t.html" title="Keeps all data specific for used platform.">BME280_Driver_t</a> structure where all platform specific data are stored. This structure MUST exist while program is running - do not use local structures to init sensor! </td></tr>
   </table>
   </dd>
 </dl>
@@ -272,8 +244,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="group__BME280__Pubfunc_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph.png" border="0" usemap="#agroup__BME280__Pubfunc_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph" alt=""/></div>
-<map name="agroup__BME280__Pubfunc_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph" id="agroup__BME280__Pubfunc_ga77f7a5746a22bccd06e46a7bc1c3e3f6_cgraph">
+<div class="center"><img src="group__BME280__Pubfunc_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph.png" border="0" usemap="#agroup__BME280__Pubfunc_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph" alt=""/></div>
+<map name="agroup__BME280__Pubfunc_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph" id="agroup__BME280__Pubfunc_ga9bf9479f5ed6d4d9c805fb3dcd660410_cgraph">
 <area shape="rect" title="Function to initialize sensor and resources." alt="" coords="5,42,101,68"/>
 <area shape="rect" href="group__BME280__privfunct.html#gaa6b3e52e229e2ac9e57555a85f044234" title="read compensation data" alt="" coords="149,5,336,46"/>
 <area shape="rect" href="group__BME280__Driver.html#ga68389bbf482aff0ca3679e80a1161a8a" title="Function to perform sensor&#39;s software reset." alt="" coords="187,70,298,96"/>
@@ -316,7 +288,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="group__BME280__Pubfunc_ga68389bbf482aff0ca3679e80a1161a8a_icgraph.png" border="0" usemap="#agroup__BME280__Pubfunc_ga68389bbf482aff0ca3679e80a1161a8a_icgraph" alt=""/></div>
 <map name="agroup__BME280__Pubfunc_ga68389bbf482aff0ca3679e80a1161a8a_icgraph" id="agroup__BME280__Pubfunc_ga68389bbf482aff0ca3679e80a1161a8a_icgraph">
 <area shape="rect" title="Function to perform sensor&#39;s software reset." alt="" coords="149,5,260,31"/>
-<area shape="rect" href="group__BME280__Driver.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6" title="Function to initialize sensor and resources." alt="" coords="5,5,101,31"/>
+<area shape="rect" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources." alt="" coords="5,5,101,31"/>
 </map>
 </div>
 

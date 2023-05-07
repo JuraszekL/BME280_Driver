@@ -1,12 +1,20 @@
 <map id="bme280_compensate_t_s32t" name="bme280_compensate_t_s32t">
-<area shape="rect" id="node1" title="compensate temperature value" alt="" coords="461,179,649,204"/>
-<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="236,179,413,204"/>
-<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga35d468a2a302a5a99fea9e24c5460a0d" title="Function reads all measured data at once." alt="" coords="22,5,171,31"/>
-<area shape="rect" id="node4" href="$group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2" title="Function reads all measured data at once." alt="" coords="15,55,178,80"/>
-<area shape="rect" id="node5" href="$group__BME280__Driver.html#ga70c44b1e7ca47f1fb9c83bfd5f8ed186" title="Function reads last measured humidity." alt="" coords="16,104,177,130"/>
-<area shape="rect" id="node6" href="$group__BME280__Driver.html#gad796f4f86c3e8d85b4455da9c2f3ef2f" title="Function reads last measured humidity." alt="" coords="8,153,185,179"/>
-<area shape="rect" id="node7" href="$group__BME280__Driver.html#ga4c0d83c58eb71d3119e6d8c628a22659" title="Function reads last measured pressure." alt="" coords="13,203,180,228"/>
-<area shape="rect" id="node8" href="$group__BME280__Driver.html#ga606bbaaa98428f2c45f998de08265291" title="Function reads last measured pressure." alt="" coords="5,252,188,278"/>
-<area shape="rect" id="node9" href="$group__BME280__Driver.html#gab99f8811ddb1be885964dab35fe15e08" title="Function reads last measured temperature." alt="" coords="13,301,180,327"/>
-<area shape="rect" id="node10" href="$group__BME280__Driver.html#gad6cced9eb52bbaf726f25e55e8b247f0" title="Function reads last measured temperature." alt="" coords="6,351,187,376"/>
+<area shape="rect" id="node1" title="compensate temperature value" alt="" coords="468,376,656,402"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="243,376,420,402"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="22,5,178,31"/>
+<area shape="rect" id="node4" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="15,55,185,80"/>
+<area shape="rect" id="node5" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="26,104,174,130"/>
+<area shape="rect" id="node6" href="$group__BME280__Driver.html#ga02e9364d7737a3ee1565ac00597981c5" title="Function reads all measured data at once." alt="" coords="18,153,182,179"/>
+<area shape="rect" id="node7" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="16,203,184,228"/>
+<area shape="rect" id="node8" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="8,252,192,278"/>
+<area shape="rect" id="node9" href="$group__BME280__Driver.html#gaa5e0c9fd51a768a9113ed0405fd053be" title="Function reads last measured humidity." alt="" coords="19,301,181,327"/>
+<area shape="rect" id="node10" href="$group__BME280__Driver.html#gaadd4533f9c6ace8308b547f6dbf4368c" title="Function reads last measured humidity." alt="" coords="12,351,188,376"/>
+<area shape="rect" id="node11" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="13,400,187,426"/>
+<area shape="rect" id="node12" href="$group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="5,449,195,475"/>
+<area shape="rect" id="node13" href="$group__BME280__Driver.html#gae418270b344349371f7dfb0736556dbf" title="Function reads last measured pressure." alt="" coords="16,499,184,524"/>
+<area shape="rect" id="node14" href="$group__BME280__Driver.html#ga72ea87ce22b089ba8bfb3580f5c81f70" title="Function reads last measured pressure." alt="" coords="9,548,191,574"/>
+<area shape="rect" id="node15" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="13,597,187,623"/>
+<area shape="rect" id="node16" href="$group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="6,647,194,672"/>
+<area shape="rect" id="node17" href="$group__BME280__Driver.html#ga72cfa00fad7c88ba8fd4e5b4f3085a45" title="Function reads last measured temperature." alt="" coords="17,696,183,722"/>
+<area shape="rect" id="node18" href="$group__BME280__Driver.html#gacf484ccb5aa2b3f35746c9c44500668b" title="Function reads last measured temperature." alt="" coords="9,745,191,771"/>
 </map>

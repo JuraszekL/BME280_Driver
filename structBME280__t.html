@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -105,33 +105,18 @@ Collaboration diagram for BME280_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structBME280__t__coll__graph.png" border="0" usemap="#aBME280__t_coll__map" alt="Collaboration graph"/></div>
 <map name="aBME280__t_coll__map" id="aBME280__t_coll__map">
-<area shape="rect" title="Keeps all data related to a single sensor." alt="" coords="49,94,130,120"/>
-<area shape="rect" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor." alt="" coords="5,5,174,31"/>
+<area shape="rect" title="Keeps all data related to a single sensor." alt="" coords="110,94,191,120"/>
+<area shape="rect" href="structBME280__Driver__t.html" title="Keeps all data specific for used platform." alt="" coords="5,5,128,31"/>
+<area shape="rect" href="structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor." alt="" coords="152,5,320,31"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a00bd71fa25232173812ad41098f0e0c1"><td class="memItemLeft" align="right" valign="top"><a id="a00bd71fa25232173812ad41098f0e0c1" name="a00bd71fa25232173812ad41098f0e0c1"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_address</b></td></tr>
-<tr class="memdesc:a00bd71fa25232173812ad41098f0e0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">current address on I2C bus, value should be <a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> or <a class="el" href="group__BME280__I2CAddr.html#ga2590a0f2babfb11e1b722deccd255657" title="if SDO pin is connected to VCC">BME280_I2CADDR_SDOH</a> <br /></td></tr>
-<tr class="separator:a00bd71fa25232173812ad41098f0e0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a800610563eb8a1bdb5c2c40c98e3d971"><td class="memItemLeft" align="right" valign="top"><a id="a800610563eb8a1bdb5c2c40c98e3d971" name="a800610563eb8a1bdb5c2c40c98e3d971"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>env_spec_data</b></td></tr>
-<tr class="memdesc:a800610563eb8a1bdb5c2c40c98e3d971"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to platform specific data (f.e. to i2c bus structure) <br /></td></tr>
-<tr class="separator:a800610563eb8a1bdb5c2c40c98e3d971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace76bbc51652d918d3f2753a6c3a8277"><td class="memItemLeft" align="right" valign="top"><a id="ace76bbc51652d918d3f2753a6c3a8277" name="ace76bbc51652d918d3f2753a6c3a8277"></a>
-<a class="el" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a>&#160;</td><td class="memItemRight" valign="bottom"><b>read</b></td></tr>
-<tr class="memdesc:ace76bbc51652d918d3f2753a6c3a8277"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to user defined function that reads data from sensor <br /></td></tr>
-<tr class="separator:ace76bbc51652d918d3f2753a6c3a8277"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4691d52446db8fe0bdeffde2dff0e78"><td class="memItemLeft" align="right" valign="top"><a id="ae4691d52446db8fe0bdeffde2dff0e78" name="ae4691d52446db8fe0bdeffde2dff0e78"></a>
-<a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a>&#160;</td><td class="memItemRight" valign="bottom"><b>write</b></td></tr>
-<tr class="memdesc:ae4691d52446db8fe0bdeffde2dff0e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to user defined function that writes data to sensor <br /></td></tr>
-<tr class="separator:ae4691d52446db8fe0bdeffde2dff0e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33b344bafee5a979d50fa4b23c6fcccd"><td class="memItemLeft" align="right" valign="top"><a id="a33b344bafee5a979d50fa4b23c6fcccd" name="a33b344bafee5a979d50fa4b23c6fcccd"></a>
-<a class="el" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a>&#160;</td><td class="memItemRight" valign="bottom"><b>delay</b></td></tr>
-<tr class="memdesc:a33b344bafee5a979d50fa4b23c6fcccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to user defined delay function <br /></td></tr>
-<tr class="separator:a33b344bafee5a979d50fa4b23c6fcccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bb5d73c32e96fa99f59cac8400b41a"><td class="memItemLeft" align="right" valign="top"><a id="a10bb5d73c32e96fa99f59cac8400b41a" name="a10bb5d73c32e96fa99f59cac8400b41a"></a>
+<a class="el" href="structBME280__Driver__t.html">BME280_Driver_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>driver</b></td></tr>
+<tr class="memdesc:a10bb5d73c32e96fa99f59cac8400b41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure with driver functions <br /></td></tr>
+<tr class="separator:a10bb5d73c32e96fa99f59cac8400b41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae335ecac6a9042e547b28590e69a17d0"><td class="memItemLeft" align="right" valign="top"><a id="ae335ecac6a9042e547b28590e69a17d0" name="ae335ecac6a9042e547b28590e69a17d0"></a>
 struct <a class="el" href="structBME280__calibration__data.html">BME280_calibration_data</a>&#160;</td><td class="memItemRight" valign="bottom"><b>trimm</b></td></tr>
 <tr class="memdesc:ae335ecac6a9042e547b28590e69a17d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">structure with calibration data <br /></td></tr>

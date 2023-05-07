@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;0.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -91,14 +91,15 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 <div class="contents">
 &#160;<ul>
-<li>delay&#160;:&#160;<a class="el" href="structBME280__t.html#a33b344bafee5a979d50fa4b23c6fcccd">BME280_t</a></li>
-<li>env_spec_data&#160;:&#160;<a class="el" href="structBME280__t.html#a800610563eb8a1bdb5c2c40c98e3d971">BME280_t</a></li>
+<li>delay&#160;:&#160;<a class="el" href="structBME280__Driver__t.html#ad58e16512bbdb58b128d73d6272878be">BME280_Driver_t</a></li>
+<li>driver&#160;:&#160;<a class="el" href="structBME280__t.html#a10bb5d73c32e96fa99f59cac8400b41a">BME280_t</a></li>
+<li>env_spec_data&#160;:&#160;<a class="el" href="structBME280__Driver__t.html#a47b5fbfb1c70c7cf827c71de289495a7">BME280_Driver_t</a></li>
 <li>filter&#160;:&#160;<a class="el" href="structBME280__Config__t.html#af095fd502def890a8e98d193bcb3d749">BME280_Config_t</a></li>
 <li>hum&#160;:&#160;<a class="el" href="structBME280__DataF__t.html#a4407be6d373127bbd4a5cc8ff5baae87">BME280_DataF_t</a></li>
 <li>hum_raw&#160;:&#160;<a class="el" href="structadc__regs.html#a005eaf22ea98b6bfd7b260937d80ab47">adc_regs</a></li>
 <li>humidity_fract&#160;:&#160;<a class="el" href="structBME280__Data__t.html#a771864c82755650ff065349ad8e32566">BME280_Data_t</a></li>
 <li>humidity_int&#160;:&#160;<a class="el" href="structBME280__Data__t.html#a63391192ba51f5adb1f965b47c36cee4">BME280_Data_t</a></li>
-<li>i2c_address&#160;:&#160;<a class="el" href="structBME280__t.html#a00bd71fa25232173812ad41098f0e0c1">BME280_t</a></li>
+<li>i2c_address&#160;:&#160;<a class="el" href="structBME280__Driver__t.html#a1cf8948e6fb0f21335acfe4bd5ff10e7">BME280_Driver_t</a></li>
 <li>initialized&#160;:&#160;<a class="el" href="structBME280__t.html#a2f65444a854390d5d5d519e37c84bdc5">BME280_t</a></li>
 <li>mode&#160;:&#160;<a class="el" href="structBME280__Config__t.html#ab1ac0daa2bed99e25261cd36290b5d27">BME280_Config_t</a>, <a class="el" href="structBME280__t.html#afff1f6899ad1250df0946bfcf4aafd8a">BME280_t</a></li>
 <li>oversampling_h&#160;:&#160;<a class="el" href="structBME280__Config__t.html#aa8cd08834e59ff14394adfa05cb06d15">BME280_Config_t</a></li>
@@ -108,7 +109,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>press_raw&#160;:&#160;<a class="el" href="structadc__regs.html#aba74d1d5786208d624a3b3d72604b672">adc_regs</a></li>
 <li>pressure_fract&#160;:&#160;<a class="el" href="structBME280__Data__t.html#a821651333917e627e48478426c8608a8">BME280_Data_t</a></li>
 <li>pressure_int&#160;:&#160;<a class="el" href="structBME280__Data__t.html#ac40026df8b67c9d5801fa2f7ecabdc6d">BME280_Data_t</a></li>
-<li>read&#160;:&#160;<a class="el" href="structBME280__t.html#ace76bbc51652d918d3f2753a6c3a8277">BME280_t</a></li>
+<li>read&#160;:&#160;<a class="el" href="structBME280__Driver__t.html#a1f2066ec5559e54130daf83b7c16c5f0">BME280_Driver_t</a></li>
 <li>spi3w_enable&#160;:&#160;<a class="el" href="structBME280__Config__t.html#a4b8181813d6fb586286ab0e717eeb855">BME280_Config_t</a></li>
 <li>t_fine&#160;:&#160;<a class="el" href="structBME280__t.html#a8cf3493653572b1200c2c665c5508f2c">BME280_t</a></li>
 <li>t_stby&#160;:&#160;<a class="el" href="structBME280__Config__t.html#a64ecf8b298a66dec8eb97e16c579810b">BME280_Config_t</a></li>
@@ -117,7 +118,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>temp_int&#160;:&#160;<a class="el" href="structBME280__Data__t.html#a98b2bcd3d256d15739f8b4ce696c398f">BME280_Data_t</a></li>
 <li>temp_raw&#160;:&#160;<a class="el" href="structadc__regs.html#ab8a25ff346327d061a9af66d56ab6e75">adc_regs</a></li>
 <li>trimm&#160;:&#160;<a class="el" href="structBME280__t.html#ae335ecac6a9042e547b28590e69a17d0">BME280_t</a></li>
-<li>write&#160;:&#160;<a class="el" href="structBME280__t.html#ae4691d52446db8fe0bdeffde2dff0e78">BME280_t</a></li>
+<li>write&#160;:&#160;<a class="el" href="structBME280__Driver__t.html#adcdeeddd111d393b565f32004892c27e">BME280_Driver_t</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

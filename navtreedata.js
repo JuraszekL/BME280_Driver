@@ -35,9 +35,10 @@ var NAVTREE =
       [ "2. Include **__bme280.h__** file:", "index.html#autotoc_md7", null ],
       [ "3. Perform configuration in **__bme280.h__** file if needed:", "index.html#autotoc_md8", null ],
       [ "4. Write platform-specific functions required by driver:", "index.html#autotoc_md9", null ],
-      [ "5. Use BME280_Init Function before any operation:", "index.html#autotoc_md10", null ]
+      [ "5. Create global BME280_Driver_t structure and fill it with platform specific data:", "index.html#autotoc_md10", null ],
+      [ "6. Use BME280_Init Function before any operation:", "index.html#autotoc_md11", null ]
     ] ],
-    [ "Optional steps", "index.html#autotoc_md11", null ],
+    [ "Optional steps", "index.html#autotoc_md12", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

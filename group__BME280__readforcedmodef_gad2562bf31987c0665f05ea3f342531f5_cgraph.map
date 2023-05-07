@@ -1,0 +1,16 @@
+<map id="BME280_ReadAllForce_F" name="BME280_ReadAllForce_F">
+<area shape="rect" id="node1" title="Function forces single measure and returns all data as floats." alt="" coords="5,193,176,219"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga8343f635b75699deaa07427252889cfc" title="check if sensor is busy" alt="" coords="241,5,384,31"/>
+<area shape="rect" id="node3" href="$group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="231,55,394,96"/>
+<area shape="rect" id="node4" href="$group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="231,121,394,161"/>
+<area shape="rect" id="node5" href="$group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="233,186,392,227"/>
+<area shape="rect" id="node6" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="232,251,393,276"/>
+<area shape="rect" id="node7" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="224,300,401,326"/>
+<area shape="rect" id="node13" href="$group__BME280__privfunct.html#gaf4bb61fd0d5fa3aa7e9cb66427cab79b" title="check and set forced mode" alt="" coords="225,381,400,407"/>
+<area shape="rect" id="node8" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="454,176,645,202"/>
+<area shape="rect" id="node9" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="454,225,645,251"/>
+<area shape="rect" id="node10" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="456,275,644,300"/>
+<area shape="rect" id="node11" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="465,324,635,350"/>
+<area shape="rect" id="node12" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="477,374,622,415"/>
+<area shape="rect" id="node14" href="$group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="449,439,650,464"/>
+</map>

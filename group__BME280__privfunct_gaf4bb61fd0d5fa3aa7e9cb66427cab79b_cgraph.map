@@ -1,0 +1,4 @@
+<map id="bme280_set_forced_mode" name="bme280_set_forced_mode">
+<area shape="rect" id="node1" title="check and set forced mode" alt="" coords="5,5,180,31"/>
+<area shape="rect" id="node2" href="$group__BME280__privfunct.html#gac99cc1613153f309c690f9ab60672079" title="change osrs_x reg value to oversampling" alt="" coords="228,5,429,31"/>
+</map>

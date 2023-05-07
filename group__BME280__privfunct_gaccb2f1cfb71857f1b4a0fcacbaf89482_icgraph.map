@@ -1,5 +1,7 @@
 <map id="bme280_convert_p_U32_float" name="bme280_convert_p_U32_float">
-<area shape="rect" id="node1" title="convert pressure to structure" alt="" coords="236,23,398,64"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#gaa32b8e4359e942fec305c972abc897b2" title="Function reads all measured data at once." alt="" coords="15,5,178,31"/>
-<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga606bbaaa98428f2c45f998de08265291" title="Function reads last measured pressure." alt="" coords="5,55,188,80"/>
+<area shape="rect" id="node1" title="convert pressure to structure" alt="" coords="243,73,405,113"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="15,5,185,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga02e9364d7737a3ee1565ac00597981c5" title="Function reads all measured data at once." alt="" coords="18,55,182,80"/>
+<area shape="rect" id="node4" href="$group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="5,104,195,130"/>
+<area shape="rect" id="node5" href="$group__BME280__Driver.html#ga72ea87ce22b089ba8bfb3580f5c81f70" title="Function reads last measured pressure." alt="" coords="9,153,191,179"/>
 </map>

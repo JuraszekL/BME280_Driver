@@ -1,0 +1,11 @@
+<map id="bme280_set_forced_mode" name="bme280_set_forced_mode">
+<area shape="rect" id="node1" title="check and set forced mode" alt="" coords="243,179,417,204"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="22,5,178,31"/>
+<area shape="rect" id="node3" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="15,55,185,80"/>
+<area shape="rect" id="node4" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="16,104,184,130"/>
+<area shape="rect" id="node5" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="8,153,192,179"/>
+<area shape="rect" id="node6" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="13,203,187,228"/>
+<area shape="rect" id="node7" href="$group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="5,252,195,278"/>
+<area shape="rect" id="node8" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="13,301,187,327"/>
+<area shape="rect" id="node9" href="$group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="6,351,194,376"/>
+</map>

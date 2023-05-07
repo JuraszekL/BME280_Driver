@@ -1,4 +1,6 @@
 <map id="Read Functions (float)" name="Read Functions (float)">
-<area shape="rect" id="node1" href="$group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="5,5,119,31"/>
-<area shape="rect" id="node2" title="read measured data from sensor as floating point values" alt="" coords="167,5,313,31"/>
+<area shape="rect" id="node1" href="$group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="5,31,119,56"/>
+<area shape="rect" id="node2" title="read measured data from sensor as floating point values" alt="" coords="167,31,313,56"/>
+<area shape="rect" id="node3" href="$group__BME280__readforcedmodef.html" title="force single measure and read data when finished" alt="" coords="363,5,501,31"/>
+<area shape="rect" id="node4" href="$group__BME280__readnormalmodef.html" title="read last measured data from sensor in normal mode" alt="" coords="361,55,502,80"/>
 </map>

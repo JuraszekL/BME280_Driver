@@ -5,6 +5,6 @@ var group__BME280__Pubfunc =
     [ "Read Functions (int)", "group__BME280__readnofl.html", "group__BME280__readnofl" ],
     [ "Read Functions (float)", "group__BME280__readfl.html", "group__BME280__readfl" ],
     [ "BME280_ConfigureAll", "group__BME280__Pubfunc.html#ga234d9a634cbc6f19a39847602646ff56", null ],
-    [ "BME280_Init", "group__BME280__Pubfunc.html#ga77f7a5746a22bccd06e46a7bc1c3e3f6", null ],
+    [ "BME280_Init", "group__BME280__Pubfunc.html#ga9bf9479f5ed6d4d9c805fb3dcd660410", null ],
     [ "BME280_Reset", "group__BME280__Pubfunc.html#ga68389bbf482aff0ca3679e80a1161a8a", null ]
 ];
