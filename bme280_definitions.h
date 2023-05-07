@@ -252,6 +252,7 @@ typedef struct {
 	bme280_delayms delay;
 
 } BME280_Driver_t;
+///@}
 
 /**
  * @struct BME280_t

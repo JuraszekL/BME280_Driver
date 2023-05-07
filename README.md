@@ -13,13 +13,13 @@ BME280 Driver
 ### Features
 
 - Communication with I2C bus only
-- Read all measured values in Normal mode only
+- Read all measured values in Normal and Forced mode
 - Results returned as integers or floats
 - Configurable use 32-bit variables only (when 64-bit are not avalible)
 - No dynamic memory allocation used
 
 Driver is still under development, next features will be add soon.
-Current version - v0.1.x
+Current version - v1.1.x
 
 ### Sensor description
 
@@ -56,12 +56,18 @@ git submodule add https://github.com/JuraszekL/BME280_Driver.git
 ```c
 /// comment this line if you don't want to use 64bit variables in calculations
 #define USE_64BIT
-/// comment this line if u don't need to use floating point results
-#define USE_FLOAT
+/// comment this line if you don't need to use functions with floating point results
+#define USE_FLOATS_RESULTS
+/// comment this line if you don't need to use functions with integer results
+#define USE_INTEGER_RESULTS
 /// comment this line if you don't need to read single setting with any getX function
 #define USE_GETTERS
 /// comment this line if you don't need to write single setting with any setX function
 #define USE_SETTERS
+/// comment this line if you don't use functionns to read data in normal mode (BME280_ReadxxxLast/BME280_ReadxxxLast_F)
+#define USE_NORMAL_MODE
+/// comment this line if you don't use functionns to read data in forced mode (BME280_ReadxxxForce/BME280_ReadxxxForce_F)
+#define USE_FORCED_MODE
 ```
 
 ### 4. Write platform-specific functions required by driver:
@@ -105,8 +111,28 @@ typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_
  */
 typedef void (*bme280_delayms)(uint8_t delay_time);
 ```
+### 5. Create global BME280_Driver_t structure and fill it with platform specific data:
 
-### 5. Use BME280_Init Function before any operation:
+```c
+typedef struct {
+
+	/// current address on I2C bus, value should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH
+	uint8_t i2c_address;
+	/// pointer to platform specific data (f.e. to i2c bus structure)
+	void *env_spec_data;
+	/// pointer to user defined function that reads data from sensor
+	bme280_readbytes read;
+	/// pointer to user defined function that writes data to sensor
+	bme280_writebyte write;
+	/// pointer to user defined delay function
+	bme280_delayms delay;
+
+} BME280_Driver_t;
+```
+### 6. Use BME280_Init Function before any operation:
+
+BME280_t *Dev structure is a reference for single sensor you want to work with. Should be global as well.
+Use pointer to this structure with any other functions from this driver.
 
 ```c
 /**
@@ -115,21 +141,16 @@ typedef void (*bme280_delayms)(uint8_t delay_time);
  *
  * Init funtion performs sensor reset and checks #BME280_ID. It doesn't set any sensor's parameters. Calibration
  * data specific for each one sensor are read while Init function. If operation is completed with
- * success function sets #BME280_INITIALIZED value in #BME280_t structure.
+ * success function sets "initialized" value in #BME280_t structure.
  * @param[in] *Dev pointer to #BME280_t structure which should be initialized
- * @param[in] I2cAddr value of sensor's I2C address, should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOL only
- * @param[in] *EnvSpecData pointer to platform specific data which are required to transfer data (f.e. pointer
- * to i2c structure)
- * @param[in] ReadFun pointer to user-created function that will be used to read data from sensor
- * @param[in] WriteFun pointer to user-created function that will be used to write data to sensor
- * @param[in] Delay pointer to user-created delay function
+ * @param[in] *Driver pointer to BME280_Driver_t structure where all platform specific data are stored. This structure
+ * MUST exist while program is running - do not use local structures to init sensor!
  * @return #BME280_OK success
  * @return #BME280_PARAM_ERR wrong parameter passed
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  * @return #BME280_ID_ERR sensor's id doesnt match with #BME280_ID
  */
-int8_t BME280_Init(BME280_t *Dev, uint8_t I2cAddr, void *EnvSpecData,
-		bme280_readbytes ReadFun, bme280_writebyte WriteFun, bme280_delayms Delay);
+int8_t BME280_Init(BME280_t *Dev, BME280_Driver_t *Driver);
 ```
 Optional steps
 --------------
