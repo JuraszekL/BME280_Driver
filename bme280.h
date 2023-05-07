@@ -417,7 +417,7 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
 int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 
 /**
- * @brief Function reads all measured data at once (forced mode)
+ * @brief Function forces single measure and returns all data as integers
  * @note Sensor must be in #BME280_SLEEPMODE to force a single measurement.
  *
  * Function reads sensor's configuration to check conditions and calculate max. delay time
@@ -435,6 +435,27 @@ int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
  * @return #BME280_BUSY_ERR sensor is busy so cannot proceed
  */
 int8_t BME280_ReadAllForce(BME280_t *Dev, BME280_Data_t *Data);
+
+/**
+ * @brief Function forces single measure and returns temperatrue as integers (forced mode)
+ * @note Sensor must be in #BME280_SLEEPMODE to force a single measurement.
+ *
+ * Function reads sensor's configuration to check conditions and calculate max. delay time
+ * required for measure cycle. Then sends command to force single measurement and calls used-defined
+ * delay function. When delay function returns ir reads temperature related adc values from sensor, converts them into
+ * single variables and compensate with use #BME280_calibration_data. Compensated values are then
+ * converted into integer (*TempInt) and fractial part (*TempFract).
+ * @param[in] *Dev pointer to sensor's #BME280_t structure
+ * @param[out] *TempInt pointer to variable where integer part of temperature will be stored
+ * @param[out] *TempFract pointer to variable where fractial part of temperature will be stored
+ * @return #BME280_OK success
+ * @return #BME280_PARAM_ERR wrong parameter passed
+ * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
+ * @return #BME280_NO_INIT_ERR sensor was not initialized before
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_BUSY_ERR sensor is busy so cannot proceed
+ */
+int8_t BME280_ReadTempForce(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
 ///@}
 
 #ifdef USE_FLOAT
@@ -513,7 +534,7 @@ int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
 int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
 
 /**
- * @brief Reads all measured data (forced mode) and returns floats
+ * @brief Function forces single measure and returns all data as floats
  * @note Sensor must be in #BME280_SLEEPMODE to force a single measurement.
  *
  * Function reads sensor's configuration to check conditions and calculate max. delay time
@@ -531,6 +552,26 @@ int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
  * @return #BME280_BUSY_ERR sensor is busy so cannot proceed
  */
 int8_t BME280_ReadAllForce_F(BME280_t *Dev, BME280_DataF_t *Data);
+
+/**
+ * @brief Function forces single measure and returns temperatrue as floats (forced mode)
+ * @note Sensor must be in #BME280_SLEEPMODE to force a single measurement.
+ *
+ * Function reads sensor's configuration to check conditions and calculate max. delay time
+ * required for measure cycle. Then sends command to force single measurement and calls used-defined
+ * delay function. When delay function returns ir reads temperature related adc values from sensor, converts them into
+ * single variables and compensate with use #BME280_calibration_data. Compensated values are then
+ * converted into float.
+ * @param[in] *Dev pointer to sensor's #BME280_t structure
+ * @param[out] *Temp pointer to variable where temperature will be stored
+ * @return #BME280_OK success
+ * @return #BME280_PARAM_ERR wrong parameter passed
+ * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
+ * @return #BME280_NO_INIT_ERR sensor was not initialized before
+ * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
+ * @return #BME280_BUSY_ERR sensor is busy so cannot proceed
+ */
+int8_t BME280_ReadTempForce_F(BME280_t *Dev, float *Temp);
 #endif
 ///@}
 ///@}
