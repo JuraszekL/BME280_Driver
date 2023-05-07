@@ -129,14 +129,16 @@ static BME280_U32_t bme280_compensate_p_u32t(BME280_t *Dev, BME280_S32_t adc_P);
  */
 static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H);
 
+#ifdef USE_INTEGER_RESULTS
 /**
  * @brief convert temperature to structure
  *
  * Function converts temperature stored in #BME280_S32_t to #BME280_Data_t structure
  */
 static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 /**
  * @brief convert temperature to float
  *
@@ -145,14 +147,16 @@ static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data);
 static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out);
 #endif
 
+#ifdef USE_INTEGER_RESULTS
 /**
  * @brief convert pressure to structure
  *
  * Function converts pressure stored in #BME280_U32_t to #BME280_Data_t structure
  */
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data);
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 /**
  * @brief convert pressure to structure
  *
@@ -161,14 +165,16 @@ static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data)
 static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out);
 #endif
 
+#ifdef USE_INTEGER_RESULTS
 /**
  * @brief convert humidity to structure
  *
  * Function converts humidity stored in #BME280_U32_t to #BME280_Data_t structure
  */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data);
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 /**
  * @brief convert humidity to structure
  *
@@ -753,6 +759,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 }
 #endif
 
+#ifdef USE_INTEGER_RESULTS
 	/* function reads last measured values from sensor in normal mode (no floats) */
 int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 
@@ -1024,8 +1031,9 @@ int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 
 	return res;
 }
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 	/* function reads last measured values from sensor in normal mode (with floats) */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
 
@@ -1508,14 +1516,16 @@ static BME280_U32_t bme280_compensate_h_u32t(BME280_t *Dev, BME280_S32_t adc_H){
     return humidity;
 }
 
+#ifdef USE_INTEGER_RESULTS
 	/* function converts BME280_S32_t temperature to BME280_Data_t structure */
 static void bme280_convert_t_S32_struct(BME280_S32_t temp, BME280_Data_t *data){
 
 	data->temp_int = (BME280_S32_t)temp / 100;
 	data->temp_fract = (BME280_S32_t)temp % 100;
 }
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 	/* function converts BME280_S32_t temperature to float */
 static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out){
 
@@ -1523,6 +1533,7 @@ static void bme280_convert_t_S32_float(BME280_S32_t temp_in, float *temp_out){
 }
 #endif
 
+#ifdef USE_INTEGER_RESULTS
 	/* function converts BME280_U32_t pressure to BME280_Data_t structure */
 static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data){
 
@@ -1534,8 +1545,9 @@ static void bme280_convert_p_U32_struct(BME280_U32_t press, BME280_Data_t *data)
 	data->pressure_fract = press % (BME280_U32_t)100;
 #endif
 }
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 	/* function converts BME280_U32_t pressure to float */
 static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){
 
@@ -1547,14 +1559,16 @@ static void bme280_convert_p_U32_float(BME280_U32_t press_in, float *press_out){
 }
 #endif
 
+#ifdef USE_INTEGER_RESULTS
 	/* function converts BME280_U32_t humidity to BME280_Data_t structure */
 static void bme280_convert_h_U32_struct(BME280_U32_t hum, BME280_Data_t *data){
 
 	data->humidity_int = hum / (BME280_U32_t)1000;
 	data->humidity_fract = hum % (BME280_U32_t)1000;
 }
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 	/* function converts BME280_U32_t humidity to float */
 static void bme280_convert_h_U32_float(BME280_U32_t hum_in, float *hum_out){
 

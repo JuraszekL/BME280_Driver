@@ -35,8 +35,10 @@ extern "C" {
  */
 /// comment this line if you don't want to use 64bit variables in calculations
 #define USE_64BIT
-/// comment this line if u don't need to use floating point results
-#define USE_FLOAT
+/// comment this line if you don't need to use functions with floating point results
+#define USE_FLOATS_RESULTS
+/// comment this line if you don't need to use functions with integer results
+#define USE_INTEGER_RESULTS
 /// comment this line if you don't need to read single setting with any getX function
 #define USE_GETTERS
 /// comment this line if you don't need to write single setting with any setX function
@@ -337,9 +339,10 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev);
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_SLEEPMODE
  */
 int8_t BME280_Disable3WireSPI(BME280_t *Dev);
-#endif
 ///@}
+#endif
 
+#ifdef USE_INTEGER_RESULTS
 /**
  * @defgroup BME280_readnofl Read Functions (int)
  * @brief read measured data from sensor as integers
@@ -499,12 +502,13 @@ int8_t BME280_ReadPressForce(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressF
  */
 int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 ///@}
+#endif
 
-#ifdef USE_FLOAT
+#ifdef USE_FLOATS_RESULTS
 /**
  * @defgroup BME280_readfl Read Functions (float)
  * @brief read measured data from sensor as floating point values
- * @note #USE_FLOAT in @ref BME280_libconf must be uncommented to use these functions
+ * @note #USE_FLOATS_RESULTS in @ref BME280_libconf must be uncommented to use these functions
  * @{
  */
 
