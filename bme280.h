@@ -376,7 +376,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data);
+int8_t BME280_ReadAllLast(BME280_t *Dev, BME280_Data_t *Data);
 
 /**
  * @brief Function reads last measured temperature
@@ -394,7 +394,7 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
+int8_t BME280_ReadTempLast(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
 
 /**
  * @brief Function reads last measured pressure
@@ -412,7 +412,7 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract);
+int8_t BME280_ReadPressLast(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract);
 
 /**
  * @brief Function reads last measured humidity
@@ -430,7 +430,7 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
+int8_t BME280_ReadHumLast(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
 ///@}
 #endif
 
@@ -559,7 +559,7 @@ int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data);
+int8_t BME280_ReadAllLast_F(BME280_t *Dev, BME280_DataF_t *Data);
 
 /**
  * @brief Function reads last measured temperature
@@ -576,7 +576,7 @@ int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp);
+int8_t BME280_ReadTempLast_F(BME280_t *Dev, float *Temp);
 
 /**
  * @brief Function reads last measured pressure
@@ -593,7 +593,7 @@ int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
+int8_t BME280_ReadPressLast_F(BME280_t *Dev, float *Press);
 
 /**
  * @brief Function reads last measured humidity
@@ -610,7 +610,7 @@ int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press);
  * @return #BME280_NO_INIT_ERR sensor was not initialized before
  * @return #BME280_CONDITION_ERR sensor is not in #BME280_NORMALMODE
  */
-int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum);
+int8_t BME280_ReadHumLast_F(BME280_t *Dev, float *Hum);
 /// @}
 #endif
 

@@ -766,7 +766,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 #ifdef USE_INTEGER_RESULTS
 #ifdef USE_NORMAL_MODE
 	/* function reads last measured values from sensor in normal mode (no floats) */
-int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
+int8_t BME280_ReadAllLast(BME280_t *Dev, BME280_Data_t *Data){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -792,7 +792,7 @@ int8_t BME280_ReadLastAll(BME280_t *Dev, BME280_Data_t *Data){
 }
 
 	/* function reads last measured temperature from sensor in normal mode (no floats) */
-int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
+int8_t BME280_ReadTempLast(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -820,7 +820,7 @@ int8_t BME280_ReadLastTemp(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 }
 
 	/* function reads last measured pressure from sensor in normal mode (no floats) */
-int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract){
+int8_t BME280_ReadPressLast(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -849,7 +849,7 @@ int8_t BME280_ReadLastPress(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFr
 }
 
 	/* function reads last measured humidity from sensor in normal mode (no floats) */
-int8_t BME280_ReadLastHum(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
+int8_t BME280_ReadHumLast(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -1044,7 +1044,7 @@ int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
 #ifdef USE_FLOATS_RESULTS
 #ifdef USE_NORMAL_MODE
 	/* function reads last measured values from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
+int8_t BME280_ReadAllLast_F(BME280_t *Dev, BME280_DataF_t *Data){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -1070,7 +1070,7 @@ int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
 }
 
 	/* function reads last measured temperature from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp){
+int8_t BME280_ReadTempLast_F(BME280_t *Dev, float *Temp){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -1093,7 +1093,7 @@ int8_t BME280_ReadLastTemp_F(BME280_t *Dev, float *Temp){
 }
 
 	/* function reads last measured pressure from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press){
+int8_t BME280_ReadPressLast_F(BME280_t *Dev, float *Press){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
@@ -1117,7 +1117,7 @@ int8_t BME280_ReadLastPress_F(BME280_t *Dev, float *Press){
 }
 
 	/* function reads last measured humidity from sensor in normal mode (with floats) */
-int8_t BME280_ReadLastHum_F(BME280_t *Dev, float *Hum){
+int8_t BME280_ReadHumLast_F(BME280_t *Dev, float *Hum){
 
 	int8_t res = BME280_OK;
 	BME280_S32_t temp;
