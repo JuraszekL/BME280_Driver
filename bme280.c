@@ -943,6 +943,47 @@ int8_t BME280_ReadTempForce(BME280_t *Dev, int8_t *TempInt, uint8_t *TempFract){
 	return res;
 }
 
+	/* function forces single measurement and reads the pressure (no floats) */
+int8_t BME280_ReadPressForce(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressFract){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press;
+	BME280_Data_t data;
+	uint8_t delay;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(PressInt) || IS_NULL(PressFract) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* force single measure */
+	res = bme280_set_forced_mode(Dev, &delay);
+	if(BME280_OK != res) return res;
+
+	/* wait until it ends */
+	Dev->delay(delay);
+
+	/* check if measure is completed */
+	res = bme280_busy_check(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_press, Dev, &temp, &press, 0);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to local data structure */
+	bme280_convert_p_U32_struct(press, &data);
+
+	/* set values of external variables */
+	*PressInt = data.pressure_int;
+	*PressFract = data.pressure_fract;
+
+	return res;
+}
+
 #ifdef USE_FLOAT
 	/* function reads last measured values from sensor in normal mode (with floats) */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
@@ -1107,6 +1148,42 @@ int8_t BME280_ReadTempForce_F(BME280_t *Dev, float *Temp){
 
 	/* convert 32bit value to external float */
 	bme280_convert_t_S32_float(temp, Temp);
+
+	return res;
+}
+
+	/* function forces single measurement and reads the pressure (with floats) */
+int8_t BME280_ReadPressForce_F(BME280_t *Dev, float *Press){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t press;
+	uint8_t delay;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Press) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* force single measure */
+	res = bme280_set_forced_mode(Dev, &delay);
+	if(BME280_OK != res) return res;
+
+	/* wait until it ends */
+	Dev->delay(delay);
+
+	/* check if measure is completed */
+	res = bme280_busy_check(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_press, Dev, &temp, &press, 0);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to external float */
+	bme280_convert_p_U32_float(press, Press);
 
 	return res;
 }
