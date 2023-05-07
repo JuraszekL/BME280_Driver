@@ -984,6 +984,47 @@ int8_t BME280_ReadPressForce(BME280_t *Dev, uint16_t *PressInt, uint16_t *PressF
 	return res;
 }
 
+	/* function forces single measurement and reads the humidity (no floats) */
+int8_t BME280_ReadHumForce(BME280_t *Dev, uint8_t *HumInt, uint16_t *HumFract){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t hum;
+	BME280_Data_t data;
+	uint8_t delay;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(HumInt) || IS_NULL(HumFract) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* force single measure */
+	res = bme280_set_forced_mode(Dev, &delay);
+	if(BME280_OK != res) return res;
+
+	/* wait until it ends */
+	Dev->delay(delay);
+
+	/* check if measure is completed */
+	res = bme280_busy_check(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_hum, Dev, &temp, 0, &hum);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to local data structure */
+	bme280_convert_h_U32_struct(hum, &data);
+
+	/* set values of external variables */
+	*HumInt = data.humidity_int;
+	*HumFract = data.humidity_fract;
+
+	return res;
+}
+
 #ifdef USE_FLOAT
 	/* function reads last measured values from sensor in normal mode (with floats) */
 int8_t BME280_ReadLastAll_F(BME280_t *Dev, BME280_DataF_t *Data){
@@ -1184,6 +1225,42 @@ int8_t BME280_ReadPressForce_F(BME280_t *Dev, float *Press){
 
 	/* convert 32bit value to external float */
 	bme280_convert_p_U32_float(press, Press);
+
+	return res;
+}
+
+	/* function forces single measurement and reads the humidity (with floats) */
+int8_t BME280_ReadHumForce_F(BME280_t *Dev, float *Hum){
+
+	int8_t res = BME280_OK;
+	BME280_S32_t temp;
+	BME280_U32_t hum;
+	uint8_t delay;
+
+	/* check parameters */
+	if( IS_NULL(Dev) || IS_NULL(Hum) ) return BME280_PARAM_ERR;
+
+	/* check if sensor is initialized and in sleep mode */
+	res = bme280_is_sleep_mode(Dev);
+	if(BME280_OK != res) return res;
+
+	/* force single measure */
+	res = bme280_set_forced_mode(Dev, &delay);
+	if(BME280_OK != res) return res;
+
+	/* wait until it ends */
+	Dev->delay(delay);
+
+	/* check if measure is completed */
+	res = bme280_busy_check(Dev);
+	if(BME280_OK != res) return res;
+
+	/* read the data from sensor */
+	res = bme280_read_compensate(read_hum, Dev, &temp, 0, &hum);
+	if(BME280_OK != res) return res;
+
+	/* convert 32bit value to external float */
+	bme280_convert_h_U32_float(hum, Hum);
 
 	return res;
 }
