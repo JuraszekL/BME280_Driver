@@ -254,7 +254,7 @@ int8_t BME280_Init(BME280_t *Dev, BME280_Driver_t *Driver){
 	Dev->driver->delay(2);
 
 	/* read and check chip ID */
-	res = Dev->driver->read(BME280_ID_ADDR, &id, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_ID_ADDR, &id, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	if(BME280_ID != id) return BME280_ID_ERR;
@@ -292,11 +292,11 @@ int8_t BME280_ConfigureAll(BME280_t *Dev, BME280_Config_t *Config){
 	config |= Config->spi3w_enable & 0x01;	//0x01 - 0b00000001
 
 	/* send three config bytes to the device */
-	res = Dev->driver->write(BME280_CTRL_HUM_ADDR, ctrl_hum, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_HUM_ADDR, ctrl_hum, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* set oparing mode inside Dev structure */
@@ -325,7 +325,7 @@ int8_t BME280_Reset(BME280_t *Dev){
 	if( IS_NULL(Dev) || IS_NULL(Dev->driver->write) ) return BME280_PARAM_ERR;
 
 	/* write reset commad to reset register */
-	res = Dev->driver->write(BME280_RESET_ADDR, BME280_RESET_VALUE, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_RESET_ADDR, BME280_RESET_VALUE, Dev->driver);
 
 	/* set mode to default */
 	Dev->mode = sleep_mode;
@@ -348,7 +348,7 @@ int8_t BME280_GetMode(BME280_t *Dev, uint8_t *Mode){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse mode values from ctrl_meas */
@@ -378,7 +378,7 @@ int8_t BME280_GetPOvs(BME280_t *Dev, uint8_t *POvs){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse pressure oversampling value from ctrl_meas */
@@ -404,7 +404,7 @@ int8_t BME280_GetTOvs(BME280_t *Dev, uint8_t *TOvs){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse temperature oversampling value from ctrl_meas */
@@ -431,7 +431,7 @@ int8_t BME280_GetHOvs(BME280_t *Dev, uint8_t *HOvs){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_hum register from sensor */
-	res = Dev->driver->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_HUM_ADDR, &ctrl_hum, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse humidity oversampling value from ctrl_hum */
@@ -457,7 +457,7 @@ int8_t BME280_GetTStby(BME280_t *Dev, uint8_t *TStby){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of config register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse standby time value from config */
@@ -483,7 +483,7 @@ int8_t BME280_GetTFilter(BME280_t *Dev, uint8_t *Filter){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of config register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse filter value from config */
@@ -509,7 +509,7 @@ int8_t BME280_Is3WireSPIEnabled(BME280_t *Dev, uint8_t *Result){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* parse mode values from ctrl_meas */
@@ -537,7 +537,7 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	if(BME280_NO_INIT_ERR == res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current mode differs from requested */
@@ -548,7 +548,7 @@ int8_t BME280_SetMode(BME280_t *Dev, uint8_t Mode){
 	/* send new ctrl_meas value to sensor if required */
 	ctrl_meas &= 0xFC;	//0xFC - 0b11111100
 	ctrl_meas |= Mode;
-	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* update value inside Dev structure */
@@ -571,7 +571,7 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	if(BME280_OK != res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current value differs from requested */
@@ -581,7 +581,7 @@ int8_t BME280_SetPOvs(BME280_t *Dev, uint8_t POvs){
 	/* send new ctrl_meas value to sensor if required */
 	ctrl_meas &= 0xE3;	//0xE3 - 0b11100011
 	ctrl_meas |= (POvs << 2);
-	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver);
 
 	return res;
 }
@@ -600,7 +600,7 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	if(BME280_OK != res) return res;
 
 	/* read value of ctrl_meas register from sensor */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &ctrl_meas, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current value differs from requested */
@@ -610,7 +610,7 @@ int8_t BME280_SetTOvs(BME280_t *Dev, uint8_t TOvs){
 	/* send new ctrl_meas value to sensor if required */
 	ctrl_meas &= 0x1F;	//0x1F - 0b00011111
 	ctrl_meas |= (TOvs << 5);
-	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, ctrl_meas, Dev->driver);
 
 	return res;
 }
@@ -629,14 +629,14 @@ int8_t BME280_SetHOvs(BME280_t *Dev, uint8_t HOvs){
 	if(BME280_OK != res) return res;
 
 	/* send requested value to sensor */
-	res = Dev->driver->write(BME280_CTRL_HUM_ADDR, HOvs, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_HUM_ADDR, HOvs, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* to make the change effective we need to write ctrl_meas register,
 	 * check documentation */
-	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &tmp, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_MEAS_ADDR, &tmp, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
-	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, tmp, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, tmp, Dev->driver);
 
 	return res;
 }
@@ -655,7 +655,7 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
 	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current value differs from requested */
@@ -665,7 +665,7 @@ int8_t BME280_SetTStby(BME280_t *Dev, uint8_t TStby){
 	/* send new config value to sensor if required */
 	config &= 0x1F;	//0x1F - 0b00011111
 	config |= (TStby << 5);
-	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver);
 
 	return res;
 }
@@ -684,7 +684,7 @@ int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter){
 	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current value differs from requested */
@@ -694,7 +694,7 @@ int8_t BME280_SetFilter(BME280_t *Dev, uint8_t Filter){
 	/* send new config value to sensor if required */
 	config &= 0xE3;	//0xE3 - 0b11100011
 	config |= (Filter << 2);
-	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver);
 
 	return res;
 }
@@ -713,7 +713,7 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev){
 	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current value differs from requested */
@@ -723,7 +723,7 @@ int8_t BME280_Enable3WireSPI(BME280_t *Dev){
 	/* send new config value to sensor if required */
 	config &= 0xFE;	//0xFE - 0b11111110
 	config |= 0x01;
-	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver);
 
 	return res;
 }
@@ -742,7 +742,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 	if(BME280_OK != res) return res;
 
 	/* read value of config register from sensor */
-	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CONFIG_ADDR, &config, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if current value differs from requested */
@@ -751,7 +751,7 @@ int8_t BME280_Disable3WireSPI(BME280_t *Dev){
 
 	/* send new config value to sensor if required */
 	config &= 0xFE;	//0xFE - 0b11111110
-	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CONFIG_ADDR, config, Dev->driver);
 
 	return res;
 }
@@ -1293,10 +1293,10 @@ static int8_t bme280_read_compensation_parameters(BME280_t *Dev){
 
 	/* read two calibration data's areas from sensor */
 	res = Dev->driver->read(BME280_CALIB_DATA1_ADDR, &tmp_buff[0], BME280_CALIB_DATA1_LEN,
-			Dev->driver->i2c_address, Dev->driver->env_spec_data);
+			Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 	res = Dev->driver->read(BME280_CALIB_DATA2_ADDR, &tmp_buff[25], BME280_CALIB_DATA2_LEN,
-			Dev->driver->i2c_address, Dev->driver->env_spec_data);
+			Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	// parse data to the structure inside Dev
@@ -1341,22 +1341,22 @@ static int8_t bme280_read_compensate(uint8_t read_type, BME280_t *Dev, BME280_S3
 
 	case read_temp:
 		res = Dev->driver->read(BME280_TEMP_ADC_ADDR, (uint8_t *)&adc_raw.temp_raw, BME280_TEMP_ADC_LEN,
-				Dev->driver->i2c_address, Dev->driver->env_spec_data);
+				Dev->driver);
 		break;
 
 	case read_press:
 		res = Dev->driver->read(BME280_PRESS_ADC_ADDR, (uint8_t *)&adc_raw.press_raw, (BME280_PRESS_ADC_LEN +
-				BME280_TEMP_ADC_LEN), Dev->driver->i2c_address, Dev->driver->env_spec_data);
+				BME280_TEMP_ADC_LEN), Dev->driver);
 		break;
 
 	case read_hum:
 		res = Dev->driver->read(BME280_TEMP_ADC_ADDR, (uint8_t *)&adc_raw.temp_raw, (BME280_TEMP_ADC_LEN +
-				BME280_HUM_ADC_LEN), Dev->driver->i2c_address, Dev->driver->env_spec_data);
+				BME280_HUM_ADC_LEN), Dev->driver);
 		break;
 
 	case read_all:
 		res = Dev->driver->read(BME280_PRESS_ADC_ADDR, (uint8_t *)&adc_raw.press_raw, (BME280_PRESS_ADC_LEN +
-				BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN), Dev->driver->i2c_address, Dev->driver->env_spec_data);
+				BME280_TEMP_ADC_LEN + BME280_HUM_ADC_LEN), Dev->driver);
 		break;
 
 	default:
@@ -1615,7 +1615,7 @@ static int8_t bme280_set_forced_mode(BME280_t *Dev, uint8_t *delay){
 	uint8_t mode, osrs_t, osrs_p, osrs_h;
 
 	/* read ctrl_hum, status and ctrl_meas registers */
-	res = Dev->driver->read(BME280_CTRL_HUM_ADDR, buff, 3, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_CTRL_HUM_ADDR, buff, 3, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if sensor is not busy */
@@ -1642,7 +1642,7 @@ static int8_t bme280_set_forced_mode(BME280_t *Dev, uint8_t *delay){
 	/* set forced mode */
 	buff[2] &= 0xFC;	///0xFC - 0b11111100
 	buff[2] |= BME280_FORCEDMODE;
-	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, buff[2], Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->write(BME280_CTRL_MEAS_ADDR, buff[2], Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	return res;
@@ -1664,7 +1664,7 @@ static int8_t bme280_busy_check(BME280_t *Dev){
 	uint8_t status;
 
 	/* read status register */
-	res = Dev->driver->read(BME280_STATUS_ADDR, &status, 1, Dev->driver->i2c_address, Dev->driver->env_spec_data);
+	res = Dev->driver->read(BME280_STATUS_ADDR, &status, 1, Dev->driver);
 	if(BME280_OK != res) return BME280_INTERFACE_ERR;
 
 	/* check if both bits are not set */

@@ -80,13 +80,11 @@ git submodule add https://github.com/JuraszekL/BME280_Driver.git
  * @param[in] reg_addr address of register to be read (f.e. #BME280_ID_ADDR)
  * @param[in] *rxbuff pointer to the buffer where data will be stored
  * @param[in] rxlen lenght of data to be read (in bytes)
- * @param[in] dev_addr address of the device on I2C bus (#BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH)
- * @param[in] env_spec_data pointer to platform specific data required to perform bus operation
- * (f.e. pointer to i2c bus strucure)
+ * @param[in] *driver pointer to #BME280_Driver_t structure
  * @return 0 success
  * @return -1 failure
  */
-typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data);
+typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver);
 ```
 
 - Write Function:
@@ -95,13 +93,12 @@ typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rx
  * Function to write one byte to sensor.
  * @param[in] reg_addr address of register to be written (f.e. #BME280_RESET_ADDR)
  * @param[in] value value to write (f.e. #BME280_RESET_VALUE)
- * @param[in] dev_addr address of the device on I2C bus (#BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH)
- * @param[in] env_spec_data pointer to platform specific data required to perform bus operation
+ * @param[in] *driver pointer to BME280_Driver_t structure
  * (f.e. pointer to i2c bus strucure)
  * @return 0 success
  * @return -1 failure
  */
-typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data);
+typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, void *driver);
 ```
 
 - Delay Function:
