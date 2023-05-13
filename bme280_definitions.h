@@ -160,7 +160,7 @@
  */
 
 /**
- * Function to read the data from sensor in burst mode.
+ * Function to read the data from sensor's registers in burst mode.
  * @attention when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples
  * @param[in] reg_addr address of register to be read (f.e. #BME280_ID_ADDR)
  * @param[in] *rxbuff pointer to the buffer where data will be stored
@@ -169,10 +169,10 @@
  * @return 0 success
  * @return -1 failure
  */
-typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver);
+typedef int8_t (*bme280_readregisters)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver);
 
 /**
- * Function to write one byte to sensor.
+ * Function to write data to a single register
  * @attention when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples
  * @attention when use SPI bus, function must reset MSB of "reg_addr" value! Check datasheet and examples
  * @param[in] reg_addr address of register to be written (f.e. #BME280_RESET_ADDR)
@@ -181,7 +181,7 @@ typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rx
  * @return 0 success
  * @return -1 failure
  */
-typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, void *driver);
+typedef int8_t (*bme280_writeregister)(uint8_t reg_addr, uint8_t value, void *driver);
 
 /**
  * Delay function.
@@ -243,9 +243,9 @@ struct BME280_calibration_data {
 typedef struct {
 
 	/// pointer to user defined function that reads data from sensor
-	bme280_readbytes read;
+	bme280_readregisters read;
 	/// pointer to user defined function that writes data to sensor
-	bme280_writebyte write;
+	bme280_writeregister write;
 	/// pointer to user defined delay function
 	bme280_delayms delay;
 	/// pointer to platform specific data (f.e. to i2c bus structure)
