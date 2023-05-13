@@ -1,4 +1,4 @@
 <map id="BME280 I2C Address" name="BME280 I2C Address">
 <area shape="rect" id="node1" href="$group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,5,117,31"/>
-<area shape="rect" id="node2" title="Address on I2C bus depends of SDO pin connection. Use one of these values as &quot;I2cAddr&quot; parameter in B..." alt="" coords="165,5,309,31"/>
+<area shape="rect" id="node2" title="Address on I2C bus." alt="" coords="165,5,309,31"/>
 </map>

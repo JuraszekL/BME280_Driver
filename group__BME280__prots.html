@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;2.0.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -110,16 +110,16 @@ Collaboration diagram for Function pointers:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga118d97987d70651dc4f04647e3976eb3"><td class="memItemLeft" align="right" valign="top">typedef int8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__prots.html#ga118d97987d70651dc4f04647e3976eb3">bme280_readbytes</a>) (uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data)</td></tr>
-<tr class="separator:ga118d97987d70651dc4f04647e3976eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c71502b5222452a999790497f860309"><td class="memItemLeft" align="right" valign="top">typedef int8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a>) (uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data)</td></tr>
-<tr class="separator:ga7c71502b5222452a999790497f860309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32cf351e23309e871a4efbdca56db043"><td class="memItemLeft" align="right" valign="top">typedef int8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__prots.html#ga32cf351e23309e871a4efbdca56db043">bme280_readregisters</a>) (uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver)</td></tr>
+<tr class="separator:ga32cf351e23309e871a4efbdca56db043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c986cd0bb56d3ab947d36a1ae43411f"><td class="memItemLeft" align="right" valign="top">typedef int8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__prots.html#ga0c986cd0bb56d3ab947d36a1ae43411f">bme280_writeregister</a>) (uint8_t reg_addr, uint8_t value, void *driver)</td></tr>
+<tr class="separator:ga0c986cd0bb56d3ab947d36a1ae43411f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga53e2f01b2fff79561c1548da10bd2042"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__prots.html#ga53e2f01b2fff79561c1548da10bd2042">bme280_delayms</a>) (uint8_t delay_time)</td></tr>
 <tr class="separator:ga53e2f01b2fff79561c1548da10bd2042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Platform speicific functions. </p>
-<p>These functions have to be created by user and passed as agruments to <a class="el" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function. </p>
+<p>These functions have to be created by user and set as members of <a class="el" href="structBME280__Driver__t.html" title="Keeps all data specific for used platform.">BME280_Driver_t</a> structure </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ga53e2f01b2fff79561c1548da10bd2042" name="ga53e2f01b2fff79561c1548da10bd2042"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga53e2f01b2fff79561c1548da10bd2042">&#9670;&#160;</a></span>bme280_delayms</h2>
@@ -141,24 +141,24 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="ga118d97987d70651dc4f04647e3976eb3" name="ga118d97987d70651dc4f04647e3976eb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga118d97987d70651dc4f04647e3976eb3">&#9670;&#160;</a></span>bme280_readbytes</h2>
+<a id="ga32cf351e23309e871a4efbdca56db043" name="ga32cf351e23309e871a4efbdca56db043"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga32cf351e23309e871a4efbdca56db043">&#9670;&#160;</a></span>bme280_readregisters</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int8_t(* bme280_readbytes) (uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, uint8_t dev_addr, void *env_spec_data)</td>
+          <td class="memname">typedef int8_t(* bme280_readregisters) (uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read the data from sensor in burst mode. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function to read the data from sensor's registers in burst mode. </p><dl class="section attention"><dt>Attention</dt><dd>when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">reg_addr</td><td>address of register to be read (f.e. <a class="el" href="group__BME280__Regs.html#ga85a99a959b992d5626f3b6d38e64a075" title="address of Chip ID">BME280_ID_ADDR</a>) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">*rxbuff</td><td>pointer to the buffer where data will be stored </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">rxlen</td><td>lenght of data to be read (in bytes) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>address of the device on I2C bus (<a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> or <a class="el" href="group__BME280__I2CAddr.html#ga2590a0f2babfb11e1b722deccd255657" title="if SDO pin is connected to VCC">BME280_I2CADDR_SDOH</a>) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">env_spec_data</td><td>pointer to platform specific data required to perform bus operation (f.e. pointer to i2c bus strucure) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*driver</td><td>pointer to <a class="el" href="structBME280__Driver__t.html" title="Keeps all data specific for used platform.">BME280_Driver_t</a> structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -168,23 +168,25 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="ga7c71502b5222452a999790497f860309" name="ga7c71502b5222452a999790497f860309"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7c71502b5222452a999790497f860309">&#9670;&#160;</a></span>bme280_writebyte</h2>
+<a id="ga0c986cd0bb56d3ab947d36a1ae43411f" name="ga0c986cd0bb56d3ab947d36a1ae43411f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0c986cd0bb56d3ab947d36a1ae43411f">&#9670;&#160;</a></span>bme280_writeregister</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int8_t(* bme280_writebyte) (uint8_t reg_addr, uint8_t value, uint8_t dev_addr, void *env_spec_data)</td>
+          <td class="memname">typedef int8_t(* bme280_writeregister) (uint8_t reg_addr, uint8_t value, void *driver)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to write one byte to sensor. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function to write data to a single register </p><dl class="section attention"><dt>Attention</dt><dd>when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples </dd>
+<dd>
+when use SPI bus, function must reset MSB of "reg_addr" value! Check datasheet and examples </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">reg_addr</td><td>address of register to be written (f.e. <a class="el" href="group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4" title="address of Reset register">BME280_RESET_ADDR</a>) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>value to write (f.e. <a class="el" href="group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950" title="value that should be written to Reset register">BME280_RESET_VALUE</a>) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dev_addr</td><td>address of the device on I2C bus (<a class="el" href="group__BME280__I2CAddr.html#ga0e1beac980e2c3e3d817a13038a7104f" title="if SDO pin is connected to GND">BME280_I2CADDR_SDOL</a> or <a class="el" href="group__BME280__I2CAddr.html#ga2590a0f2babfb11e1b722deccd255657" title="if SDO pin is connected to VCC">BME280_I2CADDR_SDOH</a>) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">env_spec_data</td><td>pointer to platform specific data required to perform bus operation (f.e. pointer to i2c bus strucure) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*driver</td><td>pointer to <a class="el" href="structBME280__Driver__t.html" title="Keeps all data specific for used platform.">BME280_Driver_t</a> structure </td></tr>
   </table>
   </dd>
 </dl>

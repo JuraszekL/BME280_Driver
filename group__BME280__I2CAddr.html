@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;2.0.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('group__BME280__I2CAddr.html',''); init
 </div><!--header-->
 <div class="contents">
 
-<p>Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in <a class="el" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function.  
+<p>Address on I2C bus.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for BME280 I2C Address:</div>
@@ -104,7 +104,7 @@ Collaboration diagram for BME280 I2C Address:</div>
 <div class="center"><img src="group__BME280__I2CAddr.png" border="0" usemap="#agroup____BME280____I2CAddr" alt=""/></div>
 <map name="agroup____BME280____I2CAddr" id="agroup____BME280____I2CAddr">
 <area shape="rect" href="group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,5,117,31"/>
-<area shape="rect" title="Address on I2C bus depends of SDO pin connection. Use one of these values as &quot;I2cAddr&quot; parameter in B..." alt="" coords="165,5,309,31"/>
+<area shape="rect" title="Address on I2C bus." alt="" coords="165,5,309,31"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -120,7 +120,8 @@ Macros</h2></td></tr>
 <tr class="separator:ga2590a0f2babfb11e1b722deccd255657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in <a class="el" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function. </p>
+<p>Address on I2C bus. </p>
+<p>Address depends of SDO pin connection. Values 0x76 and 0x77 are 7-bytes addresses. User should take care about 8th RW byte controll </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

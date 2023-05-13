@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;1.1.x</span>
+   <div id="projectname">BME280 Driver<span id="projectnumber">&#160;2.0.x</span>
    </div>
    <div id="projectbrief">Driver for BME280 sensor</div>
   </td>
@@ -106,7 +106,7 @@ Collaboration diagram for BME280_Driver:</div>
 <div class="center"><img src="group__BME280__Driver.png" border="0" usemap="#agroup____BME280____Driver" alt=""/></div>
 <map name="agroup____BME280____Driver" id="agroup____BME280____Driver">
 <area shape="rect" title="BME280 Driver." alt="" coords="5,203,117,228"/>
-<area shape="rect" href="group__BME280__I2CAddr.html" title="Address on I2C bus depends of SDO pin connection. Use one of these values as &quot;I2cAddr&quot; parameter in B..." alt="" coords="173,5,318,31"/>
+<area shape="rect" href="group__BME280__I2CAddr.html" title="Address on I2C bus." alt="" coords="173,5,318,31"/>
 <area shape="rect" href="group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="189,55,302,80"/>
 <area shape="rect" href="group__BME280__Regs.html" title="Definition of register addresses and lenghts." alt="" coords="181,104,310,130"/>
 <area shape="rect" href="group__BME280__Ret.html" title="Values that can be returned by the driver&#39;s functions." alt="" coords="165,153,326,179"/>
@@ -133,7 +133,7 @@ Modules</h2></td></tr>
 <tr class="memdesc:group__BME280__Ret"><td class="mdescLeft">&#160;</td><td class="mdescRight">Values that can be returned by the driver's functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__BME280__I2CAddr"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__I2CAddr.html">BME280 I2C Address</a></td></tr>
-<tr class="memdesc:group__BME280__I2CAddr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in <a class="el" href="group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources.">BME280_Init</a> function. <br /></td></tr>
+<tr class="memdesc:group__BME280__I2CAddr"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address on I2C bus. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__BME280__Regs"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280__Regs.html">BME280 Registers</a></td></tr>
 <tr class="memdesc:group__BME280__Regs"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of register addresses and lenghts. <br /></td></tr>
@@ -1964,7 +1964,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Function to perform sensor's software reset. </p>
-<p>Function sends <a class="el" href="group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950" title="value that should be written to Reset register">BME280_RESET_VALUE</a> to <a class="el" href="group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4" title="address of Reset register">BME280_RESET_ADDR</a>. To perform this operation <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> function must be set inside <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> *Dev structure. Function sets "sleep_mode" inside *Dev structure after reset. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function sends <a class="el" href="group__BME280__Regs.html#ga9e92d26970e0f357fed2f1bc13f86950" title="value that should be written to Reset register">BME280_RESET_VALUE</a> to <a class="el" href="group__BME280__Regs.html#ga946f939c2dda53735f06cb86abb216e4" title="address of Reset register">BME280_RESET_ADDR</a>. To perform this operation <a class="el" href="group__BME280__prots.html#ga0c986cd0bb56d3ab947d36a1ae43411f">bme280_writeregister</a> function must be set inside <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> *Dev structure. Function sets "sleep_mode" inside *Dev structure after reset. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*Dev</td><td>pointer to sensor's <a class="el" href="structBME280__t.html" title="Keeps all data related to a single sensor.">BME280_t</a> structure </td></tr>
   </table>
@@ -1972,7 +1972,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__BME280__Ret.html#gabfe3dd12ee6f5f5d51fbb340a22ff678" title="operation completed successfully">BME280_OK</a> success </dd>
 <dd>
-<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed or <a class="el" href="group__BME280__prots.html#ga7c71502b5222452a999790497f860309">bme280_writebyte</a> function is not set </dd>
+<a class="el" href="group__BME280__Ret.html#ga44bac1807067bdb83a1f4e40cc715b85" title="wrong parameters were passed to the function">BME280_PARAM_ERR</a> wrong parameter passed or <a class="el" href="group__BME280__prots.html#ga0c986cd0bb56d3ab947d36a1ae43411f">bme280_writeregister</a> function is not set </dd>
 <dd>
 <a class="el" href="group__BME280__Ret.html#gab907098505f6b6ac522e21d927e62962" title="user-defined function to communicate with sensor returned non-zero value">BME280_INTERFACE_ERR</a> user defined read/write function returned non-zero value </dd></dl>
 <div class="dynheader">
