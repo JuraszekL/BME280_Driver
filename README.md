@@ -71,12 +71,39 @@ git submodule add https://github.com/JuraszekL/BME280_Driver.git
 #define USE_FORCED_MODE
 ```
 
-### 4. Write platform-specific functions required by driver:
+### 4. Create global BME280_Driver_t structure and fill it with platform specific data:
+```c
+/**
+ * @struct BME280_Driver_t
+ * @brief Keeps all data specific for used platform
+ *
+ * Use this structure with #BME280_Init function. Remember taht i2c_address is 7-byte.
+ * @{
+ */
+typedef struct {
 
-- Read Function:
+	/// pointer to user defined function that reads data from sensor
+	bme280_readbytes read;
+	/// pointer to user defined function that writes data to sensor
+	bme280_writebyte write;
+	/// pointer to user defined delay function
+	bme280_delayms delay;
+	/// pointer to platform specific data (f.e. to i2c bus structure)
+	void *env_spec_data;
+	/// (I2C only) 7-bit address on I2C bus, should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH
+	uint8_t i2c_address;
+
+} BME280_Driver_t;
+///@}
+```
+
+### 5. Write platform-specific functions required by driver:
+
+#### Read Function:
 ```c
 /**
  * Function to read the data from sensor in burst mode.
+ * @attention when use I2C bus, function must control LSB of address value! Check datasheet and examples.
  * @param[in] reg_addr address of register to be read (f.e. #BME280_ID_ADDR)
  * @param[in] *rxbuff pointer to the buffer where data will be stored
  * @param[in] rxlen lenght of data to be read (in bytes)
@@ -87,21 +114,21 @@ git submodule add https://github.com/JuraszekL/BME280_Driver.git
 typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver);
 ```
 
-- Write Function:
+#### Write Function:
 ```c
 /**
  * Function to write one byte to sensor.
+ * @attention when use I2C bus, function must control LSB of address value! Check datasheet and examples.
  * @param[in] reg_addr address of register to be written (f.e. #BME280_RESET_ADDR)
  * @param[in] value value to write (f.e. #BME280_RESET_VALUE)
- * @param[in] *driver pointer to BME280_Driver_t structure
- * (f.e. pointer to i2c bus strucure)
+ * @param[in] *driver pointer to #BME280_Driver_t structure
  * @return 0 success
  * @return -1 failure
  */
 typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, void *driver);
 ```
 
-- Delay Function:
+#### Delay Function:
 ```c
 /**
  * Delay function.
@@ -109,24 +136,7 @@ typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, void *driver
  */
 typedef void (*bme280_delayms)(uint8_t delay_time);
 ```
-### 5. Create global BME280_Driver_t structure and fill it with platform specific data:
 
-```c
-typedef struct {
-
-	/// current address on I2C bus, value should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH
-	uint8_t i2c_address;
-	/// pointer to platform specific data (f.e. to i2c bus structure)
-	void *env_spec_data;
-	/// pointer to user defined function that reads data from sensor
-	bme280_readbytes read;
-	/// pointer to user defined function that writes data to sensor
-	bme280_writebyte write;
-	/// pointer to user defined delay function
-	bme280_delayms delay;
-
-} BME280_Driver_t;
-```
 ### 6. Use BME280_Init Function before any operation:
 
 BME280_t *Dev structure is a reference for single sensor you want to work with. Should be global as well.

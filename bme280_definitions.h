@@ -39,8 +39,10 @@
 
 /**
  * @defgroup BME280_I2CAddr BME280 I2C Address
- * @brief Address on I2C bus depends of SDO pin connection. Use one of these values as "I2cAddr" parameter in
- * #BME280_Init function
+ * @brief Address on I2C bus
+ *
+ * Address depends of SDO pin connection. Values 0x76 and 0x77 are 7-bytes addresses. User should take
+ * care about 8th RW byte controll
  * @{
  */
 #define BME280_I2CADDR_SDOL	(0x76)		///< if SDO pin is connected to GND
@@ -159,6 +161,7 @@
 
 /**
  * Function to read the data from sensor in burst mode.
+ * @attention when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples
  * @param[in] reg_addr address of register to be read (f.e. #BME280_ID_ADDR)
  * @param[in] *rxbuff pointer to the buffer where data will be stored
  * @param[in] rxlen lenght of data to be read (in bytes)
@@ -170,10 +173,11 @@ typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rx
 
 /**
  * Function to write one byte to sensor.
+ * @attention when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples
+ * @attention when use SPI bus, function must reset MSB of "reg_addr" value! Check datasheet and examples
  * @param[in] reg_addr address of register to be written (f.e. #BME280_RESET_ADDR)
  * @param[in] value value to write (f.e. #BME280_RESET_VALUE)
- * @param[in] *driver pointer to BME280_Driver_t structure
- * (f.e. pointer to i2c bus strucure)
+ * @param[in] *driver pointer to #BME280_Driver_t structure
  * @return 0 success
  * @return -1 failure
  */
@@ -233,21 +237,21 @@ struct BME280_calibration_data {
  * @struct BME280_Driver_t
  * @brief Keeps all data specific for used platform
  *
- * Use this structure with #BME280_Init function
+ * Use this structure with #BME280_Init function. Remember taht i2c_address is 7-byte.
  * @{
  */
 typedef struct {
 
-	/// current address on I2C bus, value should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH
-	uint8_t i2c_address;
-	/// pointer to platform specific data (f.e. to i2c bus structure)
-	void *env_spec_data;
 	/// pointer to user defined function that reads data from sensor
 	bme280_readbytes read;
 	/// pointer to user defined function that writes data to sensor
 	bme280_writebyte write;
 	/// pointer to user defined delay function
 	bme280_delayms delay;
+	/// pointer to platform specific data (f.e. to i2c bus structure)
+	void *env_spec_data;
+	/// (I2C only) 7-bit address on I2C bus, should be #BME280_I2CADDR_SDOL or #BME280_I2CADDR_SDOH
+	uint8_t i2c_address;
 
 } BME280_Driver_t;
 ///@}
