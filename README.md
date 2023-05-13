@@ -9,18 +9,18 @@ BME280 Driver
 Offline doxygen documentation for current version is attached as Doc.zip file. Unzip this file and open index.html in your browser.
 
 ### Driver for Bosch BME280 Combined sensor.
-[BME280 Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)
+This version contains abstract layer only - user must develop platform-specific driver (just three functions are needed).
 
 ### Features
-
-- Communication with I2C bus only
+- Communication with I2C and SPI bus
 - Read all measured values in Normal and Forced mode
 - Results returned as integers or floats
 - Configurable use 32-bit variables only (when 64-bit are not avalible)
 - No dynamic memory allocation used
+- Multithread use not supported yet
 
 Driver is still under development, next features will be add soon.
-Current version - v1.1.x
+Current version - v2.0.x
 
 ### Sensor description
 
@@ -28,6 +28,7 @@ The BME280 is a humidity sensor especially developed for mobile applications and
 The unit combines high linearity and high accuracy sensors and is perfectly feasible for low current consumption, long-term stability and high EMC robustness.
 The humidity sensor offers an extremely fast response time and therefore supports performance requirements for emerging applications such as context awareness,
 and high accuracy over a wide temperature range.
+[BME280 Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf)
 
 Motivation
 ----------
@@ -83,9 +84,9 @@ git submodule add https://github.com/JuraszekL/BME280_Driver.git
 typedef struct {
 
 	/// pointer to user defined function that reads data from sensor
-	bme280_readbytes read;
+	bme280_readregisters read;
 	/// pointer to user defined function that writes data to sensor
-	bme280_writebyte write;
+	bme280_writeregister write;
 	/// pointer to user defined delay function
 	bme280_delayms delay;
 	/// pointer to platform specific data (f.e. to i2c bus structure)
@@ -102,8 +103,8 @@ typedef struct {
 #### Read Function:
 ```c
 /**
- * Function to read the data from sensor in burst mode.
- * @attention when use I2C bus, function must control LSB of address value! Check datasheet and examples.
+ * Function to read the data from sensor's registers in burst mode.
+ * @attention when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples
  * @param[in] reg_addr address of register to be read (f.e. #BME280_ID_ADDR)
  * @param[in] *rxbuff pointer to the buffer where data will be stored
  * @param[in] rxlen lenght of data to be read (in bytes)
@@ -111,21 +112,22 @@ typedef struct {
  * @return 0 success
  * @return -1 failure
  */
-typedef int8_t (*bme280_readbytes)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver);
+typedef int8_t (*bme280_readregisters)(uint8_t reg_addr, uint8_t *rxbuff, uint8_t rxlen, void *driver);
 ```
 
 #### Write Function:
 ```c
 /**
- * Function to write one byte to sensor.
- * @attention when use I2C bus, function must control LSB of address value! Check datasheet and examples.
+ * Function to write data to a single register
+ * @attention when use I2C bus, function must control LSB of I2C address value! Check datasheet and examples
+ * @attention when use SPI bus, function must reset MSB of "reg_addr" value! Check datasheet and examples
  * @param[in] reg_addr address of register to be written (f.e. #BME280_RESET_ADDR)
  * @param[in] value value to write (f.e. #BME280_RESET_VALUE)
  * @param[in] *driver pointer to #BME280_Driver_t structure
  * @return 0 success
  * @return -1 failure
  */
-typedef int8_t (*bme280_writebyte)(uint8_t reg_addr, uint8_t value, void *driver);
+typedef int8_t (*bme280_writeregister)(uint8_t reg_addr, uint8_t value, void *driver);
 ```
 
 #### Delay Function:

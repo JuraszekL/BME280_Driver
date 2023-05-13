@@ -75,11 +75,11 @@ int8_t BME280_Init(BME280_t *Dev, BME280_Driver_t *Driver);
 /**
  * @brief Function to perform sensor's software reset
  *
- * Function sends #BME280_RESET_VALUE to #BME280_RESET_ADDR. To perform this operation #bme280_writebyte
+ * Function sends #BME280_RESET_VALUE to #BME280_RESET_ADDR. To perform this operation #bme280_writeregister
  * function must be set inside #BME280_t *Dev structure. Function sets "sleep_mode" inside *Dev structure after reset.
  * @param[in] *Dev pointer to sensor's #BME280_t structure
  * @return #BME280_OK success
- * @return #BME280_PARAM_ERR wrong parameter passed or #bme280_writebyte function is not set
+ * @return #BME280_PARAM_ERR wrong parameter passed or #bme280_writeregister function is not set
  * @return #BME280_INTERFACE_ERR user defined read/write function returned non-zero value
  */
 int8_t BME280_Reset(BME280_t *Dev);
