@@ -1,6 +1,0 @@
-<map id="Examples/STM32/HAL_I2C_NormalMode/Src/i2c.c" name="Examples/STM32/HAL_I2C_NormalMode/Src/i2c.c">
-<area shape="rect" id="node1" title="This file provides code for the configuration of the I2C instances." alt="" coords="5,5,190,46"/>
-<area shape="rect" id="node2" href="$i2c_8h.html" title="This file contains all the function prototypes for the i2c.c file." alt="" coords="73,94,122,120"/>
-<area shape="rect" id="node3" href="$HAL__I2C__NormalMode_2Inc_2main_8h.html" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="68,168,127,193"/>
-<area shape="rect" id="node4" title=" " alt="" coords="40,241,155,267"/>
-</map>

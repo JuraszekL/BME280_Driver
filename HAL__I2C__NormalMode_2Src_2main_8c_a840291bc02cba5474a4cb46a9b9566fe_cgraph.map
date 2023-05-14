@@ -4,7 +4,7 @@
 <area shape="rect" id="node4" href="$group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources." alt="" coords="129,120,225,146"/>
 <area shape="rect" id="node7" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="103,308,251,334"/>
 <area shape="rect" id="node18" href="$HAL__SPI__NormalMode_2Src_2gpio_8c.html#ac724e431d2af879252de35615be2bdea" title=" " alt="" coords="124,357,230,383"/>
-<area shape="rect" id="node19" href="$i2c_8c.html#ada6e763cfa4108a8d24cd27b75f2f489" title=" " alt="" coords="127,436,227,462"/>
+<area shape="rect" id="node19" href="$HAL__RTOS__I2C__ForcedMode_2Src_2i2c_8c.html#ada6e763cfa4108a8d24cd27b75f2f489" title=" " alt="" coords="127,436,227,462"/>
 <area shape="rect" id="node21" href="$HAL__I2C__NormalMode_2Src_2main_8c.html#a70af21c671abfcc773614a9a4f63d920" title="System Clock Configuration." alt="" coords="106,485,248,511"/>
 <area shape="rect" id="node3" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="312,5,473,31"/>
 <area shape="rect" id="node5" href="$group__BME280__privfunct.html#gaa6b3e52e229e2ac9e57555a85f044234" title="read compensation data" alt="" coords="299,55,486,96"/>

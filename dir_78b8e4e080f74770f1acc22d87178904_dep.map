@@ -1,7 +1,9 @@
 <map id="Examples/STM32" name="Examples/STM32">
-<area shape="rect" id="node2" href="dir_8ff27876fac00bce0aed4fe62fe2ae36.html" title="HAL_I2C_NormalMode" alt="" coords="399,63,556,89"/>
-<area shape="rect" id="node3" href="dir_b1c5d0fab4f4967171674b2281c36fe0.html" title="HAL_SPI_ForcedMode" alt="" coords="219,63,376,89"/>
-<area shape="rect" id="node4" href="dir_265d7d5ca465c1ac516191188d0a9cee.html" title="HAL_SPI_NormalMode" alt="" coords="37,63,195,89"/>
-<area shape="rect" id="clust2" href="dir_78b8e4e080f74770f1acc22d87178904.html" alt="" coords="27,52,653,99"/>
-<area shape="rect" id="clust1" href="dir_03680f297d755c096b0a1ead13ee12b7.html" title="Examples" alt="" coords="16,16,664,110"/>
+<area shape="rect" id="node2" href="dir_8ff27876fac00bce0aed4fe62fe2ae36.html" title="HAL_I2C_NormalMode" alt="" coords="845,63,1001,89"/>
+<area shape="rect" id="node3" href="dir_1497e8d61cd886808bf5c98973fdc173.html" title="HAL_RTOS_I2C_ForcedMode" alt="" coords="623,63,820,89"/>
+<area shape="rect" id="node4" href="dir_9cf4cea8b9e2f13b8a11bc28dc59de95.html" title="HAL_RTOS_SPI_ForcedMode" alt="" coords="399,63,598,89"/>
+<area shape="rect" id="node5" href="dir_b1c5d0fab4f4967171674b2281c36fe0.html" title="HAL_SPI_ForcedMode" alt="" coords="219,63,376,89"/>
+<area shape="rect" id="node6" href="dir_265d7d5ca465c1ac516191188d0a9cee.html" title="HAL_SPI_NormalMode" alt="" coords="37,63,195,89"/>
+<area shape="rect" id="clust2" href="dir_78b8e4e080f74770f1acc22d87178904.html" alt="" coords="27,52,1099,99"/>
+<area shape="rect" id="clust1" href="dir_03680f297d755c096b0a1ead13ee12b7.html" title="Examples" alt="" coords="16,16,1109,110"/>
 </map>

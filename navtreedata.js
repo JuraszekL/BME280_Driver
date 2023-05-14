@@ -55,7 +55,7 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
@@ -68,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "HAL__I2C__NormalMode_2Inc_2gpio_8h.html",
-"group__BME280__tstby.html#gacff2d91f7c5511ac5a2570cb8e6baf3c"
+"group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

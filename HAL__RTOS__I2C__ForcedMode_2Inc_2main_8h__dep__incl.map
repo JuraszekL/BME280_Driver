@@ -1,0 +1,5 @@
+<map id="Examples/STM32/HAL_RTOS_I2C_ForcedMode/Inc/main.h" name="Examples/STM32/HAL_RTOS_I2C_ForcedMode/Inc/main.h">
+<area shape="rect" id="node1" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="103,5,273,61"/>
+<area shape="rect" id="node2" href="$HAL__RTOS__I2C__ForcedMode_2Inc_2gpio_8h.html" title="This file contains all the function prototypes for the gpio.c file." alt="" coords="5,109,176,165"/>
+<area shape="rect" id="node3" href="$HAL__RTOS__I2C__ForcedMode_2Inc_2i2c_8h.html" title="This file contains all the function prototypes for the i2c.c file." alt="" coords="200,109,370,165"/>
+</map>
