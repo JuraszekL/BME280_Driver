@@ -1,0 +1,4 @@
+<map id="BME280_ReadAllForce" name="BME280_ReadAllForce">
+<area shape="rect" id="node1" title="Function forces single measure and returns all data as integers." alt="" coords="103,5,258,31"/>
+<area shape="rect" id="node2" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+</map>

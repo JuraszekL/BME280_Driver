@@ -1,0 +1,5 @@
+<map id="Examples/STM32/HAL_SPI_NormalMode/Inc/main.h" name="Examples/STM32/HAL_SPI_NormalMode/Inc/main.h">
+<area shape="rect" id="node1" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="101,5,256,61"/>
+<area shape="rect" id="node2" href="$HAL__SPI__NormalMode_2Inc_2gpio_8h.html" title="This file contains all the function prototypes for the gpio.c file." alt="" coords="5,109,160,165"/>
+<area shape="rect" id="node3" href="$HAL__SPI__NormalMode_2Inc_2spi_8h.html" title="This file contains all the function prototypes for the spi.c file." alt="" coords="184,117,368,157"/>
+</map>

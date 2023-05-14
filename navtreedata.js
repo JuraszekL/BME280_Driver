@@ -67,7 +67,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"HAL__I2C__NormalMode_2Inc_2gpio_8h.html",
+"group__BME280__tstby.html#gacff2d91f7c5511ac5a2570cb8e6baf3c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -6,5 +6,6 @@ var annotated_dup =
     [ "BME280_Data_t", "structBME280__Data__t.html", "structBME280__Data__t" ],
     [ "BME280_DataF_t", "structBME280__DataF__t.html", "structBME280__DataF__t" ],
     [ "BME280_Driver_t", "structBME280__Driver__t.html", "structBME280__Driver__t" ],
-    [ "BME280_t", "structBME280__t.html", "structBME280__t" ]
+    [ "BME280_t", "structBME280__t.html", "structBME280__t" ],
+    [ "spi_bus_data", "structspi__bus__data.html", null ]
 ];

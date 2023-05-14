@@ -1,5 +1,10 @@
 var searchData=
 [
   ['macros_0',['Macros',['../group__BME280__privmacros.html',1,'']]],
-  ['mode_1',['mode',['../structBME280__t.html#afff1f6899ad1250df0946bfcf4aafd8a',1,'BME280_t::mode()'],['../structBME280__Config__t.html#ab1ac0daa2bed99e25261cd36290b5d27',1,'BME280_Config_t::mode()']]]
+  ['main_1',['main',['../HAL__SPI__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;main.c'],['../HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;main.c'],['../HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;main.c']]],
+  ['main_2ec_2',['main.c',['../HAL__SPI__ForcedMode_2Src_2main_8c.html',1,'(Global Namespace)'],['../HAL__SPI__NormalMode_2Src_2main_8c.html',1,'(Global Namespace)'],['../HAL__I2C__NormalMode_2Src_2main_8c.html',1,'(Global Namespace)']]],
+  ['main_2eh_3',['main.h',['../HAL__SPI__NormalMode_2Inc_2main_8h.html',1,'(Global Namespace)'],['../HAL__I2C__NormalMode_2Inc_2main_8h.html',1,'(Global Namespace)'],['../HAL__SPI__ForcedMode_2Inc_2main_8h.html',1,'(Global Namespace)']]],
+  ['mode_4',['mode',['../structBME280__t.html#afff1f6899ad1250df0946bfcf4aafd8a',1,'BME280_t::mode()'],['../structBME280__Config__t.html#ab1ac0daa2bed99e25261cd36290b5d27',1,'BME280_Config_t::mode()']]],
+  ['mx_5fgpio_5finit_5',['MX_GPIO_Init',['../HAL__I2C__NormalMode_2Inc_2gpio_8h.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c'],['../HAL__I2C__NormalMode_2Src_2gpio_8c.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c'],['../HAL__SPI__ForcedMode_2Inc_2gpio_8h.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c'],['../HAL__SPI__ForcedMode_2Src_2gpio_8c.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c'],['../HAL__SPI__NormalMode_2Inc_2gpio_8h.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c'],['../HAL__SPI__NormalMode_2Src_2gpio_8c.html#ac724e431d2af879252de35615be2bdea',1,'MX_GPIO_Init(void):&#160;gpio.c']]],
+  ['mx_5fi2c1_5finit_6',['MX_I2C1_Init',['../i2c_8h.html#ada6e763cfa4108a8d24cd27b75f2f489',1,'MX_I2C1_Init(void):&#160;i2c.c'],['../i2c_8c.html#ada6e763cfa4108a8d24cd27b75f2f489',1,'MX_I2C1_Init(void):&#160;i2c.c']]]
 ];

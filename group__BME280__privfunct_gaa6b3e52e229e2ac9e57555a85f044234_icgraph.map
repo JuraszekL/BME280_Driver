@@ -1,4 +1,5 @@
 <map id="bme280_read_compensation_parameters" name="bme280_read_compensation_parameters">
-<area shape="rect" id="node1" title="read compensation data" alt="" coords="149,5,336,46"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources." alt="" coords="5,13,101,39"/>
+<area shape="rect" id="node1" title="read compensation data" alt="" coords="246,5,433,46"/>
+<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga9bf9479f5ed6d4d9c805fb3dcd660410" title="Function to initialize sensor and resources." alt="" coords="103,13,198,39"/>
+<area shape="rect" id="node3" href="$HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,13,55,39"/>
 </map>

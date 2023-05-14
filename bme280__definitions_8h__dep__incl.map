@@ -1,5 +1,8 @@
 <map id="bme280_definitions.h" name="bme280_definitions.h">
-<area shape="rect" id="node1" title="Defined types for BME280 Driver." alt="" coords="5,5,148,31"/>
-<area shape="rect" id="node2" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="38,79,115,105"/>
-<area shape="rect" id="node3" href="$bme280_8c.html" title="Source code for BME280 Driver." alt="" coords="38,153,115,178"/>
+<area shape="rect" id="node1" title="Defined types for BME280 Driver." alt="" coords="279,5,422,31"/>
+<area shape="rect" id="node2" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="312,79,389,105"/>
+<area shape="rect" id="node3" href="$HAL__I2C__NormalMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="5,153,160,208"/>
+<area shape="rect" id="node4" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="184,153,338,208"/>
+<area shape="rect" id="node5" href="$HAL__SPI__NormalMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="362,153,518,208"/>
+<area shape="rect" id="node6" href="$bme280_8c.html" title="Source code for BME280 Driver." alt="" coords="541,168,619,193"/>
 </map>

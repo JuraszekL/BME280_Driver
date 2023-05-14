@@ -1,0 +1,11 @@
+<map id="Examples/STM32/HAL_I2C_NormalMode/Src/main.c" name="Examples/STM32/HAL_I2C_NormalMode/Src/main.c">
+<area shape="rect" id="node1" title=": Main program body" alt="" coords="73,5,227,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,65,135"/>
+<area shape="rect" id="node3" href="$i2c_8h.html" title="This file contains all the function prototypes for the i2c.c file." alt="" coords="88,109,137,135"/>
+<area shape="rect" id="node6" title=" " alt="" coords="161,109,216,135"/>
+<area shape="rect" id="node7" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="240,109,318,135"/>
+<area shape="rect" id="node4" href="$HAL__I2C__NormalMode_2Inc_2main_8h.html" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="83,183,142,208"/>
+<area shape="rect" id="node5" title=" " alt="" coords="55,256,170,282"/>
+<area shape="rect" id="node8" href="$bme280__definitions_8h.html" title="Defined types for BME280 Driver." alt="" coords="208,183,350,208"/>
+<area shape="rect" id="node9" title=" " alt="" coords="247,256,311,282"/>
+</map>
