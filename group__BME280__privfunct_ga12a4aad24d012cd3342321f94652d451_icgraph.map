@@ -1,9 +1,15 @@
 <map id="bme280_convert_t_S32_struct" name="bme280_convert_t_S32_struct">
-<area shape="rect" id="node1" title="convert temperature to structure" alt="" coords="324,73,482,113"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="112,5,267,31"/>
-<area shape="rect" id="node4" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="115,55,264,80"/>
-<area shape="rect" id="node6" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="103,104,276,130"/>
-<area shape="rect" id="node7" href="$group__BME280__Driver.html#ga72cfa00fad7c88ba8fd4e5b4f3085a45" title="Function reads last measured temperature." alt="" coords="106,153,273,179"/>
-<area shape="rect" id="node3" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
-<area shape="rect" id="node5" href="$HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
+<area shape="rect" id="Node000001" title="convert temperature to structure" alt="" coords="324,73,482,113"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="112,5,267,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="339,69,275,45,241,34,243,29,277,40,341,64"/>
+<area shape="rect" id="Node000004" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="115,55,264,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="309,84,264,79,264,74,310,79"/>
+<area shape="rect" id="Node000006" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="103,104,276,130"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="310,106,277,110,276,104,309,101"/>
+<area shape="rect" id="Node000007" href="$group__BME280__Driver.html#ga72cfa00fad7c88ba8fd4e5b4f3085a45" title="Function reads last measured temperature." alt="" coords="106,153,273,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="340,122,277,145,242,155,241,150,275,140,338,117"/>
+<area shape="rect" id="Node000003" href="$STM32_2HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,21,55,21,55,16,97,16"/>
+<area shape="rect" id="Node000005" href="$STM32_2HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="100,70,55,70,55,65,100,65"/>
 </map>

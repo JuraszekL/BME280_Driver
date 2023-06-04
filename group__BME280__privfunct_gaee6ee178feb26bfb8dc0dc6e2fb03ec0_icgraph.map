@@ -1,7 +1,11 @@
 <map id="bme280_convert_h_U32_float" name="bme280_convert_h_U32_float">
-<area shape="rect" id="node1" title="convert humidity to structure" alt="" coords="237,73,399,113"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="12,5,182,31"/>
-<area shape="rect" id="node3" href="$group__BME280__Driver.html#ga02e9364d7737a3ee1565ac00597981c5" title="Function reads all measured data at once." alt="" coords="15,55,179,80"/>
-<area shape="rect" id="node4" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="5,104,189,130"/>
-<area shape="rect" id="node5" href="$group__BME280__Driver.html#gaadd4533f9c6ace8308b547f6dbf4368c" title="Function reads last measured humidity." alt="" coords="9,153,185,179"/>
+<area shape="rect" id="Node000001" title="convert humidity to structure" alt="" coords="237,73,399,113"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="12,5,182,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,69,188,45,152,34,154,29,190,40,256,64"/>
+<area shape="rect" id="Node000003" href="$group__BME280__Driver.html#ga02e9364d7737a3ee1565ac00597981c5" title="Function reads all measured data at once." alt="" coords="15,55,179,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,85,179,80,179,74,223,79"/>
+<area shape="rect" id="Node000004" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="5,104,189,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="222,106,189,110,189,104,222,101"/>
+<area shape="rect" id="Node000005" href="$group__BME280__Driver.html#gaadd4533f9c6ace8308b547f6dbf4368c" title="Function reads last measured humidity." alt="" coords="9,153,185,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="253,122,189,145,153,155,152,150,188,140,251,117"/>
 </map>

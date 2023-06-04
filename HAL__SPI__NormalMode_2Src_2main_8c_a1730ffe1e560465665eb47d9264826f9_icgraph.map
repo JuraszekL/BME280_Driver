@@ -1,6 +1,0 @@
-<map id="Error_Handler" name="Error_Handler">
-<area shape="rect" id="node1" title="This function is executed in case of error occurrence." alt="" coords="276,31,376,56"/>
-<area shape="rect" id="node2" href="$HAL__I2C__NormalMode_2Src_2i2c_8c.html#a08b1eb7b7be5b94395127e2a33b1b67e" title=" " alt="" coords="103,5,228,31"/>
-<area shape="rect" id="node3" href="$HAL__RTOS__I2C__ForcedMode_2Src_2i2c_8c.html#ada6e763cfa4108a8d24cd27b75f2f489" title=" " alt="" coords="115,55,216,80"/>
-<area shape="rect" id="node4" href="$HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
-</map>

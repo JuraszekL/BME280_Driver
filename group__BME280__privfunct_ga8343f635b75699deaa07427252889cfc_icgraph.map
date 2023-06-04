@@ -1,12 +1,21 @@
 <map id="bme280_busy_check" name="bme280_busy_check">
-<area shape="rect" id="node1" title="check if sensor is busy" alt="" coords="340,179,483,204"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="120,5,275,31"/>
-<area shape="rect" id="node4" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="112,55,283,80"/>
-<area shape="rect" id="node5" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="113,104,282,130"/>
-<area shape="rect" id="node6" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="106,153,289,179"/>
-<area shape="rect" id="node7" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="110,203,285,228"/>
-<area shape="rect" id="node8" href="$group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="103,252,292,278"/>
-<area shape="rect" id="node9" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="111,301,284,327"/>
-<area shape="rect" id="node10" href="$group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="103,351,292,376"/>
-<area shape="rect" id="node3" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+<area shape="rect" id="Node000001" title="check if sensor is busy" alt="" coords="340,179,483,204"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="120,5,275,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,167,353,105,324,72,291,44,270,34,272,29,293,40,328,68,358,101,399,164"/>
+<area shape="rect" id="Node000004" href="$group__BME280__Driver.html#gad2562bf31987c0665f05ea3f342531f5" title="Function forces single measure and returns all data as floats." alt="" coords="112,55,283,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="387,170,345,131,291,94,265,83,267,78,293,89,348,127,391,166"/>
+<area shape="rect" id="Node000005" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="113,104,282,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="368,175,291,143,256,133,258,128,293,138,370,170"/>
+<area shape="rect" id="Node000006" href="$group__BME280__Driver.html#gaebfc2d0af136a400f199babc7bdcddde" title="Function forces single measure and returns humidity as floats (forced mode)" alt="" coords="106,153,289,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="325,184,289,180,290,174,326,179"/>
+<area shape="rect" id="Node000007" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="110,203,285,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="326,204,285,208,285,203,325,198"/>
+<area shape="rect" id="Node000008" href="$group__BME280__Driver.html#gacdc73b2a7662f705e847ffb263870340" title="Function forces single measure and returns pressure as floats (forced mode)" alt="" coords="103,252,292,278"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="369,213,293,243,257,254,256,249,291,238,368,208"/>
+<area shape="rect" id="Node000009" href="$group__BME280__Driver.html#ga343b146ffaf4496b53bafe1d5bdb5e00" title="Function forces single measure and returns temperatrue as integers (forced mode)" alt="" coords="111,301,284,327"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="390,217,348,256,293,293,267,303,265,298,291,288,344,252,387,213"/>
+<area shape="rect" id="Node000010" href="$group__BME280__Driver.html#ga9b7b3a9af19029a07288b9b2b968570b" title="Function forces single measure and returns temperatrue as floats (forced mode)" alt="" coords="103,351,292,376"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="399,219,357,281,328,314,293,342,272,353,269,348,291,337,324,310,353,278,394,216"/>
+<area shape="rect" id="Node000003" href="$STM32_2HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,21,55,21,55,16,105,16"/>
 </map>

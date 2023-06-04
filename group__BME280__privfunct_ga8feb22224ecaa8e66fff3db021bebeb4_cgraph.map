@@ -1,8 +1,13 @@
 <map id="bme280_read_compensate" name="bme280_read_compensate">
-<area shape="rect" id="node1" title="read and compensate measured values" alt="" coords="5,104,183,130"/>
-<area shape="rect" id="node2" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="231,5,422,31"/>
-<area shape="rect" id="node3" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="231,55,422,80"/>
-<area shape="rect" id="node4" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="232,104,421,130"/>
-<area shape="rect" id="node5" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="241,153,412,179"/>
-<area shape="rect" id="node6" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="254,203,399,244"/>
+<area shape="rect" id="Node000001" title="read and compensate measured values" alt="" coords="5,104,183,130"/>
+<area shape="rect" id="Node000002" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="231,5,422,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,101,165,71,230,40,248,33,250,38,232,45,168,75,117,106"/>
+<area shape="rect" id="Node000003" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="231,55,422,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,101,248,81,249,87,159,106"/>
+<area shape="rect" id="Node000004" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="232,104,421,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="183,114,217,114,217,120,183,120"/>
+<area shape="rect" id="Node000005" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="241,153,412,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="159,128,249,147,248,152,158,133"/>
+<area shape="rect" id="Node000006" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="254,203,399,244"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="118,128,169,158,232,189,246,195,244,200,230,194,167,162,115,133"/>
 </map>

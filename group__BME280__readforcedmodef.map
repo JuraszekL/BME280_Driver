@@ -1,4 +1,4 @@
 <map id="Read in forced mode" name="Read in forced mode">
-<area shape="rect" id="node1" href="$group__BME280__readfl.html" title="read measured data from sensor as floating point values" alt="" coords="5,5,152,31"/>
-<area shape="rect" id="node2" title="force single measure and read data when finished" alt="" coords="200,5,338,31"/>
+<area shape="rect" id="Node000002" href="$group__BME280__readfl.html" title="read measured data from sensor as floating point values" alt="" coords="5,5,152,31"/>
+<area shape="rect" id="Node000001" title="force single measure and read data when finished" alt="" coords="200,5,338,31"/>
 </map>

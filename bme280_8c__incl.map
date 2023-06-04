@@ -1,7 +1,12 @@
 <map id="bme280.c" name="bme280.c">
-<area shape="rect" id="node1" title="Source code for BME280 Driver." alt="" coords="17,5,95,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="22,226,85,252"/>
-<area shape="rect" id="node3" title=" " alt="" coords="22,79,90,105"/>
-<area shape="rect" id="node4" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="113,79,191,105"/>
-<area shape="rect" id="node5" href="$bme280__definitions_8h.html" title="Defined types for BME280 Driver." alt="" coords="52,153,194,178"/>
+<area shape="rect" id="Node000001" title="Source code for BME280 Driver." alt="" coords="17,5,95,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="22,226,85,252"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="45,33,27,54,13,80,8,115,14,151,26,185,40,212,36,215,21,187,9,153,3,115,8,78,23,51,41,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="22,79,90,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="59,31,59,64,53,64,53,31"/>
+<area shape="rect" id="Node000004" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="113,79,191,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="74,29,126,68,123,72,71,34"/>
+<area shape="rect" id="Node000005" href="$bme280__definitions_8h.html" title="Defined types for BME280 Driver." alt="" coords="52,153,194,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="150,106,136,140,131,138,145,104"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="113,180,77,217,73,214,109,177"/>
 </map>

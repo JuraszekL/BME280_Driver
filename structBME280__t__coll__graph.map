@@ -1,5 +1,7 @@
 <map id="BME280_t" name="BME280_t">
-<area shape="rect" id="node1" title="Keeps all data related to a single sensor." alt="" coords="110,94,191,120"/>
-<area shape="rect" id="node2" href="$structBME280__Driver__t.html" title="Keeps all data specific for used platform." alt="" coords="5,5,128,31"/>
-<area shape="rect" id="node3" href="$structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor." alt="" coords="152,5,320,31"/>
+<area shape="rect" id="Node000001" title="Keeps all data related to a single sensor." alt="" coords="110,94,191,120"/>
+<area shape="rect" id="Node000002" href="$structBME280__Driver__t.html" title="Keeps all data specific for used platform." alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,40,141,92,137,96,86,44"/>
+<area shape="rect" id="Node000003" href="$structBME280__calibration__data.html" title="Keeps calibration data that were read from sensor." alt="" coords="152,5,320,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,43,164,96,160,92,212,40"/>
 </map>

@@ -1,9 +1,15 @@
 <map id="bme280_convert_p_U32_struct" name="bme280_convert_p_U32_struct">
-<area shape="rect" id="node1" title="convert pressure to structure" alt="" coords="325,73,487,113"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="112,5,268,31"/>
-<area shape="rect" id="node4" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="116,55,264,80"/>
-<area shape="rect" id="node6" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="103,104,277,130"/>
-<area shape="rect" id="node7" href="$group__BME280__Driver.html#gae418270b344349371f7dfb0736556dbf" title="Function reads last measured pressure." alt="" coords="106,153,274,179"/>
-<area shape="rect" id="node3" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
-<area shape="rect" id="node5" href="$HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
+<area shape="rect" id="Node000001" title="convert pressure to structure" alt="" coords="325,73,487,113"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="112,5,268,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,69,276,45,242,34,244,29,278,40,343,64"/>
+<area shape="rect" id="Node000004" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="116,55,264,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="310,84,264,79,265,74,310,79"/>
+<area shape="rect" id="Node000006" href="$group__BME280__Driver.html#ga5b0e65c5369309644fb6f0ca84127d2c" title="Function forces single measure and returns pressure as integers (forced mode)" alt="" coords="103,104,277,130"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="311,106,278,110,277,104,310,101"/>
+<area shape="rect" id="Node000007" href="$group__BME280__Driver.html#gae418270b344349371f7dfb0736556dbf" title="Function reads last measured pressure." alt="" coords="106,153,274,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="342,121,278,145,243,155,241,150,276,140,340,116"/>
+<area shape="rect" id="Node000003" href="$STM32_2HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,21,55,21,55,16,97,16"/>
+<area shape="rect" id="Node000005" href="$STM32_2HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="101,70,55,70,55,65,101,65"/>
 </map>

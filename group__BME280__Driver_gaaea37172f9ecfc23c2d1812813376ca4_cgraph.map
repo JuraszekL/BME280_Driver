@@ -1,4 +1,5 @@
 <map id="BME280_SetTOvs" name="BME280_SetTOvs">
-<area shape="rect" id="node1" title="Function sets sensor&#39;s temperature Oversampling." alt="" coords="5,5,135,31"/>
-<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="183,5,344,31"/>
+<area shape="rect" id="Node000001" title="Function sets sensor&#39;s temperature Oversampling." alt="" coords="5,5,135,31"/>
+<area shape="rect" id="Node000002" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="183,5,344,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,16,168,16,168,21,135,21"/>
 </map>

@@ -1,13 +1,23 @@
 <map id="BME280_ReadAllLast_F" name="BME280_ReadAllLast_F">
-<area shape="rect" id="node1" title="Function reads all measured data at once." alt="" coords="5,144,169,169"/>
-<area shape="rect" id="node2" href="$group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="224,5,387,46"/>
-<area shape="rect" id="node3" href="$group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="224,71,387,111"/>
-<area shape="rect" id="node4" href="$group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="226,136,385,177"/>
-<area shape="rect" id="node5" href="$group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="221,201,390,227"/>
-<area shape="rect" id="node6" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="217,250,394,276"/>
-<area shape="rect" id="node7" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="442,152,633,177"/>
-<area shape="rect" id="node8" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="442,201,633,227"/>
-<area shape="rect" id="node9" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="444,250,632,276"/>
-<area shape="rect" id="node10" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="453,300,623,325"/>
-<area shape="rect" id="node11" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="465,349,610,390"/>
+<area shape="rect" id="Node000001" title="Function reads all measured data at once." alt="" coords="5,144,169,169"/>
+<area shape="rect" id="Node000002" href="$group__BME280__privfunct.html#gaee6ee178feb26bfb8dc0dc6e2fb03ec0" title="convert humidity to structure" alt="" coords="224,5,387,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,141,150,101,215,57,228,50,230,55,218,61,153,105,104,145"/>
+<area shape="rect" id="Node000003" href="$group__BME280__privfunct.html#gaccb2f1cfb71857f1b4a0fcacbaf89482" title="convert pressure to structure" alt="" coords="224,71,387,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,140,220,114,222,119,133,146"/>
+<area shape="rect" id="Node000004" href="$group__BME280__privfunct.html#ga25397f1bedf6cd71109cdfd3f1183ab6" title="convert temperature to float" alt="" coords="226,136,385,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,154,211,154,211,159,169,159"/>
+<area shape="rect" id="Node000005" href="$group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="221,201,390,227"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="140,167,240,194,239,199,138,172"/>
+<area shape="rect" id="Node000006" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="217,250,394,276"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="107,167,155,202,218,237,233,243,231,247,216,241,152,206,104,172"/>
+<area shape="rect" id="Node000007" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="442,152,633,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="370,247,393,237,407,225,416,212,425,199,441,186,451,181,453,186,443,191,429,202,420,215,411,228,395,241,372,252"/>
+<area shape="rect" id="Node000008" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="442,201,633,227"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="369,247,459,228,460,233,370,252"/>
+<area shape="rect" id="Node000009" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="444,250,632,276"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="394,260,428,260,428,266,394,266"/>
+<area shape="rect" id="Node000010" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="453,300,623,325"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="370,274,460,293,459,298,369,279"/>
+<area shape="rect" id="Node000011" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="465,349,610,390"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="329,274,380,304,443,335,457,341,455,346,441,340,378,308,327,279"/>
 </map>

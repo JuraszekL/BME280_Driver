@@ -1,8 +1,8 @@
 <map id="BME280 Settings" name="BME280 Settings">
-<area shape="rect" id="node1" href="$group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,80,117,106"/>
-<area shape="rect" id="node3" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="165,80,286,106"/>
-<area shape="rect" id="node2" href="$group__BME280__Ovs.html" title="Possible values of oversampling." alt="" coords="340,5,441,31"/>
-<area shape="rect" id="node4" href="$group__BME280__filter.html" title="Possible values of IIR filter settings." alt="" coords="355,55,425,80"/>
-<area shape="rect" id="node5" href="$group__BME280__mode.html" title="Possible operating modes." alt="" coords="334,104,446,130"/>
-<area shape="rect" id="node6" href="$group__BME280__tstby.html" title="Possible values of standby time in normal mode." alt="" coords="340,153,440,179"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,80,117,106"/>
+<area shape="rect" id="Node000001" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="165,80,286,106"/>
+<area shape="rect" id="Node000003" href="$group__BME280__Ovs.html" title="Possible values of oversampling." alt="" coords="340,5,441,31"/>
+<area shape="rect" id="Node000006" href="$group__BME280__filter.html" title="Possible values of IIR filter settings." alt="" coords="355,55,425,80"/>
+<area shape="rect" id="Node000004" href="$group__BME280__mode.html" title="Possible operating modes." alt="" coords="334,104,446,130"/>
+<area shape="rect" id="Node000005" href="$group__BME280__tstby.html" title="Possible values of standby time in normal mode." alt="" coords="340,153,440,179"/>
 </map>

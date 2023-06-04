@@ -1,5 +1,7 @@
 <map id="Examples/STM32/HAL_RTOS_SPI_ForcedMode/Inc/main.h" name="Examples/STM32/HAL_RTOS_SPI_ForcedMode/Inc/main.h">
-<area shape="rect" id="node1" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="103,5,275,61"/>
-<area shape="rect" id="node2" href="$HAL__RTOS__SPI__ForcedMode_2Inc_2gpio_8h.html" title="This file contains all the function prototypes for the gpio.c file." alt="" coords="5,109,178,165"/>
-<area shape="rect" id="node3" href="$HAL__RTOS__SPI__ForcedMode_2Inc_2spi_8h.html" title="This file contains all the function prototypes for the spi.c file." alt="" coords="201,109,374,165"/>
+<area shape="rect" id="Node000001" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="103,5,275,61"/>
+<area shape="rect" id="Node000002" href="$HAL__RTOS__SPI__ForcedMode_2Inc_2gpio_8h.html" title="This file contains all the function prototypes for the gpio.c file." alt="" coords="5,109,178,165"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,74,120,110,116,107,151,70"/>
+<area shape="rect" id="Node000003" href="$HAL__RTOS__SPI__ForcedMode_2Inc_2spi_8h.html" title="This file contains all the function prototypes for the spi.c file." alt="" coords="201,109,374,165"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,70,263,106,259,110,223,74"/>
 </map>

@@ -1,8 +1,8 @@
 <map id="Public functions" name="Public functions">
-<area shape="rect" id="node1" href="$group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,80,117,106"/>
-<area shape="rect" id="node2" title="Use these functions only." alt="" coords="165,80,278,106"/>
-<area shape="rect" id="node3" href="$group__BME280__getfunctions.html" title="Read sensor&#39;s settings." alt="" coords="348,5,450,31"/>
-<area shape="rect" id="node4" href="$group__BME280__readfl.html" title="read measured data from sensor as floating point values" alt="" coords="326,55,472,80"/>
-<area shape="rect" id="node5" href="$group__BME280__readnofl.html" title="read measured data from sensor as integers" alt="" coords="331,104,467,130"/>
-<area shape="rect" id="node6" href="$group__BME280__setfunctions.html" title="change sensor&#39;s settings" alt="" coords="349,153,450,179"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html" title="BME280 Driver." alt="" coords="5,80,117,106"/>
+<area shape="rect" id="Node000001" title="Use these functions only." alt="" coords="165,80,278,106"/>
+<area shape="rect" id="Node000003" href="$group__BME280__getfunctions.html" title="Read sensor&#39;s settings." alt="" coords="348,5,450,31"/>
+<area shape="rect" id="Node000006" href="$group__BME280__readfl.html" title="read measured data from sensor as floating point values" alt="" coords="326,55,472,80"/>
+<area shape="rect" id="Node000005" href="$group__BME280__readnofl.html" title="read measured data from sensor as integers" alt="" coords="331,104,467,130"/>
+<area shape="rect" id="Node000004" href="$group__BME280__setfunctions.html" title="change sensor&#39;s settings" alt="" coords="349,153,450,179"/>
 </map>

@@ -1,4 +1,5 @@
 <map id="Examples/STM32/HAL_RTOS_SPI_ForcedMode/Inc/main.h" name="Examples/STM32/HAL_RTOS_SPI_ForcedMode/Inc/main.h">
-<area shape="rect" id="node1" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="5,5,178,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="34,109,149,135"/>
+<area shape="rect" id="Node000001" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="5,5,178,61"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="34,109,149,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,61,94,94,89,94,89,61"/>
 </map>

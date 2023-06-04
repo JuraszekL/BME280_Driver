@@ -1,4 +1,4 @@
 <map id="Standby Time" name="Standby Time">
-<area shape="rect" id="node1" href="$group__BME280__Sett.html" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="5,5,127,31"/>
-<area shape="rect" id="node2" title="Possible values of standby time in normal mode." alt="" coords="175,5,275,31"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Sett.html" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="5,5,127,31"/>
+<area shape="rect" id="Node000001" title="Possible values of standby time in normal mode." alt="" coords="175,5,275,31"/>
 </map>

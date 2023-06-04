@@ -1,4 +1,5 @@
 <map id="Examples/STM32/HAL_RTOS_SPI_ForcedMode/Src/gpio.c" name="Examples/STM32/HAL_RTOS_SPI_ForcedMode/Src/gpio.c">
-<area shape="rect" id="node1" title="This file provides code for the configuration of all used GPIO pins." alt="" coords="5,5,178,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="64,109,119,135"/>
+<area shape="rect" id="Node000001" title="This file provides code for the configuration of all used GPIO pins." alt="" coords="5,5,178,61"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="64,109,119,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,61,94,94,89,94,89,61"/>
 </map>

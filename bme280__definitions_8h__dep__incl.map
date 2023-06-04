@@ -1,8 +1,13 @@
 <map id="bme280_definitions.h" name="bme280_definitions.h">
-<area shape="rect" id="node1" title="Defined types for BME280 Driver." alt="" coords="279,5,422,31"/>
-<area shape="rect" id="node2" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="312,79,389,105"/>
-<area shape="rect" id="node3" href="$HAL__I2C__NormalMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="5,153,160,208"/>
-<area shape="rect" id="node4" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="184,153,338,208"/>
-<area shape="rect" id="node5" href="$HAL__SPI__NormalMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="362,153,518,208"/>
-<area shape="rect" id="node6" href="$bme280_8c.html" title="Source code for BME280 Driver." alt="" coords="541,168,619,193"/>
+<area shape="rect" id="Node000001" title="Defined types for BME280 Driver." alt="" coords="279,5,422,31"/>
+<area shape="rect" id="Node000002" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="312,79,389,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,46,353,79,348,79,348,46"/>
+<area shape="rect" id="Node000003" href="$STM32_2HAL__I2C__NormalMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="5,153,160,208"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,112,161,157,159,152,298,107"/>
+<area shape="rect" id="Node000004" href="$STM32_2HAL__SPI__ForcedMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="184,153,338,208"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="330,117,291,154,287,150,326,113"/>
+<area shape="rect" id="Node000005" href="$STM32_2HAL__SPI__NormalMode_2Src_2main_8c.html" title=": Main program body" alt="" coords="362,153,518,208"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="375,113,414,150,410,154,371,117"/>
+<area shape="rect" id="Node000006" href="$bme280_8c.html" title="Source code for BME280 Driver." alt="" coords="541,168,619,193"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="404,106,465,125,530,150,560,165,557,169,528,155,463,130,402,111"/>
 </map>

@@ -1,0 +1,15 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title="The application entry point." alt="" coords="5,80,55,106"/>
+<area shape="rect" id="Node000002" href="$HAL__RTOS__SPI__ForcedMode_2Src_2freertos_8c.html#abade755e13d07c10889ae83143656158" title="FreeRTOS initialization." alt="" coords="103,5,245,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="45,78,71,59,101,40,113,34,115,39,104,45,74,63,49,82"/>
+<area shape="rect" id="Node000003" href="$HAL__SPI__NormalMode_2Src_2gpio_8c.html#ac724e431d2af879252de35615be2bdea" title=" " alt="" coords="121,55,227,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="55,86,105,77,106,82,56,91"/>
+<area shape="rect" id="Node000004" href="$HAL__RTOS__I2C__ForcedMode_2Src_2i2c_8c.html#ada6e763cfa4108a8d24cd27b75f2f489" title=" " alt="" coords="124,104,224,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="56,94,109,103,108,109,55,100"/>
+<area shape="rect" id="Node000006" href="$STM32_2HAL__I2C__NormalMode_2Src_2main_8c.html#a70af21c671abfcc773614a9a4f63d920" title="System Clock Configuration." alt="" coords="103,153,245,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="49,104,104,140,115,145,113,150,101,144,46,108"/>
+<area shape="rect" id="Node000005" href="$STM32_2HAL__SPI__NormalMode_2Src_2main_8c.html#a1730ffe1e560465665eb47d9264826f9" title="This function is executed in case of error occurrence." alt="" coords="293,104,393,130"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="224,114,278,114,278,120,224,120"/>
+<area shape="rect" id="Node000007" href="$STM32_2HAL__I2C__NormalMode_2Src_2main_8c.html#a1730ffe1e560465665eb47d9264826f9" title="This function is executed in case of error occurrence." alt="" coords="293,153,393,179"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="245,164,278,164,278,169,245,169"/>
+</map>

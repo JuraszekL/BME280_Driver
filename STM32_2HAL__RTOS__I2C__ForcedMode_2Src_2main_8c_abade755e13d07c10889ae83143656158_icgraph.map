@@ -1,0 +1,5 @@
+<map id="MX_FREERTOS_Init" name="MX_FREERTOS_Init">
+<area shape="rect" id="Node000001" title="FreeRTOS initialization." alt="" coords="103,5,245,31"/>
+<area shape="rect" id="Node000002" href="$STM32_2HAL__RTOS__I2C__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,21,55,21,55,16,88,16"/>
+</map>

@@ -1,4 +1,5 @@
 <map id="BME280_GetHOvs" name="BME280_GetHOvs">
-<area shape="rect" id="node1" title="Function gets current humidity Oversampling from sensor." alt="" coords="5,5,138,31"/>
-<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="186,5,347,31"/>
+<area shape="rect" id="Node000001" title="Function gets current humidity Oversampling from sensor." alt="" coords="5,5,138,31"/>
+<area shape="rect" id="Node000002" href="$group__BME280__privfunct.html#ga1f4f109aa267eeadaebc6ad3480e82eb" title="check for sleep mode" alt="" coords="186,5,347,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,16,171,16,171,21,138,21"/>
 </map>

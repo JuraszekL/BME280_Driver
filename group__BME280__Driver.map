@@ -1,12 +1,12 @@
 <map id="BME280_Driver" name="BME280_Driver">
-<area shape="rect" id="node1" title="BME280 Driver." alt="" coords="5,203,117,228"/>
-<area shape="rect" id="node2" href="$group__BME280__I2CAddr.html" title="Address on I2C bus." alt="" coords="173,5,318,31"/>
-<area shape="rect" id="node3" href="$group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="189,55,302,80"/>
-<area shape="rect" id="node4" href="$group__BME280__Regs.html" title="Definition of register addresses and lenghts." alt="" coords="181,104,310,130"/>
-<area shape="rect" id="node5" href="$group__BME280__Ret.html" title="Values that can be returned by the driver&#39;s functions." alt="" coords="165,153,326,179"/>
-<area shape="rect" id="node6" href="$group__BME280__Sett.html" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="185,203,306,228"/>
-<area shape="rect" id="node7" href="$group__BME280__libconf.html" title="Set library options here." alt="" coords="176,252,315,278"/>
-<area shape="rect" id="node8" href="$group__BME280__priv.html" title="only for internal library purposes" alt="" coords="182,301,309,327"/>
-<area shape="rect" id="node9" href="$group__BME280__prots.html" title="Platform speicific functions." alt="" coords="185,351,306,376"/>
-<area shape="rect" id="node10" href="$group__BME280__pubtypedef.html" title="Typedefs for internal calculations." alt="" coords="191,400,300,426"/>
+<area shape="rect" id="Node000001" title="BME280 Driver." alt="" coords="5,203,117,228"/>
+<area shape="rect" id="Node000006" href="$group__BME280__I2CAddr.html" title="Address on I2C bus." alt="" coords="173,5,318,31"/>
+<area shape="rect" id="Node000004" href="$group__BME280__Pubfunc.html" title="Use these functions only." alt="" coords="189,55,302,80"/>
+<area shape="rect" id="Node000007" href="$group__BME280__Regs.html" title="Definition of register addresses and lenghts." alt="" coords="181,104,310,130"/>
+<area shape="rect" id="Node000005" href="$group__BME280__Ret.html" title="Values that can be returned by the driver&#39;s functions." alt="" coords="165,153,326,179"/>
+<area shape="rect" id="Node000008" href="$group__BME280__Sett.html" title="Inernal sensor&#39;s settings that can be changed." alt="" coords="185,203,306,228"/>
+<area shape="rect" id="Node000003" href="$group__BME280__libconf.html" title="Set library options here." alt="" coords="176,252,315,278"/>
+<area shape="rect" id="Node000002" href="$group__BME280__priv.html" title="only for internal library purposes" alt="" coords="182,301,309,327"/>
+<area shape="rect" id="Node000009" href="$group__BME280__prots.html" title="Platform speicific functions." alt="" coords="185,351,306,376"/>
+<area shape="rect" id="Node000010" href="$group__BME280__pubtypedef.html" title="Typedefs for internal calculations." alt="" coords="191,400,300,426"/>
 </map>

@@ -1,9 +1,0 @@
-<map id="Examples/STM32/HAL_SPI_ForcedMode/Src/main.c" name="Examples/STM32/HAL_SPI_ForcedMode/Src/main.c">
-<area shape="rect" id="node1" title=": Main program body" alt="" coords="73,5,227,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,109,65,135"/>
-<area shape="rect" id="node3" title=" " alt="" coords="88,109,137,135"/>
-<area shape="rect" id="node4" title=" " alt="" coords="161,109,216,135"/>
-<area shape="rect" id="node5" href="$bme280_8h.html" title="Header for BME280 Driver." alt="" coords="240,109,318,135"/>
-<area shape="rect" id="node6" href="$bme280__definitions_8h.html" title="Defined types for BME280 Driver." alt="" coords="208,183,350,208"/>
-<area shape="rect" id="node7" title=" " alt="" coords="247,256,311,282"/>
-</map>

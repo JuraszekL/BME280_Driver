@@ -1,4 +1,5 @@
 <map id="Examples/STM32/HAL_I2C_NormalMode/Inc/main.h" name="Examples/STM32/HAL_I2C_NormalMode/Inc/main.h">
-<area shape="rect" id="node1" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="5,5,160,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="25,109,140,135"/>
+<area shape="rect" id="Node000001" title=": Header for main.c file. This file contains the common defines of the application." alt="" coords="5,5,160,61"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="25,109,140,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,61,85,94,80,94,80,61"/>
 </map>

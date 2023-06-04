@@ -1,11 +1,19 @@
 <map id="BME280_ReadTempLast" name="BME280_ReadTempLast">
-<area shape="rect" id="node1" title="Function reads last measured temperature." alt="" coords="5,70,172,96"/>
-<area shape="rect" id="node2" href="$group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="229,5,388,46"/>
-<area shape="rect" id="node3" href="$group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="224,70,393,96"/>
-<area shape="rect" id="node4" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="220,120,397,145"/>
-<area shape="rect" id="node5" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="445,21,636,47"/>
-<area shape="rect" id="node6" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="445,70,636,96"/>
-<area shape="rect" id="node7" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="447,120,635,145"/>
-<area shape="rect" id="node8" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="456,169,626,195"/>
-<area shape="rect" id="node9" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="468,219,613,259"/>
+<area shape="rect" id="Node000001" title="Function reads last measured temperature." alt="" coords="5,70,172,96"/>
+<area shape="rect" id="Node000002" href="$group__BME280__privfunct.html#ga12a4aad24d012cd3342321f94652d451" title="convert temperature to structure" alt="" coords="229,5,388,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,67,214,47,216,53,141,72"/>
+<area shape="rect" id="Node000003" href="$group__BME280__privfunct.html#gab09542d9fbe46eb192c2dfccf8e39d9a" title="check for normal mode" alt="" coords="224,70,393,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,80,209,80,209,86,172,86"/>
+<area shape="rect" id="Node000004" href="$group__BME280__privfunct.html#ga8feb22224ecaa8e66fff3db021bebeb4" title="read and compensate measured values" alt="" coords="220,120,397,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,94,234,113,233,118,149,99"/>
+<area shape="rect" id="Node000005" href="$group__BME280__privfunct.html#gac58949fad96ed5c847aa216db9c6d670" title="compensate humidity value" alt="" coords="445,21,636,47"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="373,116,396,106,410,94,419,81,428,68,444,55,454,50,456,55,446,60,432,72,423,84,414,98,398,111,375,121"/>
+<area shape="rect" id="Node000006" href="$group__BME280__privfunct.html#ga700ea2cbdda466bb7081442242ec76d0" title="compensate pressure value" alt="" coords="445,70,636,96"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="372,116,462,97,463,102,373,121"/>
+<area shape="rect" id="Node000007" href="$group__BME280__privfunct.html#gaedb94ae9df7b8661ff2cf90432b7a8eb" title="compensate temperature value" alt="" coords="447,120,635,145"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="397,130,431,130,431,135,397,135"/>
+<area shape="rect" id="Node000008" href="$group__BME280__privfunct.html#gabf6edac6fc9a92de861c8caab699e941" title="convert buffer to single variable" alt="" coords="456,169,626,195"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="373,143,463,163,462,168,372,148"/>
+<area shape="rect" id="Node000009" href="$group__BME280__privfunct.html#gacc6bfacd530167bee7ea999a7257927a" title="convert buffer to single variable" alt="" coords="468,219,613,259"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="332,143,383,173,446,205,460,210,458,215,444,209,381,178,330,148"/>
 </map>

@@ -1,9 +1,15 @@
 <map id="bme280_convert_h_U32_struct" name="bme280_convert_h_U32_struct">
-<area shape="rect" id="node1" title="convert humidity to structure" alt="" coords="319,73,481,113"/>
-<area shape="rect" id="node2" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="109,5,265,31"/>
-<area shape="rect" id="node4" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="113,55,261,80"/>
-<area shape="rect" id="node6" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="103,104,271,130"/>
-<area shape="rect" id="node7" href="$group__BME280__Driver.html#gaa5e0c9fd51a768a9113ed0405fd053be" title="Function reads last measured humidity." alt="" coords="106,153,268,179"/>
-<area shape="rect" id="node3" href="$HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
-<area shape="rect" id="node5" href="$HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
+<area shape="rect" id="Node000001" title="convert humidity to structure" alt="" coords="319,73,481,113"/>
+<area shape="rect" id="Node000002" href="$group__BME280__Driver.html#ga6f5d7b0428ec0365cceb771942dc1481" title="Function forces single measure and returns all data as integers." alt="" coords="109,5,265,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="335,69,270,45,237,34,238,29,272,40,337,64"/>
+<area shape="rect" id="Node000004" href="$group__BME280__Driver.html#ga5a1fa42b116bd05996150dbcfba7dc16" title="Function reads all measured data at once." alt="" coords="113,55,261,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="304,84,261,79,262,74,305,79"/>
+<area shape="rect" id="Node000006" href="$group__BME280__Driver.html#gac6638ca67d50833051f37b38b901a9d6" title="Function forces single measure and returns humidity as integers (forced mode)" alt="" coords="103,104,271,130"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="305,106,272,110,271,105,304,101"/>
+<area shape="rect" id="Node000007" href="$group__BME280__Driver.html#gaa5e0c9fd51a768a9113ed0405fd053be" title="Function reads last measured humidity." alt="" coords="106,153,268,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="335,122,272,145,238,155,236,150,270,140,333,117"/>
+<area shape="rect" id="Node000003" href="$STM32_2HAL__SPI__ForcedMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,21,55,21,55,16,94,16"/>
+<area shape="rect" id="Node000005" href="$STM32_2HAL__I2C__NormalMode_2Src_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="The application entry point." alt="" coords="5,55,55,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="98,70,55,70,55,65,98,65"/>
 </map>
